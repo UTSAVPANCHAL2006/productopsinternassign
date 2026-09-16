@@ -3,7 +3,7 @@
     "pass": "final",
     "source": "/Users/utsav/Desktop/ops intern assignment/output/results_verified.json",
     "pass3_report": "/Users/utsav/Desktop/ops intern assignment/verification/pass3_corrections.json",
-    "finished_at": "2026-09-16T20:11:34",
+    "finished_at": "2026-09-16T20:44:00",
     "accuracy_story": {
       "pass1": "LLM structure over fetched docs",
       "pass2_verify": "stratified sample re-fetch field scoring",
@@ -264,8 +264,8 @@
       "api_breadth": "broad",
       "mcp_existing": false,
       "mcp_notes": "DealCloud MCP Server is announced with client preview starting July 2026, indicating an upcoming MCP platform. | stripped: pass3 rejected weak/non-MCP wording",
-      "buildability": "ready_today",
-      "main_blocker": "",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Not pure ready_today: access=paid_plan_required.",
       "evidence_urls": [
         "https://api.docs.dealcloud.com/",
         "https://api.docs.dealcloud.com"
@@ -273,7 +273,7 @@
       "confidence": 0.9,
       "human_needed": false,
       "human_reason": "",
-      "raw_notes": "The API documentation is extensive and detailed, covering many endpoints and SDKs. Authentication is via API keys and tokens. MCP is upcoming but not yet released. Access model is inferred as paid due to API key usage and no mention of free tiers. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "raw_notes": "The API documentation is extensive and detailed, covering many endpoints and SDKs. Authentication is via API keys and tokens. MCP is upcoming but not yet released. Access model is inferred as paid due to API key usage and no mention of free tiers. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3 | consistency: downgraded ready_today \u2192 ready_with_caveats (access=paid_plan_required)",
       "pass_label": "corrected"
     },
     {
@@ -345,8 +345,8 @@
       "api_breadth": "broad",
       "mcp_existing": false,
       "mcp_notes": "Freshdesk offers MCP (Multi-Channel Platform) to connect AI tools and apps with Freshdesk, enabling integration of customer data into workflows and automation at scale. | stripped: pass3 rejected weak/non-MCP wording",
-      "buildability": "ready_today",
-      "main_blocker": "",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Not pure ready_today: access=paid_plan_required.",
       "evidence_urls": [
         "https://developers.freshdesk.com/api/",
         "https://www.freshworks.com/freshdesk/"
@@ -354,7 +354,7 @@
       "confidence": 0.95,
       "human_needed": false,
       "human_reason": "",
-      "raw_notes": "Authentication method is Basic Auth as per API docs; no explicit mention of OAuth2 or PAT. Access is gated by paid plans with rate limits. MCP is confirmed from marketing site. API is REST with broad coverage of helpdesk features. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "raw_notes": "Authentication method is Basic Auth as per API docs; no explicit mention of OAuth2 or PAT. Access is gated by paid plans with rate limits. MCP is confirmed from marketing site. API is REST with broad coverage of helpdesk features. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3 | consistency: downgraded ready_today \u2192 ready_with_caveats (access=paid_plan_required)",
       "pass_label": "corrected"
     },
     {
@@ -1190,8 +1190,8 @@
       "api_breadth": "broad",
       "mcp_existing": false,
       "mcp_notes": "No evidence found of a marketplace or MCP for third-party apps; focus is on API integrations and extensions.",
-      "buildability": "ready_today",
-      "main_blocker": "",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Not pure ready_today: access=admin_approval.",
       "evidence_urls": [
         "https://developer.adobe.com/commerce/webapi/get-started/",
         "https://developer.adobe.com/commerce/"
@@ -1199,8 +1199,8 @@
       "confidence": 0.95,
       "human_needed": false,
       "human_reason": "",
-      "raw_notes": "Authentication methods are clearly documented; API types include REST, GraphQL, and SOAP; no mention of webhooks or MCP; access requires admin setup. | Composio SDK reachable; no definitive catalog hit for this app name.",
-      "pass_label": "pass1"
+      "raw_notes": "Authentication methods are clearly documented; API types include REST, GraphQL, and SOAP; no mention of webhooks or MCP; access requires admin setup. | Composio SDK reachable; no definitive catalog hit for this app name. | consistency: downgraded ready_today \u2192 ready_with_caveats (access=admin_approval)",
+      "pass_label": "corrected"
     },
     {
       "id": 46,
@@ -1400,15 +1400,15 @@
       "api_breadth": "broad",
       "mcp_existing": false,
       "mcp_notes": "Ahrefs offers MCP (Marketing Connect Platform) to connect their data to AI assistants and agents, including integrations with Claude and ChatGPT. | stripped: pass3 rejected weak/non-MCP wording",
-      "buildability": "ready_today",
-      "main_blocker": "",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Not pure ready_today: access=paid_plan_required.",
       "evidence_urls": [
         "https://docs.ahrefs.com"
       ],
       "confidence": 1.0,
       "human_needed": false,
       "human_reason": "",
-      "raw_notes": "Documentation clearly states REST API with OAuth2 and API key authentication, paid plan required, and MCP integration available. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "raw_notes": "Documentation clearly states REST API with OAuth2 and API key authentication, paid plan required, and MCP integration available. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3 | consistency: downgraded ready_today \u2192 ready_with_caveats (access=paid_plan_required)",
       "pass_label": "corrected"
     },
     {
@@ -1425,16 +1425,16 @@
       "api_breadth": "broad",
       "mcp_existing": true,
       "mcp_notes": "MrScraper supports the Model Context Protocol (MCP) server allowing AI agents to fetch and extract web data.",
-      "buildability": "ready_today",
-      "main_blocker": "",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Not pure ready_today: access=paid_plan_required.",
       "evidence_urls": [
         "https://docs.mrscraper.com/docs/getting-started/overview"
       ],
       "confidence": 1.0,
       "human_needed": false,
       "human_reason": "",
-      "raw_notes": "Documentation clearly describes API tokens, multiple SDKs (Python, Node.js, LangChain), CLI, MCP server, and broad scraping features. | Composio SDK reachable; no definitive catalog hit for this app name.",
-      "pass_label": "pass1"
+      "raw_notes": "Documentation clearly describes API tokens, multiple SDKs (Python, Node.js, LangChain), CLI, MCP server, and broad scraping features. | Composio SDK reachable; no definitive catalog hit for this app name. | consistency: downgraded ready_today \u2192 ready_with_caveats (access=paid_plan_required)",
+      "pass_label": "corrected"
     },
     {
       "id": 55,
@@ -1558,8 +1558,8 @@
       "api_breadth": "broad",
       "mcp_existing": false,
       "mcp_notes": "No evidence found of a marketplace connector platform (MCP) integration.",
-      "buildability": "ready_today",
-      "main_blocker": "",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Not pure ready_today: access=paid_plan_required.",
       "evidence_urls": [
         "https://www.waterfall.io/",
         "https://docs.waterfall.io/v1/introduction"
@@ -1567,8 +1567,8 @@
       "confidence": 1.0,
       "human_needed": false,
       "human_reason": "",
-      "raw_notes": "API is well documented with multiple endpoints for contact and company data; authentication via API key; pricing and access require paid plans. | Composio SDK reachable; no definitive catalog hit for this app name.",
-      "pass_label": "pass1"
+      "raw_notes": "API is well documented with multiple endpoints for contact and company data; authentication via API key; pricing and access require paid plans. | Composio SDK reachable; no definitive catalog hit for this app name. | consistency: downgraded ready_today \u2192 ready_with_caveats (access=paid_plan_required)",
+      "pass_label": "corrected"
     },
     {
       "id": 60,
@@ -1803,8 +1803,8 @@
       "api_breadth": "broad",
       "mcp_existing": false,
       "mcp_notes": "No explicit mention of a multi-call pattern (MCP) or batch API; mostly REST endpoints for administrative tasks.",
-      "buildability": "ready_today",
-      "main_blocker": "",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Not pure ready_today: access=paid_plan_required.",
       "evidence_urls": [
         "https://www.mongodb.com/docs/atlas/api/atlas-admin-api/",
         "https://www.mongodb.com/docs/atlas/api/"
@@ -1812,8 +1812,8 @@
       "confidence": 0.9,
       "human_needed": false,
       "human_reason": "",
-      "raw_notes": "Authentication is described but exact auth schemes are not fully detailed; likely API key or similar token-based auth. The API is RESTful and broad in scope covering many administrative functions. | Composio SDK reachable; no definitive catalog hit for this app name.",
-      "pass_label": "pass1"
+      "raw_notes": "Authentication is described but exact auth schemes are not fully detailed; likely API key or similar token-based auth. The API is RESTful and broad in scope covering many administrative functions. | Composio SDK reachable; no definitive catalog hit for this app name. | consistency: downgraded ready_today \u2192 ready_with_caveats (access=paid_plan_required)",
+      "pass_label": "corrected"
     },
     {
       "id": 69,
@@ -1830,15 +1830,15 @@
       "api_breadth": "broad",
       "mcp_existing": false,
       "mcp_notes": "Datadog has MCP tools and an internal developer portal referenced in the docs, indicating existing MCP support. | stripped: pass3 rejected weak/non-MCP wording",
-      "buildability": "ready_today",
-      "main_blocker": "",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Not pure ready_today: access=paid_plan_required.",
       "evidence_urls": [
         "https://docs.datadoghq.com/api/latest/"
       ],
       "confidence": 0.9,
       "human_needed": false,
       "human_reason": "",
-      "raw_notes": "The documentation is extensive and clearly indicates REST APIs with OAuth2 and API key authentication. MCP tools are mentioned but details are limited. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "raw_notes": "The documentation is extensive and clearly indicates REST APIs with OAuth2 and API key authentication. MCP tools are mentioned but details are limited. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3 | consistency: downgraded ready_today \u2192 ready_with_caveats (access=paid_plan_required)",
       "pass_label": "corrected"
     },
     {
@@ -1963,16 +1963,16 @@
       "api_breadth": "broad",
       "mcp_existing": false,
       "mcp_notes": "No evidence found of a Marketplace Connect Platform (MCP) integration or listing.",
-      "buildability": "ready_today",
-      "main_blocker": "",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Not pure ready_today: access=paid_plan_required.",
       "evidence_urls": [
         "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/"
       ],
       "confidence": 1.0,
       "human_needed": false,
       "human_reason": "",
-      "raw_notes": "The Jira Cloud REST API v3 is well documented with multiple authentication methods and broad API coverage for Jira resources. | Composio SDK reachable; no definitive catalog hit for this app name.",
-      "pass_label": "pass1"
+      "raw_notes": "The Jira Cloud REST API v3 is well documented with multiple authentication methods and broad API coverage for Jira resources. | Composio SDK reachable; no definitive catalog hit for this app name. | consistency: downgraded ready_today \u2192 ready_with_caveats (access=paid_plan_required)",
+      "pass_label": "corrected"
     },
     {
       "id": 75,
@@ -2412,8 +2412,8 @@
       "api_breadth": "broad",
       "mcp_existing": false,
       "mcp_notes": "Gemini Enterprise Agent Platform is a fully-managed unified development platform allowing access, customization, tuning, and deployment of Gemini models at scale via API. | stripped: pass3 rejected weak/non-MCP wording",
-      "buildability": "ready_today",
-      "main_blocker": "",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Not pure ready_today: access=paid_plan_required.",
       "evidence_urls": [
         "https://docs.cloud.google.com/gemini/enterprise/docs",
         "https://cloud.google.com/ai/gemini"
@@ -2421,7 +2421,7 @@
       "confidence": 0.9,
       "human_needed": false,
       "human_reason": "",
-      "raw_notes": "No direct API docs for NotebookLM specifically, but Gemini Enterprise and Agent Platform provide APIs and SDKs for building with Gemini models; authentication methods inferred from Google Cloud standards. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "raw_notes": "No direct API docs for NotebookLM specifically, but Gemini Enterprise and Agent Platform provide APIs and SDKs for building with Gemini models; authentication methods inferred from Google Cloud standards. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3 | consistency: downgraded ready_today \u2192 ready_with_caveats (access=paid_plan_required)",
       "pass_label": "corrected"
     },
     {
@@ -2545,8 +2545,8 @@
       "api_breadth": "broad",
       "mcp_existing": true,
       "mcp_notes": "Devin supports MCP (Model Context Protocol), an open protocol enabling integration with hundreds of external tools and data sources via three transport methods (STDIO, SSE, HTTP). MCP servers can be installed via plugins or added as custom MCP servers with various authentication methods including OAuth and API keys.",
-      "buildability": "ready_today",
-      "main_blocker": "",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Not pure ready_today: access=paid_plan_required.",
       "evidence_urls": [
         "https://docs.devin.ai/get-started/devin-intro",
         "https://docs.devin.ai/work-with-devin/mcp"
@@ -2554,8 +2554,8 @@
       "confidence": 0.95,
       "human_needed": false,
       "human_reason": "",
-      "raw_notes": "Documentation clearly describes MCP integrations and auth methods; access requires paid plans but no unclear gating. | Composio SDK reachable; no definitive catalog hit for this app name.",
-      "pass_label": "pass1"
+      "raw_notes": "Documentation clearly describes MCP integrations and auth methods; access requires paid plans but no unclear gating. | Composio SDK reachable; no definitive catalog hit for this app name. | consistency: downgraded ready_today \u2192 ready_with_caveats (access=paid_plan_required)",
+      "pass_label": "corrected"
     },
     {
       "id": 97,
@@ -2571,8 +2571,8 @@
       "api_breadth": "broad",
       "mcp_existing": true,
       "mcp_notes": "Higgsfield uses the Model Context Protocol (MCP) to connect with multiple AI agents like Claude, OpenClaw, Hermes, and NemoClaw, enabling image and video generation and other creative tasks.",
-      "buildability": "ready_today",
-      "main_blocker": "",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Not pure ready_today: access=paid_plan_required.",
       "evidence_urls": [
         "https://higgsfield.ai/cli",
         "https://higgsfield.ai"
@@ -2580,8 +2580,8 @@
       "confidence": 1.0,
       "human_needed": false,
       "human_reason": "",
-      "raw_notes": "Clear documentation on CLI installation, authentication, MCP integration, supported agents, models, and usage with a credit-based paid plan. | Composio SDK reachable; no definitive catalog hit for this app name.",
-      "pass_label": "pass1"
+      "raw_notes": "Clear documentation on CLI installation, authentication, MCP integration, supported agents, models, and usage with a credit-based paid plan. | Composio SDK reachable; no definitive catalog hit for this app name. | consistency: downgraded ready_today \u2192 ready_with_caveats (access=paid_plan_required)",
+      "pass_label": "corrected"
     },
     {
       "id": 98,
@@ -2597,16 +2597,16 @@
       "api_breadth": "narrow",
       "mcp_existing": false,
       "mcp_notes": "No evidence of a managed control plane or hosted API service; usage is local CLI or Docker container.",
-      "buildability": "ready_today",
-      "main_blocker": "",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Not pure ready_today: api_breadth=narrow.",
       "evidence_urls": [
         "https://github.com/mermaid-js/mermaid-cli"
       ],
       "confidence": 1.0,
       "human_needed": false,
       "human_reason": "",
-      "raw_notes": "The product is a CLI tool for local use; no API or authentication is involved. | Composio SDK reachable; no definitive catalog hit for this app name.",
-      "pass_label": "pass1"
+      "raw_notes": "The product is a CLI tool for local use; no API or authentication is involved. | Composio SDK reachable; no definitive catalog hit for this app name. | consistency: downgraded ready_today \u2192 ready_with_caveats (api_breadth=narrow)",
+      "pass_label": "corrected"
     },
     {
       "id": 99,

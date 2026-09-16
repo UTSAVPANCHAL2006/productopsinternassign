@@ -3,7 +3,7 @@
   "insights": [
     "Auth is bifurcated \u2014 top signals: OAuth2 (56), API key (53). Toolkit design should ship OAuth2 + API-key adapters as defaults, not one-size-fits-all.",
     "Access is mostly self-serve (74/100), but 23 apps still need paid plans, admin approval, or partner/sales \u2014 that is the real ops queue, not engineering.",
-    "92/100 look toolkit-buildable now (ready / ready-with-caveats). The scarce resource is outreach for the gated tail, not more scraping.",
+    "Strict ready_today (self-serve, conf\u22650.85, no human flag): 64. Buildable with caveats: 28. Together 92/100 \u2014 paid/admin rows are caveats, not silent ready.",
     "After MCP false-positive cleanup, only 23 apps have credible Model Context Protocol evidence \u2014 treat marketplace copy as noise.",
     "20 rows still need a human (403/JS docs, thin public surface). Automate the fat middle; staff the weird edges.",
     "Highest leverage for immediate toolkit work: Developer/Infra + Productivity (broad self-serve REST). Slowest: niche fintech + AI-native apps with thin public APIs."
@@ -37,8 +37,8 @@
     "admin_approval": 2
   },
   "buildability_counts": {
-    "ready_today": 77,
-    "ready_with_caveats": 15,
+    "ready_today": 64,
+    "ready_with_caveats": 28,
     "needs_outreach": 7,
     "not_viable_yet": 1
   },
@@ -215,17 +215,6 @@
       "access": "self_serve_trial"
     },
     {
-      "id": 10,
-      "name": "DealCloud",
-      "category": "CRM and Sales",
-      "auth": [
-        "API key",
-        "Authorization Token",
-        "Bearer token"
-      ],
-      "access": "paid_plan_required"
-    },
-    {
       "id": 11,
       "name": "Zendesk",
       "category": "Support and Helpdesk",
@@ -245,15 +234,6 @@
         "PAT / token"
       ],
       "access": "self_serve_trial"
-    },
-    {
-      "id": 13,
-      "name": "Freshdesk",
-      "category": "Support and Helpdesk",
-      "auth": [
-        "Basic"
-      ],
-      "access": "paid_plan_required"
     },
     {
       "id": 14,
@@ -479,17 +459,6 @@
       "access": "self_serve_trial"
     },
     {
-      "id": 45,
-      "name": "Magento (Adobe Commerce)",
-      "category": "Ecommerce",
-      "auth": [
-        "OAuth 1.0a",
-        "PAT / token",
-        "login credentials"
-      ],
-      "access": "admin_approval"
-    },
-    {
       "id": 46,
       "name": "Squarespace",
       "category": "Ecommerce",
@@ -539,25 +508,6 @@
       "access": "self_serve_trial"
     },
     {
-      "id": 53,
-      "name": "Ahrefs",
-      "category": "Data, SEO and Scraping",
-      "auth": [
-        "OAuth2",
-        "API key"
-      ],
-      "access": "paid_plan_required"
-    },
-    {
-      "id": 54,
-      "name": "MrScraper",
-      "category": "Data, SEO and Scraping",
-      "auth": [
-        "PAT / token"
-      ],
-      "access": "paid_plan_required"
-    },
-    {
       "id": 55,
       "name": "Apify",
       "category": "Data, SEO and Scraping",
@@ -597,15 +547,6 @@
         "None / CLI local"
       ],
       "access": "open_source_local"
-    },
-    {
-      "id": 59,
-      "name": "Waterfall.io",
-      "category": "Data, SEO and Scraping",
-      "auth": [
-        "API key"
-      ],
-      "access": "paid_plan_required"
     },
     {
       "id": 60,
@@ -673,26 +614,6 @@
       "access": "self_serve_free"
     },
     {
-      "id": 68,
-      "name": "MongoDB Atlas",
-      "category": "Developer, Infra and Data platforms",
-      "auth": [
-        "API key",
-        "Other"
-      ],
-      "access": "paid_plan_required"
-    },
-    {
-      "id": 69,
-      "name": "Datadog",
-      "category": "Developer, Infra and Data platforms",
-      "auth": [
-        "OAuth2",
-        "API key"
-      ],
-      "access": "paid_plan_required"
-    },
-    {
       "id": 70,
       "name": "Sentry",
       "category": "Developer, Infra and Data platforms",
@@ -731,18 +652,6 @@
         "API key"
       ],
       "access": "self_serve_free"
-    },
-    {
-      "id": 74,
-      "name": "Jira",
-      "category": "Productivity and Project Management",
-      "auth": [
-        "OAuth2",
-        "Basic",
-        "JWT-based",
-        "REST API scopes"
-      ],
-      "access": "paid_plan_required"
     },
     {
       "id": 75,
@@ -835,16 +744,6 @@
       "access": "self_serve_free"
     },
     {
-      "id": 91,
-      "name": "NotebookLM",
-      "category": "AI, Research and Media-native",
-      "auth": [
-        "OAuth2",
-        "API key"
-      ],
-      "access": "paid_plan_required"
-    },
-    {
       "id": 93,
       "name": "Fathom",
       "category": "AI, Research and Media-native",
@@ -862,35 +761,6 @@
         "API key"
       ],
       "access": "self_serve_trial"
-    },
-    {
-      "id": 96,
-      "name": "Devin",
-      "category": "AI, Research and Media-native",
-      "auth": [
-        "OAuth2",
-        "API key",
-        "None / CLI local"
-      ],
-      "access": "paid_plan_required"
-    },
-    {
-      "id": 97,
-      "name": "higgsfield",
-      "category": "AI, Research and Media-native",
-      "auth": [
-        "None / CLI local"
-      ],
-      "access": "paid_plan_required"
-    },
-    {
-      "id": 98,
-      "name": "Mermaid CLI",
-      "category": "AI, Research and Media-native",
-      "auth": [
-        "None / CLI local"
-      ],
-      "access": "open_source_local"
     },
     {
       "id": 99,
@@ -970,6 +840,10 @@
   ],
   "common_blockers": [
     [
+      "Not pure ready_today: access=paid_plan_required.",
+      11
+    ],
+    [
       "OAuth Connected App + sandbox setup friction; many customers require admin install approval.",
       1
     ],
@@ -1006,15 +880,11 @@
       1
     ],
     [
+      "Not pure ready_today: access=admin_approval.",
+      1
+    ],
+    [
       "Requires Amazon Selling Partner / developer registration and approval \u2014 public docs exist, credentials are gated.",
-      1
-    ],
-    [
-      "Public docs thin; product naming/docs surface needs human confirmation for full toolkit scope.",
-      1
-    ],
-    [
-      "HTTP API is legacy vs drivers/Query API \u2014 prefer official drivers for production toolkits.",
       1
     ]
   ]

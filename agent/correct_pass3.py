@@ -555,18 +555,46 @@ def main() -> None:
     for r2 in out_rows:
         # Consistency: never leave ready_today with Unknown auth or unclear access
         auth = r2.get("auth_methods") or []
-        if r2.get("buildability") == "ready_today" and (
-            auth == ["Unknown"] or r2.get("access_model") == "unclear"
-        ):
-            r2["buildability"] = "ready_with_caveats"
-            r2["human_needed"] = True
+        access = r2.get("access_model") or "unclear"
+        build = r2.get("buildability")
+        conf = float(r2.get("confidence") or 0)
+        breadth = (r2.get("api_breadth") or "").lower()
+        reasons: list[str] = []
+
+        if build == "ready_today" and (auth == ["Unknown"] or access == "unclear"):
+            reasons.append("auth/access unclear")
+        if build == "ready_today" and access == "partner_or_sales_gated":
+            r2["buildability"] = "needs_outreach"
             r2["main_blocker"] = r2.get("main_blocker") or (
-                "Auth/access still unclear from evidence — needs human confirmation before toolkit build."
+                "Partner / sales gate — eng cannot self-serve credentials without outreach."
             )
             r2["pass_label"] = "corrected"
             r2["raw_notes"] = (
                 (r2.get("raw_notes") or "")
-                + " | consistency: downgraded ready_today → ready_with_caveats"
+                + " | consistency: partner gate cannot be ready_today"
+            ).strip(" |")
+            continue
+        if build == "ready_today" and access in ("paid_plan_required", "admin_approval"):
+            reasons.append(f"access={access}")
+        if build == "ready_today" and r2.get("human_needed"):
+            reasons.append("human_needed still flagged")
+        if build == "ready_today" and conf < 0.85:
+            reasons.append(f"confidence {conf:.2f} < 0.85")
+        if build == "ready_today" and breadth in ("narrow", "unknown", ""):
+            reasons.append(f"api_breadth={breadth or 'missing'}")
+
+        if reasons:
+            r2["buildability"] = "ready_with_caveats"
+            if not (r2.get("main_blocker") or "").strip():
+                r2["main_blocker"] = (
+                    "Not pure ready_today: " + "; ".join(reasons) + "."
+                )
+            r2["pass_label"] = "corrected"
+            r2["raw_notes"] = (
+                (r2.get("raw_notes") or "")
+                + " | consistency: downgraded ready_today → ready_with_caveats ("
+                + "; ".join(reasons)
+                + ")"
             ).strip(" |")
 
     mcp_before = sum(1 for r in rows if r.get("mcp_existing"))

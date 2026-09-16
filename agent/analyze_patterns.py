@@ -48,14 +48,47 @@ def main() -> None:
             by_cat[cat]["gated"] += 1
 
     easy_wins = [
-        {"id": r["id"], "name": r["name"], "category": r["category"], "auth": r.get("auth_methods"), "access": r.get("access_model")}
+        {
+            "id": r["id"],
+            "name": r["name"],
+            "category": r["category"],
+            "auth": r.get("auth_methods"),
+            "access": r.get("access_model"),
+        }
         for r in rows
-        if r.get("buildability") == "ready_today" and r.get("confidence", 0) >= 0.6
+        if r.get("buildability") == "ready_today"
+        and float(r.get("confidence") or 0) >= 0.85
+        and r.get("access_model") in ("self_serve_free", "self_serve_trial", "open_source_local")
+        and not r.get("human_needed")
     ]
     outreach = [
-        {"id": r["id"], "name": r["name"], "category": r["category"], "blocker": r.get("main_blocker"), "access": r.get("access_model")}
+        {
+            "id": r["id"],
+            "name": r["name"],
+            "category": r["category"],
+            "blocker": r.get("main_blocker"),
+            "access": r.get("access_model"),
+        }
         for r in rows
-        if r.get("buildability") == "needs_outreach" or r.get("access_model") == "partner_or_sales_gated"
+        if r.get("buildability") == "needs_outreach"
+        or r.get("access_model") == "partner_or_sales_gated"
+    ]
+    thin = [
+        {
+            "id": r["id"],
+            "name": r["name"],
+            "category": r["category"],
+            "blocker": r.get("main_blocker"),
+            "confidence": r.get("confidence"),
+            "buildability": r.get("buildability"),
+        }
+        for r in rows
+        if r.get("buildability") == "not_viable_yet"
+        or (
+            r.get("human_needed")
+            and float(r.get("confidence") or 0) < 0.7
+        )
+        or "thin" in (r.get("main_blocker") or "").lower()
     ]
     blockers = Counter(r.get("main_blocker") or "(none)" for r in rows if r.get("buildability") != "ready_today")
 
@@ -76,7 +109,9 @@ def main() -> None:
     insights = [
         f"Auth is bifurcated — top signals: {auth_phrase}. Toolkit design should ship OAuth2 + API-key adapters as defaults, not one-size-fits-all.",
         f"Access is mostly self-serve ({self_n}/{len(rows)}), but {gated_n} apps still need paid plans, admin approval, or partner/sales — that is the real ops queue, not engineering.",
-        f"{ready_n}/{len(rows)} look toolkit-buildable now (ready / ready-with-caveats). The scarce resource is outreach for the gated tail, not more scraping.",
+        f"Strict ready_today (self-serve, conf≥0.85, no human flag): {build_c.get('ready_today', 0)}. "
+        f"Buildable with caveats: {build_c.get('ready_with_caveats', 0)}. "
+        f"Together {ready_n}/{len(rows)} — paid/admin rows are caveats, not silent ready.",
         f"After MCP false-positive cleanup, only {mcp_n} apps have credible Model Context Protocol evidence — treat marketplace copy as noise.",
         f"{human_n} rows still need a human (403/JS docs, thin public surface). Automate the fat middle; staff the weird edges.",
         "Highest leverage for immediate toolkit work: Developer/Infra + Productivity (broad self-serve REST). Slowest: niche fintech + AI-native apps with thin public APIs.",
@@ -97,7 +132,31 @@ def main() -> None:
         "common_blockers": blockers.most_common(12),
     }
     Path(args.out).write_text(json.dumps(out, indent=2))
+
+    backlog = {
+        "generated_from": args.inp,
+        "week1_build": easy_wins,
+        "outreach": outreach,
+        "thin_or_blocked": thin,
+        "note": (
+            "Queues derived from assignment patterns (easy wins vs outreach), "
+            "not a day-1 strategy deck. ready_today here means self-serve + conf≥0.85."
+        ),
+    }
+    backlog_path = ROOT / "output" / "priority_backlog.json"
+    backlog_path.write_text(json.dumps(backlog, indent=2))
     print(f"Wrote {args.out}")
+    print(f"Wrote {backlog_path}")
+    print(
+        "ready_today",
+        build_c.get("ready_today", 0),
+        "caveats",
+        build_c.get("ready_with_caveats", 0),
+        "easy_wins",
+        len(easy_wins),
+        "outreach",
+        len(outreach),
+    )
     for line in insights:
         print("-", line)
 

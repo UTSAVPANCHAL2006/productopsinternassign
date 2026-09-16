@@ -97,15 +97,20 @@ def main() -> None:
         + access_c.get("partner_or_sales_gated", 0)
         + access_c.get("admin_approval", 0)
     )
-    ready = build_c.get("ready_today", 0) + build_c.get("ready_with_caveats", 0)
+    ready_strict = build_c.get("ready_today", 0)
+    ready = ready_strict + build_c.get("ready_with_caveats", 0)
     human_n = sum(1 for r in results if r.get("human_needed"))
     mcp_n = patterns.get("mcp_existing_count", 0)
+    composio_overlap = composio.get("overlap_count")
+    composio_tk = composio.get("toolkit_count")
 
     # Plain reviewer headlines (short)
     headlines = [
         f"<strong>Auth:</strong> {top_auth_txt}. Ship OAuth2 + API-key adapters as the default toolkit stack.",
         f"<strong>Access:</strong> {self_serve}/{n} self-serve · {gated}/{n} paid/admin/partner-gated. Ops capacity should sit on the gated tail, not re-scraping docs.",
-        f"<strong>Buildability:</strong> {ready}/{n} are toolkit-ready now (ready / caveats). {build_c.get('needs_outreach', 0)} need outreach before eng starts.",
+        f"<strong>Buildability (strict):</strong> <strong>{ready_strict}</strong> ready_today (self-serve · conf≥0.85 · no human flag). "
+        f"{build_c.get('ready_with_caveats', 0)} more are ready_with_caveats (paid/admin/partial docs). "
+        f"{build_c.get('needs_outreach', 0)} need outreach. Paid plan ≠ silent ready_today.",
         f"<strong>MCP:</strong> pass1 over-counted marketplaces as MCP ({pass3.get('mcp_existing_before', '?')}) → after cleanup <strong>{mcp_n}</strong> credible MCP signals.",
         f"<strong>Categories:</strong> Dev/Infra + Productivity are the densest self-serve REST wins; niche fintech + thin AI-native apps burn ops time.",
         f"<strong>Common blocker:</strong> {esc(((blockers[0][0] if blockers else 'thin or missing public docs').rstrip('.'))[:110])}.",
@@ -193,9 +198,16 @@ def main() -> None:
     audit_rows = "".join(audit_parts)
 
     composio_line = (
-        "Composio Platform SDK connected (toolkits list OK). Catalog used as a cross-check only."
-        if composio.get("ok")
-        else "Composio probe failed — research still ran via docs fetch + OpenAI; failure recorded honestly."
+        f"Docs fetch + LLM = primary research. Composio SDK catalog = secondary cross-check: "
+        f"{composio_overlap}/{n} research apps match an existing toolkit "
+        f"({composio_tk} toolkits listed). Catalog answers “already shipped?” — not auth/access evidence."
+        if composio.get("ok") and composio_overlap is not None
+        else (
+            "Composio probe failed — research still ran via docs fetch + OpenAI; failure recorded honestly. "
+            "Docs-first is intentional: catalog ≠ per-app auth/access/MCP evidence."
+            if composio.get("enabled")
+            else "Composio key unset — research ran docs-first (fetch + OpenAI). Catalog cross-check optional."
+        )
     )
 
     html = f"""<!DOCTYPE html>
@@ -303,20 +315,20 @@ footer{{margin-top:18px;color:var(--muted);font-size:12px}}
   </p>
   <div class="links">
     <a href="https://github.com/UTSAVPANCHAL2006/productopsinternassign" target="_blank" rel="noopener">Public repo</a>
-    <a href="#plan">Week-1 ops plan</a>
+    <a href="#plan">Easy wins vs outreach</a>
     <a href="#matrix">Filterable findings + CSV</a>
     <a href="#verification">Accuracy journey</a>
   </div>
   <div class="stats">
     <div class="stat"><b>{n}</b><span>apps researched</span></div>
-    <div class="stat"><b>{build_c.get('ready_today',0)}</b><span>ready today</span></div>
+    <div class="stat"><b>{build_c.get('ready_today',0)}</b><span>strict ready today</span></div>
     <div class="stat"><b>{len(outreach)}</b><span>outreach / gated</span></div>
-    <div class="stat"><b>{auto_acc_s} → fixed</b><span>sample accuracy journey</span></div>
+    <div class="stat"><b>{auto_acc_s} sample</b><span>auto verify · not 100%</span></div>
   </div>
   <div class="stickybar">
   <nav class="nav" style="margin:0">
     <a href="#patterns" data-nav>1 Patterns</a>
-    <a href="#plan" data-nav>2 Ops plan</a>
+    <a href="#plan" data-nav>2 Queues</a>
     <a href="#matrix" data-nav>3 Findings</a>
     <a href="#agent" data-nav>4 Agent</a>
     <a href="#proof" data-nav>5 Proof</a>
@@ -350,12 +362,12 @@ footer{{margin-top:18px;color:var(--muted);font-size:12px}}
   </section>
 
   <section class="card" id="plan">
-    <p class="eyebrow">02 · Ops plan (JD-aligned)</p>
-    <h2>How Product Ops would use this map</h2>
-    <p class="muted">Same job as the JD: shepherd connectors, chase approvals, keep status obvious for eng/product/partners.</p>
+    <p class="eyebrow">02 · Queues (from patterns)</p>
+    <h2>Easy wins vs outreach vs thin docs</h2>
+    <p class="muted">Assignment ask — cluster where eng can build now vs where outreach / thin evidence blocks. Not a day-1 strategy deck.</p>
     <div class="plan">
       <div class="box wins">
-        <h3>Week-1 build queue ({len(week1)})</h3>
+        <h3>Easy wins ({len(week1)})</h3>
         <p class="muted" style="margin:0 0 8px;font-size:12px">ready_today · conf ≥ 0.85 · self-serve · showing top {min(12, len(week1))}</p>
         <ul>{week1_li}</ul>
       </div>
@@ -365,8 +377,8 @@ footer{{margin-top:18px;color:var(--muted);font-size:12px}}
         <ul>{outreach_li}</ul>
       </div>
       <div class="box">
-        <h3>Honest defeats</h3>
-        <p class="muted" style="margin:0 0 8px;font-size:12px">thin docs / not viable — correct finding, not a failure</p>
+        <h3>Thin / defeated ({len(thin)})</h3>
+        <p class="muted" style="margin:0 0 8px;font-size:12px">correct finding with evidence — not a failure</p>
         <ul>{thin_li}</ul>
       </div>
     </div>
@@ -427,13 +439,13 @@ footer{{margin-top:18px;color:var(--muted);font-size:12px}}
   <section class="card" id="agent">
     <p class="eyebrow">04 · The agent (not by hand)</p>
     <h2>Pipeline that researched the 100</h2>
-    <p class="muted">Python agent: fetch public docs → structure with OpenAI → optional Composio toolkit catalog check → verify → correct.</p>
+    <p class="muted">Workhorse = docs fetch + OpenAI structuring. Composio toolkit catalog is a secondary overlap check (spirit of the role), not the source of auth/access verdicts.</p>
     <div class="steps">
       <div class="step"><b>1 Seed</b>Load 100 apps from <code>data/apps.json</code></div>
       <div class="step"><b>2 Fetch</b>HTTP pull developer docs into evidence packs</div>
       <div class="step"><b>3 Structure</b>LLM fills auth / access / API / MCP / verdict JSON</div>
       <div class="step"><b>4 Verify</b>Sample re-fetch + human/browser handcheck</div>
-      <div class="step"><b>5 Correct</b>MCP sanitizer + curated fixes for 403/JS docs</div>
+      <div class="step"><b>5 Correct</b>MCP sanitizer + consistency + curated fixes</div>
     </div>
     <div class="note">
       <strong>Where a human was needed:</strong> 403 / JS-walled docs, missing public API pages,
@@ -468,12 +480,17 @@ python -m agent.build_case_study</pre>
   <section class="card" id="verification">
     <p class="eyebrow">06 · Verification (accuracy first)</p>
     <h2>How trust improved across loops</h2>
-    <p class="muted">Assignment ask: show agent + browser/docs + human checks, and how accuracy moved up.</p>
+    <p class="muted">Scope honesty: we do <strong>not</strong> claim 100/100 hand-verified fields. Trust comes from stratified auto sample + expanded hand/browser sample + targeted corrections.</p>
+    <div class="note">
+      <strong>What “verified” means here:</strong>
+      Auto pass2 = {vmeta.get('sample_size', 20)}/{n} apps · Hand/browser = {handcheck.get('sample_size', 15)}/{n} apps ·
+      Pass3 consistency + MCP cleanup runs on all {n}. Remaining rows inherit agent confidence + human_needed flags.
+    </div>
     <div class="journey">
       <div class="j"><em>Pass 1</em>Agent research on all 100. Fast but noisy (MCP/marketplace confusion; some 403/JS docs).</div>
       <div class="j"><em>Pass 2</em>Auto re-fetch sample of {vmeta.get('sample_size',20)}. Field hit rate <strong>{auto_acc_s}</strong> ({summary.get('perfect_rows','—')} perfect / {summary.get('weak_rows','—')} weak).</div>
-      <div class="j"><em>Pass 3</em>MCP false positives cleaned: {pass3.get('mcp_existing_before','?')} → <strong>{pass3.get('mcp_existing_after','?')}</strong>. Curated fixes for fetch failures.</div>
-      <div class="j"><em>Human + browser</em>Hand-opened {handcheck.get('sample_size',10)} apps. Pre-fix hand accuracy <strong>{hand_acc_s}</strong>; {handcheck.get('corrected_count',0)} corrected (WhatsApp, PitchBook, GoHighLevel, Salesforce…).</div>
+      <div class="j"><em>Pass 3</em>MCP false positives cleaned: {pass3.get('mcp_existing_before','?')} → <strong>{pass3.get('mcp_existing_after','?')}</strong>. Consistency: paid/admin cannot stay silent ready_today.</div>
+      <div class="j"><em>Human + browser</em>Hand-opened {handcheck.get('sample_size',15)} apps. Pre-fix hand accuracy <strong>{hand_acc_s}</strong>; {handcheck.get('corrected_count',0)} corrected (WhatsApp, PitchBook, GoHighLevel, Salesforce…).</div>
     </div>
 
     <h3 style="margin-top:8px">Human / browser handcheck</h3>

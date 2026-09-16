@@ -63,6 +63,51 @@ HANDCHECKS = [
         "fields_wrong": [],
     },
     {
+        "id": 65,
+        "name": "Supabase",
+        "method": "browser + supabase.com/docs",
+        "verdict": "pass",
+        "notes": "Service role / anon keys + OAuth providers documented. Self-serve REST.",
+        "fields_ok": ["auth_methods", "access_model", "api_type", "buildability"],
+        "fields_wrong": [],
+    },
+    {
+        "id": 22,
+        "name": "Twilio",
+        "method": "browser + twilio.com/docs",
+        "verdict": "pass",
+        "notes": "Account SID + Auth Token / API keys self-serve. Agent correct.",
+        "fields_ok": ["auth_methods", "access_model", "buildability"],
+        "fields_wrong": [],
+    },
+    {
+        "id": 73,
+        "name": "Linear",
+        "method": "browser + developers.linear.app",
+        "verdict": "pass",
+        "notes": "Personal API keys + OAuth apps. GraphQL API self-serve.",
+        "fields_ok": ["auth_methods", "access_model", "api_type"],
+        "fields_wrong": [],
+    },
+    {
+        "id": 35,
+        "name": "Mailchimp",
+        "method": "browser + mailchimp.com/developer",
+        "verdict": "pass",
+        "notes": "API key from account; OAuth for apps. Self-serve documented.",
+        "fields_ok": ["auth_methods", "access_model"],
+        "fields_wrong": [],
+    },
+    {
+        "id": 55,
+        "name": "Apify",
+        "method": "browser + docs.apify.com",
+        "verdict": "pass",
+        "notes": "API tokens self-serve; broad actor/run REST surface.",
+        "fields_ok": ["auth_methods", "access_model", "api_type"],
+        "fields_wrong": [],
+    },
+    {
         "id": 28,
         "name": "WhatsApp Business",
         "method": "browser + developers.facebook.com/docs/whatsapp",
@@ -76,7 +121,7 @@ HANDCHECKS = [
         "name": "Ahrefs",
         "method": "browser + ahrefs.com/api",
         "verdict": "pass",
-        "notes": "Paid API access; agent marked paid_plan_required. Correct finding.",
+        "notes": "Paid API access; agent marked paid_plan_required. Correct finding (not ready_today).",
         "fields_ok": ["access_model", "auth_methods"],
         "fields_wrong": [],
     },
@@ -103,7 +148,7 @@ HANDCHECKS = [
         "name": "Salesforce",
         "method": "browser attempt (403) + known REST OAuth docs URL",
         "verdict": "corrected",
-        "notes": "Fetcher hit marketing/403; human restored Connected Apps OAuth evidence. Ready with caveats.",
+        "notes": "Fetcher hit marketing/403; human restored Connected Apps OAuth evidence. Ready with caveats (admin install).",
         "fields_ok": [],
         "fields_wrong": ["auth_methods", "api_type", "buildability"],
     },
@@ -120,9 +165,17 @@ def main() -> None:
         "corrected_count": corrected,
         "hand_accuracy_before_corrections": round(passed / len(HANDCHECKS), 3),
         "note": (
-            "Before curated/human fixes, only fully-correct hand rows count as pass. "
-            "After applying pass3 curated corrections for the 'corrected' rows, those fields match docs."
+            "Verification is sample-based, not 100/100 hand-verified. "
+            f"This hand sample is {len(HANDCHECKS)} apps (mixed easy + hard). "
+            "Auto pass2 scores a stratified sample of 20. Pass3 applies deterministic "
+            "MCP cleanup + curated fixes. Do not claim full-set field accuracy."
         ),
+        "scope": {
+            "auto_sample": 20,
+            "hand_sample": len(HANDCHECKS),
+            "full_set": 100,
+            "claim": "sample + targeted corrections — not 100% verified",
+        },
         "checks": HANDCHECKS,
     }
     path = ROOT / "verification" / "handcheck.json"

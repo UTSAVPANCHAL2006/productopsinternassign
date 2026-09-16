@@ -1,4 +1,5 @@
 {
+  "generated_from": "/Users/utsav/Desktop/ops intern assignment/output/results_final.json",
   "week1_build": [
     {
       "id": 2,
@@ -6,7 +7,8 @@
       "category": "CRM and Sales",
       "auth": [
         "OAuth2"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 3,
@@ -15,7 +17,8 @@
       "auth": [
         "API key",
         "OAuth2"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 4,
@@ -24,7 +27,8 @@
       "auth": [
         "OAuth2",
         "API key"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 5,
@@ -33,7 +37,8 @@
       "auth": [
         "OAuth2",
         "None / CLI local"
-      ]
+      ],
+      "access": "open_source_local"
     },
     {
       "id": 6,
@@ -41,7 +46,8 @@
       "category": "CRM and Sales",
       "auth": [
         "API key"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 7,
@@ -49,7 +55,8 @@
       "category": "CRM and Sales",
       "auth": [
         "OAuth2"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 8,
@@ -58,7 +65,8 @@
       "auth": [
         "OAuth2",
         "API key"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 9,
@@ -66,7 +74,8 @@
       "category": "CRM and Sales",
       "auth": [
         "API key"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 11,
@@ -76,7 +85,8 @@
         "OAuth2",
         "API key",
         "Bearer token"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 12,
@@ -85,7 +95,8 @@
       "auth": [
         "OAuth2",
         "PAT / token"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 14,
@@ -94,7 +105,8 @@
       "auth": [
         "OAuth2",
         "API key"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 17,
@@ -103,7 +115,8 @@
       "auth": [
         "API key",
         "Bearer token"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 18,
@@ -112,7 +125,8 @@
       "auth": [
         "OAuth2",
         "API key"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 19,
@@ -122,7 +136,8 @@
         "API key",
         "OAuth2",
         "Basic"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 21,
@@ -131,7 +146,8 @@
       "auth": [
         "OAuth2",
         "PAT / token"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 22,
@@ -141,7 +157,8 @@
         "Basic",
         "API key",
         "Bearer token"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 23,
@@ -149,7 +166,8 @@
       "category": "Communications and Messaging",
       "auth": [
         "OAuth2"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 25,
@@ -157,7 +175,8 @@
       "category": "Communications and Messaging",
       "auth": [
         "API key"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 26,
@@ -166,7 +185,8 @@
       "auth": [
         "OAuth2",
         "Bearer token"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 27,
@@ -174,7 +194,8 @@
       "category": "Communications and Messaging",
       "auth": [
         "PAT / token"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 29,
@@ -184,7 +205,8 @@
         "API key",
         "OAuth2",
         "Bearer token"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 30,
@@ -193,7 +215,8 @@
       "auth": [
         "Basic",
         "JWT"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 31,
@@ -201,7 +224,8 @@
       "category": "Marketing, Ads, Email and Social",
       "auth": [
         "OAuth2"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 32,
@@ -209,7 +233,8 @@
       "category": "Marketing, Ads, Email and Social",
       "auth": [
         "OAuth2"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 35,
@@ -217,7 +242,8 @@
       "category": "Marketing, Ads, Email and Social",
       "auth": [
         "OAuth2"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 36,
@@ -226,7 +252,8 @@
       "auth": [
         "API key",
         "Other"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 37,
@@ -234,7 +261,8 @@
       "category": "Marketing, Ads, Email and Social",
       "auth": [
         "API key"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 38,
@@ -242,7 +270,8 @@
       "category": "Marketing, Ads, Email and Social",
       "auth": [
         "OAuth2"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 39,
@@ -250,7 +279,8 @@
       "category": "Marketing, Ads, Email and Social",
       "auth": [
         "OAuth2"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 40,
@@ -258,7 +288,8 @@
       "category": "Marketing, Ads, Email and Social",
       "auth": [
         "API key"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 41,
@@ -268,7 +299,8 @@
         "OAuth2",
         "API key",
         "Bearer token"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 42,
@@ -276,7 +308,8 @@
       "category": "Ecommerce",
       "auth": [
         "API key"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 43,
@@ -285,7 +318,8 @@
       "auth": [
         "Bearer token",
         "API key"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 46,
@@ -295,7 +329,8 @@
         "OAuth2",
         "API key",
         "Bearer token"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 47,
@@ -304,7 +339,8 @@
       "auth": [
         "Bearer token",
         "OAuth2"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 48,
@@ -313,7 +349,8 @@
       "auth": [
         "OAuth2",
         "Bearer token"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 51,
@@ -321,7 +358,8 @@
       "category": "Data, SEO and Scraping",
       "auth": [
         "Basic"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 52,
@@ -329,7 +367,8 @@
       "category": "Data, SEO and Scraping",
       "auth": [
         "API key"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 55,
@@ -339,7 +378,8 @@
         "Bearer token",
         "API key",
         "Other"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 56,
@@ -349,7 +389,8 @@
         "None / CLI local",
         "API key",
         "Bearer token"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 57,
@@ -358,7 +399,8 @@
       "auth": [
         "API key",
         "Bearer token"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 58,
@@ -366,7 +408,8 @@
       "category": "Data, SEO and Scraping",
       "auth": [
         "None / CLI local"
-      ]
+      ],
+      "access": "open_source_local"
     },
     {
       "id": 60,
@@ -375,7 +418,8 @@
       "auth": [
         "API key",
         "Other"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 61,
@@ -386,7 +430,8 @@
         "Bearer token",
         "PAT / token",
         "Basic"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 62,
@@ -395,7 +440,8 @@
       "auth": [
         "Bearer token",
         "OAuth2"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 63,
@@ -405,7 +451,8 @@
         "OAuth2",
         "PAT / token",
         "Bearer token"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 64,
@@ -415,7 +462,8 @@
         "API key",
         "Bearer token",
         "PAT / token"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 65,
@@ -425,7 +473,8 @@
         "OAuth2",
         "Bearer token",
         "PAT / token"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 70,
@@ -433,7 +482,8 @@
       "category": "Developer, Infra and Data platforms",
       "auth": [
         "PAT / token"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 71,
@@ -443,7 +493,8 @@
         "Bearer token",
         "PAT / token",
         "OAuth2"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 72,
@@ -452,7 +503,8 @@
       "auth": [
         "OAuth2",
         "None / CLI local"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 73,
@@ -461,7 +513,8 @@
       "auth": [
         "OAuth2",
         "API key"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 75,
@@ -470,7 +523,8 @@
       "auth": [
         "OAuth2",
         "PAT / token"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 76,
@@ -480,7 +534,8 @@
         "OAuth2",
         "API key",
         "Other"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 77,
@@ -488,7 +543,8 @@
       "category": "Productivity and Project Management",
       "auth": [
         "OAuth2"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 78,
@@ -497,7 +553,8 @@
       "auth": [
         "Bearer token",
         "API key"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 79,
@@ -507,7 +564,8 @@
         "OAuth2",
         "API key",
         "Bearer token"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 80,
@@ -515,7 +573,8 @@
       "category": "Productivity and Project Management",
       "auth": [
         "Bearer token"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 81,
@@ -525,7 +584,8 @@
         "API key",
         "Basic",
         "Bearer token"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 82,
@@ -533,7 +593,8 @@
       "category": "Finance and Fintech",
       "auth": [
         "API key"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 87,
@@ -542,7 +603,8 @@
       "auth": [
         "OAuth2",
         "Client Credentials Grant"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 93,
@@ -551,7 +613,8 @@
       "auth": [
         "OAuth2",
         "API key"
-      ]
+      ],
+      "access": "self_serve_free"
     },
     {
       "id": 95,
@@ -559,15 +622,8 @@
       "category": "AI, Research and Media-native",
       "auth": [
         "API key"
-      ]
-    },
-    {
-      "id": 98,
-      "name": "Mermaid CLI",
-      "category": "AI, Research and Media-native",
-      "auth": [
-        "None / CLI local"
-      ]
+      ],
+      "access": "self_serve_trial"
     },
     {
       "id": 99,
@@ -576,77 +632,132 @@
       "auth": [
         "Bearer token",
         "API key"
-      ]
+      ],
+      "access": "self_serve_trial"
     }
   ],
   "outreach": [
     {
       "id": 20,
       "name": "Gladly",
+      "category": "Support and Helpdesk",
       "blocker": "Developer access typically tied to Gladly customer/partner onboarding.",
       "access": "partner_or_sales_gated"
     },
     {
       "id": 33,
       "name": "LinkedIn Ads",
+      "category": "Marketing, Ads, Email and Social",
       "blocker": "Access requires approval and adherence to integration requirements; not openly self-serve.",
       "access": "partner_or_sales_gated"
     },
     {
       "id": 49,
       "name": "Amazon Selling Partner",
+      "category": "Ecommerce",
       "blocker": "Requires Amazon Selling Partner / developer registration and approval \u2014 public docs exist, credentials are gated.",
       "access": "partner_or_sales_gated"
     },
     {
       "id": 84,
       "name": "Paygent Connect",
+      "category": "Finance and Fintech",
       "blocker": "Needs merchant account / NMI partner relationship for credentials.",
       "access": "partner_or_sales_gated"
     },
     {
       "id": 88,
       "name": "Brex",
+      "category": "Finance and Fintech",
       "blocker": "Needs Brex business relationship for meaningful sandbox/production credentials.",
       "access": "partner_or_sales_gated"
     },
     {
       "id": 89,
       "name": "Ramp",
+      "category": "Finance and Fintech",
       "blocker": "Needs Ramp customer/partner relationship for meaningful sandbox credentials.",
       "access": "partner_or_sales_gated"
     },
     {
       "id": 90,
       "name": "PitchBook",
+      "category": "Finance and Fintech",
       "blocker": "Standalone API contract + credits required; contact sales / account manager.",
       "access": "partner_or_sales_gated"
     },
     {
       "id": 92,
       "name": "Otter AI",
+      "category": "AI, Research and Media-native",
       "blocker": "No clear self-serve developer API credentials page \u2014 outreach / partner path needed.",
       "access": "unclear"
     },
     {
       "id": 94,
       "name": "Consensus",
+      "category": "AI, Research and Media-native",
       "blocker": "No API documentation or authentication details available publicly.",
       "access": "unclear"
     }
   ],
   "thin_or_blocked": [
     {
+      "id": 15,
+      "name": "Pylon",
+      "category": "Support and Helpdesk",
+      "blocker": "Docs surface still thin vs Zendesk/Intercom \u2014 confirm auth scopes before shipping toolkit.",
+      "confidence": 0.7,
+      "buildability": "ready_with_caveats"
+    },
+    {
+      "id": 20,
+      "name": "Gladly",
+      "category": "Support and Helpdesk",
+      "blocker": "Developer access typically tied to Gladly customer/partner onboarding.",
+      "confidence": 0.65,
+      "buildability": "needs_outreach"
+    },
+    {
+      "id": 50,
+      "name": "fanbasis",
+      "category": "Ecommerce",
+      "blocker": "Public docs thin; product naming/docs surface needs human confirmation for full toolkit scope.",
+      "confidence": 0.55,
+      "buildability": "ready_with_caveats"
+    },
+    {
       "id": 85,
       "name": "iPayX",
+      "category": "Finance and Fintech",
+      "blocker": "No accessible API documentation or technical details available.",
       "confidence": 0.1,
-      "blocker": "No accessible API documentation or technical details available."
+      "buildability": "not_viable_yet"
+    },
+    {
+      "id": 92,
+      "name": "Otter AI",
+      "category": "AI, Research and Media-native",
+      "blocker": "No clear self-serve developer API credentials page \u2014 outreach / partner path needed.",
+      "confidence": 0.45,
+      "buildability": "needs_outreach"
     },
     {
       "id": 94,
       "name": "Consensus",
+      "category": "AI, Research and Media-native",
+      "blocker": "No API documentation or authentication details available publicly.",
       "confidence": 0.3,
-      "blocker": "No API documentation or authentication details available publicly."
+      "buildability": "needs_outreach"
+    },
+    {
+      "id": 100,
+      "name": "Grain",
+      "category": "AI, Research and Media-native",
+      "blocker": "Public API docs thinner than CRM/dev platforms; confirm scopes before toolkit build.",
+      "confidence": 0.65,
+      "buildability": "ready_with_caveats"
     }
-  ]
+  ],
+  "note": "Queues derived from assignment patterns (easy wins vs outreach), not a day-1 strategy deck. ready_today here means self-serve + conf\u22650.85."
 }

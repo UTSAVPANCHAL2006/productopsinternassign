@@ -2,32 +2,390 @@
   "enabled": true,
   "ok": true,
   "error": null,
-  "sample_hits": [
+  "toolkit_count": 1999,
+  "overlap": [
     {
-      "name": "GitHub",
-      "mentioned": true
+      "id": 1,
+      "name": "Salesforce",
+      "composio_toolkit": "salesforce"
     },
     {
-      "name": "Slack",
-      "mentioned": true
-    },
-    {
-      "name": "Notion",
-      "mentioned": true
-    },
-    {
-      "name": "Gmail",
-      "mentioned": true
-    },
-    {
+      "id": 2,
       "name": "HubSpot",
-      "mentioned": true
+      "composio_toolkit": "hubspot"
     },
     {
+      "id": 3,
+      "name": "Pipedrive",
+      "composio_toolkit": "pipedrive"
+    },
+    {
+      "id": 4,
+      "name": "Attio",
+      "composio_toolkit": "attio"
+    },
+    {
+      "id": 7,
+      "name": "Zoho CRM",
+      "composio_toolkit": "zoho"
+    },
+    {
+      "id": 8,
+      "name": "Close",
+      "composio_toolkit": "close"
+    },
+    {
+      "id": 11,
+      "name": "Zendesk",
+      "composio_toolkit": "zendesk"
+    },
+    {
+      "id": 12,
+      "name": "Intercom",
+      "composio_toolkit": "intercom"
+    },
+    {
+      "id": 13,
+      "name": "Freshdesk",
+      "composio_toolkit": "freshdesk"
+    },
+    {
+      "id": 18,
+      "name": "Help Scout",
+      "composio_toolkit": "help_scout"
+    },
+    {
+      "id": 19,
+      "name": "Gorgias",
+      "composio_toolkit": "gorgias"
+    },
+    {
+      "id": 21,
+      "name": "Slack",
+      "composio_toolkit": "slack"
+    },
+    {
+      "id": 23,
+      "name": "Zoho Cliq",
+      "composio_toolkit": "zoho"
+    },
+    {
+      "id": 26,
+      "name": "Discord",
+      "composio_toolkit": "discord"
+    },
+    {
+      "id": 28,
+      "name": "WhatsApp Business",
+      "composio_toolkit": "whatsapp"
+    },
+    {
+      "id": 31,
+      "name": "Google Ads",
+      "composio_toolkit": "googleads"
+    },
+    {
+      "id": 32,
+      "name": "Meta Ads",
+      "composio_toolkit": "metaads"
+    },
+    {
+      "id": 33,
+      "name": "LinkedIn Ads",
+      "composio_toolkit": "linkedin_ads"
+    },
+    {
+      "id": 34,
+      "name": "GoHighLevel",
+      "composio_toolkit": "highlevel"
+    },
+    {
+      "id": 35,
+      "name": "Mailchimp",
+      "composio_toolkit": "mailchimp"
+    },
+    {
+      "id": 36,
+      "name": "Klaviyo",
+      "composio_toolkit": "klaviyo"
+    },
+    {
+      "id": 40,
+      "name": "SendGrid",
+      "composio_toolkit": "sendgrid"
+    },
+    {
+      "id": 41,
+      "name": "Shopify",
+      "composio_toolkit": "shopify"
+    },
+    {
+      "id": 44,
+      "name": "Salesforce Commerce Cloud",
+      "composio_toolkit": "salesforce"
+    },
+    {
+      "id": 46,
+      "name": "Squarespace",
+      "composio_toolkit": "square"
+    },
+    {
+      "id": 48,
+      "name": "Gumroad",
+      "composio_toolkit": "gumroad"
+    },
+    {
+      "id": 51,
+      "name": "DataForSEO",
+      "composio_toolkit": "dataforseo"
+    },
+    {
+      "id": 53,
+      "name": "Ahrefs",
+      "composio_toolkit": "ahrefs"
+    },
+    {
+      "id": 55,
+      "name": "Apify",
+      "composio_toolkit": "apify"
+    },
+    {
+      "id": 56,
+      "name": "Firecrawl",
+      "composio_toolkit": "firecrawl"
+    },
+    {
+      "id": 57,
+      "name": "Bright Data",
+      "composio_toolkit": "brightdata"
+    },
+    {
+      "id": 60,
+      "name": "Clay",
+      "composio_toolkit": "clay_mcp"
+    },
+    {
+      "id": 61,
+      "name": "GitHub",
+      "composio_toolkit": "github"
+    },
+    {
+      "id": 64,
+      "name": "Cloudflare",
+      "composio_toolkit": "cloudflare"
+    },
+    {
+      "id": 65,
+      "name": "Supabase",
+      "composio_toolkit": "supabase"
+    },
+    {
+      "id": 67,
+      "name": "Snowflake",
+      "composio_toolkit": "snowflake"
+    },
+    {
+      "id": 69,
+      "name": "Datadog",
+      "composio_toolkit": "datadog"
+    },
+    {
+      "id": 70,
+      "name": "Sentry",
+      "composio_toolkit": "sentry"
+    },
+    {
+      "id": 71,
+      "name": "Notion",
+      "composio_toolkit": "notion"
+    },
+    {
+      "id": 72,
+      "name": "Airtable",
+      "composio_toolkit": "airtable"
+    },
+    {
+      "id": 73,
+      "name": "Linear",
+      "composio_toolkit": "linear"
+    },
+    {
+      "id": 74,
+      "name": "Jira",
+      "composio_toolkit": "jira"
+    },
+    {
+      "id": 75,
+      "name": "Asana",
+      "composio_toolkit": "asana"
+    },
+    {
+      "id": 76,
+      "name": "Monday.com",
+      "composio_toolkit": "monday"
+    },
+    {
+      "id": 77,
+      "name": "ClickUp",
+      "composio_toolkit": "clickup"
+    },
+    {
+      "id": 78,
+      "name": "Coda",
+      "composio_toolkit": "coda"
+    },
+    {
+      "id": 80,
+      "name": "Harvest",
+      "composio_toolkit": "harvest"
+    },
+    {
+      "id": 81,
       "name": "Stripe",
-      "mentioned": true
+      "composio_toolkit": "stripe"
+    },
+    {
+      "id": 87,
+      "name": "Xero",
+      "composio_toolkit": "xero"
+    },
+    {
+      "id": 88,
+      "name": "Brex",
+      "composio_toolkit": "brex"
+    },
+    {
+      "id": 93,
+      "name": "Fathom",
+      "composio_toolkit": "fathom"
+    },
+    {
+      "id": 94,
+      "name": "Consensus",
+      "composio_toolkit": "consensus"
+    },
+    {
+      "id": 96,
+      "name": "Devin",
+      "composio_toolkit": "devin_mcp"
+    },
+    {
+      "id": 97,
+      "name": "higgsfield",
+      "composio_toolkit": "higgsfield_mcp"
+    },
+    {
+      "id": 99,
+      "name": "YouTube Transcript",
+      "composio_toolkit": "youtube"
     }
   ],
-  "note": "Composio SDK reachable. Catalog used as a cross-check signal only \u2014 assignment research still comes from each app's public docs.",
-  "raw_preview": "ToolkitListResponse(current_page=1.0, items=[Item(deprecated=ItemDeprecated(toolkit_id='a90e7d79-4f7a-4ff2-bd7d-19c78640b8f8', toolkitId='a90e7d79-4f7a-4ff2-bd7d-19c78640b8f8'), is_local_toolkit=False, meta=ItemMeta(categories=[ItemMetaCategory(id='email', name='email')], created_at='2024-05-03T11:44:32.061Z', description='Gmail is Google\u2019s email service, featuring spam protection, search functions, and seamless integration with other G Suite apps for productivity', logo='https://logos.composio.dev/api/gmail', tools_count=60.0, triggers_count=2.0, updated_at='2026-09-16T05:55:26.295Z', version='20260915_00', app_url='https://mail.google.com'), name='Gmail', slug='gmail', type='native', auth_guide_url=None, auth_schemes=['OAUTH2'], composio_managed_auth_schemes=['OAUTH2'], no_auth=False), Item(deprecated=ItemDeprecated(toolkit_id='784908aa-9ff2-4d6b-995c-fc63787e2dbd', toolkitId='784908aa-9ff2-4d6b-995c-fc63787e2dbd'), is_local_toolkit=False, meta=ItemMeta(categories=[ItemMetaCategory(id='ai-agents', name='ai agents'), ItemMetaCategory(id='developer-tools', name='developer tools')], created_at='2024-05-14T08:48:17.389Z', description='Composio enables AI Agents and LLMs to authenticate and integrate with various tools via function calling.', logo='https://logos.composio.dev/api/composio', tools_count=18.0, triggers_count=0.0, updated_at='2025-07-31T10:41:44.410Z', version='20260813_00', app_url='https://composio.dev'), name='Composio', slug='composio', type='native', auth_guide"
+  "missing_from_catalog_sample": [
+    {
+      "id": 5,
+      "name": "Twenty"
+    },
+    {
+      "id": 6,
+      "name": "Podio"
+    },
+    {
+      "id": 9,
+      "name": "Copper"
+    },
+    {
+      "id": 10,
+      "name": "DealCloud"
+    },
+    {
+      "id": 14,
+      "name": "Front"
+    },
+    {
+      "id": 15,
+      "name": "Pylon"
+    },
+    {
+      "id": 16,
+      "name": "LiveAgent"
+    },
+    {
+      "id": 17,
+      "name": "Plain"
+    },
+    {
+      "id": 20,
+      "name": "Gladly"
+    },
+    {
+      "id": 22,
+      "name": "Twilio"
+    },
+    {
+      "id": 24,
+      "name": "Lark (Larksuite)"
+    },
+    {
+      "id": 25,
+      "name": "Pumble"
+    },
+    {
+      "id": 27,
+      "name": "Telegram"
+    },
+    {
+      "id": 29,
+      "name": "Aircall"
+    },
+    {
+      "id": 30,
+      "name": "Vonage"
+    },
+    {
+      "id": 37,
+      "name": "systeme.io"
+    },
+    {
+      "id": 38,
+      "name": "Pinterest"
+    },
+    {
+      "id": 39,
+      "name": "Threads (Meta)"
+    },
+    {
+      "id": 42,
+      "name": "WooCommerce"
+    },
+    {
+      "id": 43,
+      "name": "BigCommerce"
+    },
+    {
+      "id": 45,
+      "name": "Magento (Adobe Commerce)"
+    },
+    {
+      "id": 47,
+      "name": "Ecwid"
+    },
+    {
+      "id": 49,
+      "name": "Amazon Selling Partner"
+    },
+    {
+      "id": 50,
+      "name": "fanbasis"
+    },
+    {
+      "id": 52,
+      "name": "SE Ranking"
+    }
+  ],
+  "overlap_count": 55,
+  "research_set_size": 100,
+  "note": "Composio catalog cross-check: 55/100 research apps already have a toolkit name match (1999 toolkits listed). Catalog is secondary \u2014 auth/access/MCP verdicts still come from public docs.",
+  "why_docs_first": "Docs fetch + LLM is the workhorse because the assignment asks for auth/access/API/MCP evidence per app. Composio catalog answers a different question: do we already ship a toolkit?",
+  "raw_preview": "0CodeKit, 0codekit, 1password, 21risk, 2chat, 44API, 44api, 7shifts, AI/ML API, API Labz, API Ninjas, API-Sports, API.Bible, API2PDF, APIpie AI, ASIN Data API, AWS Marketplace MCP, Ably, Abstract, AbuseIPDB, Abyssale, Accredible certificates, AccuWeather, Acculynx, ActiveCampaign, ActiveMerge, ActiveTrail, Adafruit IO, Addressfinder, Addresszen, Adobe Marketing Agent MCP, Adrapid, Adtraction, Adyntel, Aeroleads, Affinda, Affinity, AgencyZoom, Agent Mail, Agentql",
+  "missing_count": 45
 }
