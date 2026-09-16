@@ -104,16 +104,13 @@ def main() -> None:
     composio_overlap = composio.get("overlap_count")
     composio_tk = composio.get("toolkit_count")
 
-    # Plain reviewer headlines (short)
+    # Plain reviewer headlines — short enough to skim in <30s
     headlines = [
-        f"<strong>Auth:</strong> {top_auth_txt}. Ship OAuth2 + API-key adapters as the default toolkit stack.",
-        f"<strong>Access:</strong> {self_serve}/{n} self-serve · {gated}/{n} paid/admin/partner-gated. Ops capacity should sit on the gated tail, not re-scraping docs.",
-        f"<strong>Buildability (strict):</strong> <strong>{ready_strict}</strong> ready_today (self-serve · conf≥0.85 · no human flag). "
-        f"{build_c.get('ready_with_caveats', 0)} more are ready_with_caveats (paid/admin/partial docs). "
-        f"{build_c.get('needs_outreach', 0)} need outreach. Paid plan ≠ silent ready_today.",
-        f"<strong>MCP:</strong> pass1 over-counted marketplaces as MCP ({pass3.get('mcp_existing_before', '?')}) → after cleanup <strong>{mcp_n}</strong> credible MCP signals.",
-        f"<strong>Categories:</strong> Dev/Infra + Productivity are the densest self-serve REST wins; niche fintech + thin AI-native apps burn ops time.",
-        f"<strong>Common blocker:</strong> {esc(((blockers[0][0] if blockers else 'thin or missing public docs').rstrip('.'))[:110])}.",
+        f"<strong>{self_serve}/{n} self-serve</strong> vs <strong>{gated}/{n} gated</strong> (paid / admin / partner). Easy wins are the self-serve majority.",
+        f"<strong>Auth:</strong> {top_auth_txt}. Default toolkit adapters = OAuth2 + API key.",
+        f"<strong>Build now:</strong> {ready_strict} strict ready_today · {build_c.get('ready_with_caveats', 0)} with caveats · {build_c.get('needs_outreach', 0)} need outreach. Paid/admin ≠ silent ready.",
+        f"<strong>MCP:</strong> noisy pass1 ({pass3.get('mcp_existing_before', '?')}) → <strong>{mcp_n}</strong> credible after cleanup (marketplace ≠ MCP).",
+        f"<strong>Where time burns:</strong> Dev/Infra + Productivity = dense REST wins; thin AI-native / niche fintech need humans.",
     ]
 
     week1 = backlog.get("week1_build") or []
@@ -127,9 +124,7 @@ def main() -> None:
         for x in thin[:8]
     ) or "<li>None — every app had at least a partial signal.</li>"
 
-    easy_li = "".join(
-        f"<li><b>{esc(x['name'])}</b><span>{esc(x['category'])}</span></li>" for x in easy[:10]
-    )
+    easy_li = ""  # kept queues use week1_li / outreach_li / thin_li only
     outreach_li = "".join(
         f"<li><b>{esc(x['name'])}</b><span>{esc(short(x.get('blocker') or x.get('access') or '', 90))}</span></li>"
         for x in outreach[:10]
@@ -241,9 +236,12 @@ a{{color:#1d6fbf}}
 .nav a{{text-decoration:none;color:var(--ink);font-size:13px;font-weight:600;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff}}
 .nav a:hover,.nav a.on{{border-color:#b7ddd7;background:var(--teal2);color:var(--teal)}}
 .stickybar{{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);background:rgba(246,247,244,.9);border-bottom:1px solid var(--line);margin:0 -18px 8px;padding:10px 18px}}
+.hero-result{{margin:14px 0 0;padding:14px 16px;border:1px solid #cfe8e2;border-radius:14px;background:#fff}}
+.hero-result p{{margin:0;font-size:1.02rem;max-width:70ch}}
+.hero-result b{{color:var(--teal)}}
 .plan{{display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:12px;margin-top:14px}}
 @media(max-width:900px){{.plan{{grid-template-columns:1fr}}}}
-.plan .box ul{{max-height:280px;overflow:auto}}
+.plan .box ul{{max-height:240px;overflow:auto}}
 .plan .box h3{{font-size:.95rem}}
 .links{{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}}
 .links a{{font-size:13px;font-weight:600;text-decoration:none;color:var(--teal);border-bottom:1px solid #9fd3cb}}
@@ -310,50 +308,61 @@ footer{{margin-top:18px;color:var(--muted);font-size:12px}}
   <p class="eyebrow">Composio · AI Product Ops Intern · Take-home</p>
   <h1>100-app toolkit readiness map</h1>
   <p class="lede">
-    Before Composio builds a toolkit, ops researches auth, access gates, API surface, and MCP readiness.
-    This case study does that for the 100-app set — with an agent pipeline, clear patterns, and verified accuracy.
+    One page a reviewer can finish in ~2 minutes: patterns first, then the 100-app matrix, then how the agent worked and how we verified it.
   </p>
+  <div class="hero-result">
+    <p>
+      <b>Result:</b> {ready_strict} apps are strict ready_today · {build_c.get('ready_with_caveats',0)} need caveats ·
+      {build_c.get('needs_outreach',0)} need outreach · {mcp_n} credible MCP ·
+      sample accuracy {auto_acc_s} (not 100% hand-verified).
+    </p>
+  </div>
   <div class="links">
-    <a href="https://github.com/UTSAVPANCHAL2006/productopsinternassign" target="_blank" rel="noopener">Public repo</a>
-    <a href="#plan">Easy wins vs outreach</a>
-    <a href="#matrix">Filterable findings + CSV</a>
-    <a href="#verification">Accuracy journey</a>
+    <a href="https://github.com/UTSAVPANCHAL2006/productopsinternassign" target="_blank" rel="noopener">Public repo + README</a>
+    <a href="#matrix">Findings table</a>
+    <a href="#verification">Verification</a>
   </div>
   <div class="stats">
     <div class="stat"><b>{n}</b><span>apps researched</span></div>
-    <div class="stat"><b>{build_c.get('ready_today',0)}</b><span>strict ready today</span></div>
+    <div class="stat"><b>{ready_strict}</b><span>strict ready today</span></div>
     <div class="stat"><b>{len(outreach)}</b><span>outreach / gated</span></div>
-    <div class="stat"><b>{auto_acc_s} sample</b><span>auto verify · not 100%</span></div>
+    <div class="stat"><b>{auto_acc_s}</b><span>auto sample accuracy</span></div>
   </div>
   <div class="stickybar">
   <nav class="nav" style="margin:0">
     <a href="#patterns" data-nav>1 Patterns</a>
-    <a href="#plan" data-nav>2 Queues</a>
-    <a href="#matrix" data-nav>3 Findings</a>
-    <a href="#agent" data-nav>4 Agent</a>
-    <a href="#proof" data-nav>5 Proof</a>
-    <a href="#verification" data-nav>6 Verification</a>
+    <a href="#matrix" data-nav>2 Findings</a>
+    <a href="#agent" data-nav>3 Agent</a>
+    <a href="#proof" data-nav>4 Proof</a>
+    <a href="#verification" data-nav>5 Verification</a>
   </nav>
   </div>
 
   <section class="card tldr" id="patterns">
     <p class="eyebrow">01 · Patterns (read this first)</p>
     <h2>What the 100 apps say</h2>
-    <p class="muted">Assignment ask: don’t dump rows — cluster and say where easy wins are vs outreach.</p>
+    <p class="muted">Insight over raw table — easy wins vs outreach, plainly.</p>
     <ol>
       {''.join(f'<li>{item}</li>' for item in headlines)}
     </ol>
-    <div class="grid2" style="margin-top:16px">
+    <div class="plan">
       <div class="box wins">
-        <h3>Easy wins — build toolkit now</h3>
-        <ul>{easy_li}</ul>
+        <h3>Easy wins ({len(week1)})</h3>
+        <p class="muted" style="margin:0 0 8px;font-size:12px">ready_today · conf ≥ 0.85 · self-serve · top {min(12, len(week1))}</p>
+        <ul>{week1_li}</ul>
       </div>
       <div class="box queue">
-        <h3>Needs outreach / partner gate</h3>
+        <h3>Outreach ({len(outreach)})</h3>
+        <p class="muted" style="margin:0 0 8px;font-size:12px">partner / sales / needs_outreach</p>
         <ul>{outreach_li}</ul>
       </div>
+      <div class="box">
+        <h3>Thin / defeated ({len(thin)})</h3>
+        <p class="muted" style="margin:0 0 8px;font-size:12px">correct finding with evidence</p>
+        <ul>{thin_li}</ul>
+      </div>
     </div>
-    <div class="scroll" style="max-height:320px;margin-top:14px">
+    <div class="scroll" style="max-height:280px;margin-top:14px">
       <table>
         <thead><tr><th>Category</th><th>N</th><th>Buildable</th><th>Self-serve</th><th>Gated</th><th>Outreach</th><th>Ready %</th></tr></thead>
         <tbody>{cat_rows}</tbody>
@@ -361,33 +370,10 @@ footer{{margin-top:18px;color:var(--muted);font-size:12px}}
     </div>
   </section>
 
-  <section class="card" id="plan">
-    <p class="eyebrow">02 · Queues (from patterns)</p>
-    <h2>Easy wins vs outreach vs thin docs</h2>
-    <p class="muted">Assignment ask — cluster where eng can build now vs where outreach / thin evidence blocks. Not a day-1 strategy deck.</p>
-    <div class="plan">
-      <div class="box wins">
-        <h3>Easy wins ({len(week1)})</h3>
-        <p class="muted" style="margin:0 0 8px;font-size:12px">ready_today · conf ≥ 0.85 · self-serve · showing top {min(12, len(week1))}</p>
-        <ul>{week1_li}</ul>
-      </div>
-      <div class="box queue">
-        <h3>Outreach queue ({len(outreach)})</h3>
-        <p class="muted" style="margin:0 0 8px;font-size:12px">partner / sales / needs_outreach</p>
-        <ul>{outreach_li}</ul>
-      </div>
-      <div class="box">
-        <h3>Thin / defeated ({len(thin)})</h3>
-        <p class="muted" style="margin:0 0 8px;font-size:12px">correct finding with evidence — not a failure</p>
-        <ul>{thin_li}</ul>
-      </div>
-    </div>
-  </section>
-
   <section class="card" id="matrix">
-    <p class="eyebrow">03 · Findings matrix</p>
+    <p class="eyebrow">02 · Findings matrix</p>
     <h2>All 100 apps — skimmable evidence table</h2>
-    <p class="muted">Fields required by the brief: category, one-liner, auth, access, API, MCP, verdict, blocker, confidence, evidence.</p>
+    <p class="muted">Required fields: category, one-liner, auth, access, API, MCP, verdict, blocker, confidence, evidence.</p>
     <div class="chips" id="chips">
       <button type="button" class="chip on" data-q="all">All</button>
       <button type="button" class="chip" data-q="ready">Ready today</button>
@@ -437,7 +423,7 @@ footer{{margin-top:18px;color:var(--muted);font-size:12px}}
   </section>
 
   <section class="card" id="agent">
-    <p class="eyebrow">04 · The agent (not by hand)</p>
+    <p class="eyebrow">03 · The agent (not by hand)</p>
     <h2>Pipeline that researched the 100</h2>
     <p class="muted">Workhorse = docs fetch + OpenAI structuring. Composio toolkit catalog is a secondary overlap check (spirit of the role), not the source of auth/access verdicts.</p>
     <div class="steps">
@@ -456,7 +442,7 @@ footer{{margin-top:18px;color:var(--muted);font-size:12px}}
   </section>
 
   <section class="card" id="proof">
-    <p class="eyebrow">05 · Proof</p>
+    <p class="eyebrow">04 · Proof</p>
     <div class="proof-top">
       <div>
         <h2>Live page + runnable agent</h2>
@@ -478,19 +464,14 @@ python -m agent.build_case_study</pre>
   </section>
 
   <section class="card" id="verification">
-    <p class="eyebrow">06 · Verification (accuracy first)</p>
+    <p class="eyebrow">05 · Verification (accuracy first)</p>
     <h2>How trust improved across loops</h2>
-    <p class="muted">Scope honesty: we do <strong>not</strong> claim 100/100 hand-verified fields. Trust comes from stratified auto sample + expanded hand/browser sample + targeted corrections.</p>
-    <div class="note">
-      <strong>What “verified” means here:</strong>
-      Auto pass2 = {vmeta.get('sample_size', 20)}/{n} apps · Hand/browser = {handcheck.get('sample_size', 15)}/{n} apps ·
-      Pass3 consistency + MCP cleanup runs on all {n}. Remaining rows inherit agent confidence + human_needed flags.
-    </div>
+    <p class="muted">Honest scope: <strong>not</strong> 100/100 hand-verified. Auto sample {vmeta.get('sample_size', 20)} + hand/browser {handcheck.get('sample_size', 15)} + pass3 cleanup on all {n}.</p>
     <div class="journey">
-      <div class="j"><em>Pass 1</em>Agent research on all 100. Fast but noisy (MCP/marketplace confusion; some 403/JS docs).</div>
-      <div class="j"><em>Pass 2</em>Auto re-fetch sample of {vmeta.get('sample_size',20)}. Field hit rate <strong>{auto_acc_s}</strong> ({summary.get('perfect_rows','—')} perfect / {summary.get('weak_rows','—')} weak).</div>
-      <div class="j"><em>Pass 3</em>MCP false positives cleaned: {pass3.get('mcp_existing_before','?')} → <strong>{pass3.get('mcp_existing_after','?')}</strong>. Consistency: paid/admin cannot stay silent ready_today.</div>
-      <div class="j"><em>Human + browser</em>Hand-opened {handcheck.get('sample_size',15)} apps. Pre-fix hand accuracy <strong>{hand_acc_s}</strong>; {handcheck.get('corrected_count',0)} corrected (WhatsApp, PitchBook, GoHighLevel, Salesforce…).</div>
+      <div class="j"><em>Pass 1</em>All 100 via agent. Fast, noisy (MCP/marketplace confusion; some 403/JS docs).</div>
+      <div class="j"><em>Pass 2</em>Auto re-fetch {vmeta.get('sample_size',20)} apps → <strong>{auto_acc_s}</strong> field hit rate.</div>
+      <div class="j"><em>Pass 3</em>MCP {pass3.get('mcp_existing_before','?')} → <strong>{pass3.get('mcp_existing_after','?')}</strong>. Paid/admin cannot stay silent ready_today.</div>
+      <div class="j"><em>Human + browser</em>{handcheck.get('sample_size',15)} apps opened. Pre-fix hand accuracy <strong>{hand_acc_s}</strong>; {handcheck.get('corrected_count',0)} corrected.</div>
     </div>
 
     <h3 style="margin-top:8px">Human / browser handcheck</h3>
@@ -608,7 +589,7 @@ python -m agent.build_case_study</pre>
     document.getElementById(id)?.scrollIntoView({{behavior:'smooth'}});
     document.querySelectorAll('[data-nav]').forEach(n=>n.classList.toggle('on',n===a));
   }}));
-  const sections=['patterns','plan','matrix','agent','proof','verification'];
+  const sections=['patterns','matrix','agent','proof','verification'];
   const navs=[...document.querySelectorAll('[data-nav]')];
   const spy=()=>{{
     let cur='patterns';

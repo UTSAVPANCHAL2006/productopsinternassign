@@ -13,7 +13,7 @@ Take-home for **AI Product Ops Intern**: research **100 apps** for toolkit readi
 |-----|--------|
 | Per-app research fields | `output/results_final.json` / `.csv` + Findings matrix |
 | Patterns / clusters | Case study §01 + `output/patterns.json` |
-| Ops queues (easy vs outreach) | Case study §02 + `output/priority_backlog.json` |
+| Easy wins vs outreach | Same §01 queues + `output/priority_backlog.json` |
 | Agent, not by hand | `agent/run_research.py` (+ `agent/demo.py` proof trigger) |
 | Composio spirit | `agent/composio_probe.py` (honest success/fail) |
 | Verify accuracy | Pass2 sample (`verification/report.json`), Pass3 MCP cleanup, human/browser handcheck (`verification/handcheck.json`) |

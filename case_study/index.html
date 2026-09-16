@@ -29,9 +29,12 @@ a{color:#1d6fbf}
 .nav a{text-decoration:none;color:var(--ink);font-size:13px;font-weight:600;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff}
 .nav a:hover,.nav a.on{border-color:#b7ddd7;background:var(--teal2);color:var(--teal)}
 .stickybar{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);background:rgba(246,247,244,.9);border-bottom:1px solid var(--line);margin:0 -18px 8px;padding:10px 18px}
+.hero-result{margin:14px 0 0;padding:14px 16px;border:1px solid #cfe8e2;border-radius:14px;background:#fff}
+.hero-result p{margin:0;font-size:1.02rem;max-width:70ch}
+.hero-result b{color:var(--teal)}
 .plan{display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:12px;margin-top:14px}
 @media(max-width:900px){.plan{grid-template-columns:1fr}}
-.plan .box ul{max-height:280px;overflow:auto}
+.plan .box ul{max-height:240px;overflow:auto}
 .plan .box h3{font-size:.95rem}
 .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 .links a{font-size:13px;font-weight:600;text-decoration:none;color:var(--teal);border-bottom:1px solid #9fd3cb}
@@ -98,50 +101,61 @@ footer{margin-top:18px;color:var(--muted);font-size:12px}
   <p class="eyebrow">Composio · AI Product Ops Intern · Take-home</p>
   <h1>100-app toolkit readiness map</h1>
   <p class="lede">
-    Before Composio builds a toolkit, ops researches auth, access gates, API surface, and MCP readiness.
-    This case study does that for the 100-app set — with an agent pipeline, clear patterns, and verified accuracy.
+    One page a reviewer can finish in ~2 minutes: patterns first, then the 100-app matrix, then how the agent worked and how we verified it.
   </p>
+  <div class="hero-result">
+    <p>
+      <b>Result:</b> 64 apps are strict ready_today · 28 need caveats ·
+      7 need outreach · 23 credible MCP ·
+      sample accuracy 89% (not 100% hand-verified).
+    </p>
+  </div>
   <div class="links">
-    <a href="https://github.com/UTSAVPANCHAL2006/productopsinternassign" target="_blank" rel="noopener">Public repo</a>
-    <a href="#plan">Easy wins vs outreach</a>
-    <a href="#matrix">Filterable findings + CSV</a>
-    <a href="#verification">Accuracy journey</a>
+    <a href="https://github.com/UTSAVPANCHAL2006/productopsinternassign" target="_blank" rel="noopener">Public repo + README</a>
+    <a href="#matrix">Findings table</a>
+    <a href="#verification">Verification</a>
   </div>
   <div class="stats">
     <div class="stat"><b>100</b><span>apps researched</span></div>
     <div class="stat"><b>64</b><span>strict ready today</span></div>
     <div class="stat"><b>9</b><span>outreach / gated</span></div>
-    <div class="stat"><b>89% sample</b><span>auto verify · not 100%</span></div>
+    <div class="stat"><b>89%</b><span>auto sample accuracy</span></div>
   </div>
   <div class="stickybar">
   <nav class="nav" style="margin:0">
     <a href="#patterns" data-nav>1 Patterns</a>
-    <a href="#plan" data-nav>2 Queues</a>
-    <a href="#matrix" data-nav>3 Findings</a>
-    <a href="#agent" data-nav>4 Agent</a>
-    <a href="#proof" data-nav>5 Proof</a>
-    <a href="#verification" data-nav>6 Verification</a>
+    <a href="#matrix" data-nav>2 Findings</a>
+    <a href="#agent" data-nav>3 Agent</a>
+    <a href="#proof" data-nav>4 Proof</a>
+    <a href="#verification" data-nav>5 Verification</a>
   </nav>
   </div>
 
   <section class="card tldr" id="patterns">
     <p class="eyebrow">01 · Patterns (read this first)</p>
     <h2>What the 100 apps say</h2>
-    <p class="muted">Assignment ask: don’t dump rows — cluster and say where easy wins are vs outreach.</p>
+    <p class="muted">Insight over raw table — easy wins vs outreach, plainly.</p>
     <ol>
-      <li><strong>Auth:</strong> OAuth2 (56), API key (53), Bearer token (27). Ship OAuth2 + API-key adapters as the default toolkit stack.</li><li><strong>Access:</strong> 74/100 self-serve · 23/100 paid/admin/partner-gated. Ops capacity should sit on the gated tail, not re-scraping docs.</li><li><strong>Buildability (strict):</strong> <strong>64</strong> ready_today (self-serve · conf≥0.85 · no human flag). 28 more are ready_with_caveats (paid/admin/partial docs). 7 need outreach. Paid plan ≠ silent ready_today.</li><li><strong>MCP:</strong> pass1 over-counted marketplaces as MCP (44) → after cleanup <strong>23</strong> credible MCP signals.</li><li><strong>Categories:</strong> Dev/Infra + Productivity are the densest self-serve REST wins; niche fintech + thin AI-native apps burn ops time.</li><li><strong>Common blocker:</strong> Not pure ready_today: access=paid_plan_required.</li>
+      <li><strong>74/100 self-serve</strong> vs <strong>23/100 gated</strong> (paid / admin / partner). Easy wins are the self-serve majority.</li><li><strong>Auth:</strong> OAuth2 (56), API key (53), Bearer token (27). Default toolkit adapters = OAuth2 + API key.</li><li><strong>Build now:</strong> 64 strict ready_today · 28 with caveats · 7 need outreach. Paid/admin ≠ silent ready.</li><li><strong>MCP:</strong> noisy pass1 (44) → <strong>23</strong> credible after cleanup (marketplace ≠ MCP).</li><li><strong>Where time burns:</strong> Dev/Infra + Productivity = dense REST wins; thin AI-native / niche fintech need humans.</li>
     </ol>
-    <div class="grid2" style="margin-top:16px">
+    <div class="plan">
       <div class="box wins">
-        <h3>Easy wins — build toolkit now</h3>
-        <ul><li><b>HubSpot</b><span>CRM and Sales</span></li><li><b>Pipedrive</b><span>CRM and Sales</span></li><li><b>Attio</b><span>CRM and Sales</span></li><li><b>Twenty</b><span>CRM and Sales</span></li><li><b>Podio</b><span>CRM and Sales</span></li><li><b>Zoho CRM</b><span>CRM and Sales</span></li><li><b>Close</b><span>CRM and Sales</span></li><li><b>Copper</b><span>CRM and Sales</span></li><li><b>Zendesk</b><span>Support and Helpdesk</span></li><li><b>Intercom</b><span>Support and Helpdesk</span></li></ul>
+        <h3>Easy wins (64)</h3>
+        <p class="muted" style="margin:0 0 8px;font-size:12px">ready_today · conf ≥ 0.85 · self-serve · top 12</p>
+        <ul><li><b>HubSpot</b><span>CRM and Sales · OAuth2</span></li><li><b>Pipedrive</b><span>CRM and Sales · API key, OAuth2</span></li><li><b>Attio</b><span>CRM and Sales · OAuth2, API key</span></li><li><b>Twenty</b><span>CRM and Sales · OAuth2, None / CLI local</span></li><li><b>Podio</b><span>CRM and Sales · API key</span></li><li><b>Zoho CRM</b><span>CRM and Sales · OAuth2</span></li><li><b>Close</b><span>CRM and Sales · OAuth2, API key</span></li><li><b>Copper</b><span>CRM and Sales · API key</span></li><li><b>Zendesk</b><span>Support and Helpdesk · OAuth2, API key, Bearer token</span></li><li><b>Intercom</b><span>Support and Helpdesk · OAuth2, PAT / token</span></li><li><b>Front</b><span>Support and Helpdesk · OAuth2, API key</span></li><li><b>Plain</b><span>Support and Helpdesk · API key, Bearer token</span></li></ul>
       </div>
       <div class="box queue">
-        <h3>Needs outreach / partner gate</h3>
+        <h3>Outreach (9)</h3>
+        <p class="muted" style="margin:0 0 8px;font-size:12px">partner / sales / needs_outreach</p>
         <ul><li><b>Gladly</b><span>Developer access typically tied to Gladly customer/partner onboarding.</span></li><li><b>LinkedIn Ads</b><span>Access requires approval and adherence to integration requirements; not openly self-serve.</span></li><li><b>Amazon Selling Partner</b><span>Requires Amazon Selling Partner / developer registration and approval — public docs exist…</span></li><li><b>Paygent Connect</b><span>Needs merchant account / NMI partner relationship for credentials.</span></li><li><b>Brex</b><span>Needs Brex business relationship for meaningful sandbox/production credentials.</span></li><li><b>Ramp</b><span>Needs Ramp customer/partner relationship for meaningful sandbox credentials.</span></li><li><b>PitchBook</b><span>Standalone API contract + credits required; contact sales / account manager.</span></li><li><b>Otter AI</b><span>No clear self-serve developer API credentials page — outreach / partner path needed.</span></li><li><b>Consensus</b><span>No API documentation or authentication details available publicly.</span></li></ul>
       </div>
+      <div class="box">
+        <h3>Thin / defeated (7)</h3>
+        <p class="muted" style="margin:0 0 8px;font-size:12px">correct finding with evidence</p>
+        <ul><li><b>Pylon</b><span>conf 0.7 · Docs surface still thin vs Zendesk/Intercom — confirm auth scopes before shippi…</span></li><li><b>Gladly</b><span>conf 0.65 · Developer access typically tied to Gladly customer/partner onboarding.</span></li><li><b>fanbasis</b><span>conf 0.55 · Public docs thin; product naming/docs surface needs human confirmation for full…</span></li><li><b>iPayX</b><span>conf 0.1 · No accessible API documentation or technical details available.</span></li><li><b>Otter AI</b><span>conf 0.45 · No clear self-serve developer API credentials page — outreach / partner path ne…</span></li><li><b>Consensus</b><span>conf 0.3 · No API documentation or authentication details available publicly.</span></li><li><b>Grain</b><span>conf 0.65 · Public API docs thinner than CRM/dev platforms; confirm scopes before toolkit b…</span></li></ul>
+      </div>
     </div>
-    <div class="scroll" style="max-height:320px;margin-top:14px">
+    <div class="scroll" style="max-height:280px;margin-top:14px">
       <table>
         <thead><tr><th>Category</th><th>N</th><th>Buildable</th><th>Self-serve</th><th>Gated</th><th>Outreach</th><th>Ready %</th></tr></thead>
         <tbody><tr><td>CRM and Sales</td><td>10</td><td>10</td><td>9</td><td>1</td><td>0</td><td>100%</td></tr><tr><td>Support and Helpdesk</td><td>10</td><td>9</td><td>8</td><td>2</td><td>1</td><td>90%</td></tr><tr><td>Communications and Messaging</td><td>10</td><td>10</td><td>9</td><td>1</td><td>0</td><td>100%</td></tr><tr><td>Marketing, Ads, Email and Social</td><td>10</td><td>10</td><td>9</td><td>1</td><td>0</td><td>100%</td></tr><tr><td>Ecommerce</td><td>10</td><td>10</td><td>6</td><td>4</td><td>0</td><td>100%</td></tr><tr><td>Data, SEO and Scraping</td><td>10</td><td>10</td><td>7</td><td>3</td><td>0</td><td>100%</td></tr><tr><td>Developer, Infra and Data platforms</td><td>10</td><td>10</td><td>7</td><td>3</td><td>0</td><td>100%</td></tr><tr><td>Productivity and Project Management</td><td>10</td><td>10</td><td>9</td><td>1</td><td>0</td><td>100%</td></tr><tr><td>Finance and Fintech</td><td>10</td><td>5</td><td>5</td><td>4</td><td>4</td><td>50%</td></tr><tr><td>AI, Research and Media-native</td><td>10</td><td>8</td><td>5</td><td>3</td><td>2</td><td>80%</td></tr></tbody>
@@ -149,33 +163,10 @@ footer{margin-top:18px;color:var(--muted);font-size:12px}
     </div>
   </section>
 
-  <section class="card" id="plan">
-    <p class="eyebrow">02 · Queues (from patterns)</p>
-    <h2>Easy wins vs outreach vs thin docs</h2>
-    <p class="muted">Assignment ask — cluster where eng can build now vs where outreach / thin evidence blocks. Not a day-1 strategy deck.</p>
-    <div class="plan">
-      <div class="box wins">
-        <h3>Easy wins (64)</h3>
-        <p class="muted" style="margin:0 0 8px;font-size:12px">ready_today · conf ≥ 0.85 · self-serve · showing top 12</p>
-        <ul><li><b>HubSpot</b><span>CRM and Sales · OAuth2</span></li><li><b>Pipedrive</b><span>CRM and Sales · API key, OAuth2</span></li><li><b>Attio</b><span>CRM and Sales · OAuth2, API key</span></li><li><b>Twenty</b><span>CRM and Sales · OAuth2, None / CLI local</span></li><li><b>Podio</b><span>CRM and Sales · API key</span></li><li><b>Zoho CRM</b><span>CRM and Sales · OAuth2</span></li><li><b>Close</b><span>CRM and Sales · OAuth2, API key</span></li><li><b>Copper</b><span>CRM and Sales · API key</span></li><li><b>Zendesk</b><span>Support and Helpdesk · OAuth2, API key, Bearer token</span></li><li><b>Intercom</b><span>Support and Helpdesk · OAuth2, PAT / token</span></li><li><b>Front</b><span>Support and Helpdesk · OAuth2, API key</span></li><li><b>Plain</b><span>Support and Helpdesk · API key, Bearer token</span></li></ul>
-      </div>
-      <div class="box queue">
-        <h3>Outreach queue (9)</h3>
-        <p class="muted" style="margin:0 0 8px;font-size:12px">partner / sales / needs_outreach</p>
-        <ul><li><b>Gladly</b><span>Developer access typically tied to Gladly customer/partner onboarding.</span></li><li><b>LinkedIn Ads</b><span>Access requires approval and adherence to integration requirements; not openly self-serve.</span></li><li><b>Amazon Selling Partner</b><span>Requires Amazon Selling Partner / developer registration and approval — public docs exist…</span></li><li><b>Paygent Connect</b><span>Needs merchant account / NMI partner relationship for credentials.</span></li><li><b>Brex</b><span>Needs Brex business relationship for meaningful sandbox/production credentials.</span></li><li><b>Ramp</b><span>Needs Ramp customer/partner relationship for meaningful sandbox credentials.</span></li><li><b>PitchBook</b><span>Standalone API contract + credits required; contact sales / account manager.</span></li><li><b>Otter AI</b><span>No clear self-serve developer API credentials page — outreach / partner path needed.</span></li><li><b>Consensus</b><span>No API documentation or authentication details available publicly.</span></li></ul>
-      </div>
-      <div class="box">
-        <h3>Thin / defeated (7)</h3>
-        <p class="muted" style="margin:0 0 8px;font-size:12px">correct finding with evidence — not a failure</p>
-        <ul><li><b>Pylon</b><span>conf 0.7 · Docs surface still thin vs Zendesk/Intercom — confirm auth scopes before shippi…</span></li><li><b>Gladly</b><span>conf 0.65 · Developer access typically tied to Gladly customer/partner onboarding.</span></li><li><b>fanbasis</b><span>conf 0.55 · Public docs thin; product naming/docs surface needs human confirmation for full…</span></li><li><b>iPayX</b><span>conf 0.1 · No accessible API documentation or technical details available.</span></li><li><b>Otter AI</b><span>conf 0.45 · No clear self-serve developer API credentials page — outreach / partner path ne…</span></li><li><b>Consensus</b><span>conf 0.3 · No API documentation or authentication details available publicly.</span></li><li><b>Grain</b><span>conf 0.65 · Public API docs thinner than CRM/dev platforms; confirm scopes before toolkit b…</span></li></ul>
-      </div>
-    </div>
-  </section>
-
   <section class="card" id="matrix">
-    <p class="eyebrow">03 · Findings matrix</p>
+    <p class="eyebrow">02 · Findings matrix</p>
     <h2>All 100 apps — skimmable evidence table</h2>
-    <p class="muted">Fields required by the brief: category, one-liner, auth, access, API, MCP, verdict, blocker, confidence, evidence.</p>
+    <p class="muted">Required fields: category, one-liner, auth, access, API, MCP, verdict, blocker, confidence, evidence.</p>
     <div class="chips" id="chips">
       <button type="button" class="chip on" data-q="all">All</button>
       <button type="button" class="chip" data-q="ready">Ready today</button>
@@ -225,7 +216,7 @@ footer{margin-top:18px;color:var(--muted);font-size:12px}
   </section>
 
   <section class="card" id="agent">
-    <p class="eyebrow">04 · The agent (not by hand)</p>
+    <p class="eyebrow">03 · The agent (not by hand)</p>
     <h2>Pipeline that researched the 100</h2>
     <p class="muted">Workhorse = docs fetch + OpenAI structuring. Composio toolkit catalog is a secondary overlap check (spirit of the role), not the source of auth/access verdicts.</p>
     <div class="steps">
@@ -244,7 +235,7 @@ footer{margin-top:18px;color:var(--muted);font-size:12px}
   </section>
 
   <section class="card" id="proof">
-    <p class="eyebrow">05 · Proof</p>
+    <p class="eyebrow">04 · Proof</p>
     <div class="proof-top">
       <div>
         <h2>Live page + runnable agent</h2>
@@ -266,19 +257,14 @@ python -m agent.build_case_study</pre>
   </section>
 
   <section class="card" id="verification">
-    <p class="eyebrow">06 · Verification (accuracy first)</p>
+    <p class="eyebrow">05 · Verification (accuracy first)</p>
     <h2>How trust improved across loops</h2>
-    <p class="muted">Scope honesty: we do <strong>not</strong> claim 100/100 hand-verified fields. Trust comes from stratified auto sample + expanded hand/browser sample + targeted corrections.</p>
-    <div class="note">
-      <strong>What “verified” means here:</strong>
-      Auto pass2 = 20/100 apps · Hand/browser = 15/100 apps ·
-      Pass3 consistency + MCP cleanup runs on all 100. Remaining rows inherit agent confidence + human_needed flags.
-    </div>
+    <p class="muted">Honest scope: <strong>not</strong> 100/100 hand-verified. Auto sample 20 + hand/browser 15 + pass3 cleanup on all 100.</p>
     <div class="journey">
-      <div class="j"><em>Pass 1</em>Agent research on all 100. Fast but noisy (MCP/marketplace confusion; some 403/JS docs).</div>
-      <div class="j"><em>Pass 2</em>Auto re-fetch sample of 20. Field hit rate <strong>89%</strong> (17 perfect / 2 weak).</div>
-      <div class="j"><em>Pass 3</em>MCP false positives cleaned: 44 → <strong>23</strong>. Consistency: paid/admin cannot stay silent ready_today.</div>
-      <div class="j"><em>Human + browser</em>Hand-opened 15 apps. Pre-fix hand accuracy <strong>73%</strong>; 4 corrected (WhatsApp, PitchBook, GoHighLevel, Salesforce…).</div>
+      <div class="j"><em>Pass 1</em>All 100 via agent. Fast, noisy (MCP/marketplace confusion; some 403/JS docs).</div>
+      <div class="j"><em>Pass 2</em>Auto re-fetch 20 apps → <strong>89%</strong> field hit rate.</div>
+      <div class="j"><em>Pass 3</em>MCP 44 → <strong>23</strong>. Paid/admin cannot stay silent ready_today.</div>
+      <div class="j"><em>Human + browser</em>15 apps opened. Pre-fix hand accuracy <strong>73%</strong>; 4 corrected.</div>
     </div>
 
     <h3 style="margin-top:8px">Human / browser handcheck</h3>
@@ -396,7 +382,7 @@ python -m agent.build_case_study</pre>
     document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
     document.querySelectorAll('[data-nav]').forEach(n=>n.classList.toggle('on',n===a));
   }));
-  const sections=['patterns','plan','matrix','agent','proof','verification'];
+  const sections=['patterns','matrix','agent','proof','verification'];
   const navs=[...document.querySelectorAll('[data-nav]')];
   const spy=()=>{
     let cur='patterns';
