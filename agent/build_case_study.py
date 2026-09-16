@@ -56,6 +56,7 @@ def main() -> None:
     parser.add_argument("--pass3", default=str(ROOT / "verification" / "pass3_corrections.json"))
     parser.add_argument("--handcheck", default=str(ROOT / "verification" / "handcheck.json"))
     parser.add_argument("--composio", default=str(ROOT / "verification" / "composio_probe.json"))
+    parser.add_argument("--backlog", default=str(ROOT / "output" / "priority_backlog.json"))
     parser.add_argument("--out", default=str(ROOT / "case_study" / "index.html"))
     args = parser.parse_args()
 
@@ -65,6 +66,7 @@ def main() -> None:
     pass3 = json.loads(Path(args.pass3).read_text()) if Path(args.pass3).exists() else {}
     handcheck = json.loads(Path(args.handcheck).read_text()) if Path(args.handcheck).exists() else {}
     composio = json.loads(Path(args.composio).read_text()) if Path(args.composio).exists() else {}
+    backlog = json.loads(Path(args.backlog).read_text()) if Path(args.backlog).exists() else {}
 
     n = len(results)
     build_c = patterns.get("buildability_counts") or {}
@@ -101,12 +103,24 @@ def main() -> None:
 
     # Plain reviewer headlines (short)
     headlines = [
-        f"<strong>Auth:</strong> {top_auth_txt}. Default toolkit adapters should cover OAuth2 + API key.",
-        f"<strong>Access:</strong> {self_serve}/{n} self-serve · {gated}/{n} paid/admin/partner-gated — that gated set is the ops outreach queue.",
-        f"<strong>Buildability:</strong> {ready}/{n} can be toolkit work now (ready / caveats). {build_c.get('needs_outreach', 0)} need outreach first.",
-        f"<strong>MCP:</strong> first pass over-counted marketplaces as MCP ({pass3.get('mcp_existing_before', '?')}). After cleanup: <strong>{mcp_n}</strong> credible Model Context Protocol signals.",
+        f"<strong>Auth:</strong> {top_auth_txt}. Ship OAuth2 + API-key adapters as the default toolkit stack.",
+        f"<strong>Access:</strong> {self_serve}/{n} self-serve · {gated}/{n} paid/admin/partner-gated. Ops capacity should sit on the gated tail, not re-scraping docs.",
+        f"<strong>Buildability:</strong> {ready}/{n} are toolkit-ready now (ready / caveats). {build_c.get('needs_outreach', 0)} need outreach before eng starts.",
+        f"<strong>MCP:</strong> pass1 over-counted marketplaces as MCP ({pass3.get('mcp_existing_before', '?')}) → after cleanup <strong>{mcp_n}</strong> credible MCP signals.",
+        f"<strong>Categories:</strong> Dev/Infra + Productivity are the densest self-serve REST wins; niche fintech + thin AI-native apps burn ops time.",
         f"<strong>Common blocker:</strong> {esc(((blockers[0][0] if blockers else 'thin or missing public docs').rstrip('.'))[:110])}.",
     ]
+
+    week1 = backlog.get("week1_build") or []
+    thin = backlog.get("thin_or_blocked") or []
+    week1_li = "".join(
+        f"<li><b>{esc(x['name'])}</b><span>{esc(x.get('category'))} · {esc(', '.join(x.get('auth') or []))}</span></li>"
+        for x in week1[:12]
+    )
+    thin_li = "".join(
+        f"<li><b>{esc(x['name'])}</b><span>conf {x.get('confidence')} · {esc(short(x.get('blocker'), 80))}</span></li>"
+        for x in thin[:8]
+    ) or "<li>None — every app had at least a partial signal.</li>"
 
     easy_li = "".join(
         f"<li><b>{esc(x['name'])}</b><span>{esc(x['category'])}</span></li>" for x in easy[:10]
@@ -115,6 +129,9 @@ def main() -> None:
         f"<li><b>{esc(x['name'])}</b><span>{esc(short(x.get('blocker') or x.get('access') or '', 90))}</span></li>"
         for x in outreach[:10]
     )
+
+    cats = sorted({r["category"] for r in results})
+    cat_opts = "".join(f"<option value=\"{esc(c)}\">{esc(c)}</option>" for c in cats)
 
     cat_rows = ""
     for cat, s in by_cat.items():
@@ -136,12 +153,13 @@ def main() -> None:
             "<tr "
             f"data-build='{esc(r.get('buildability'))}' "
             f"data-access='{esc(r.get('access_model'))}' "
+            f"data-cat='{esc(r['category'])}' "
             f"data-human='{1 if r.get('human_needed') else 0}' "
             f"data-mcp='{1 if r.get('mcp_existing') else 0}'>"
             f"<td>{r['id']}</td>"
             f"<td><div class='app'>{esc(r['name'])} {human}</div>"
-            f"<div class='sub'>{esc(r.get('one_liner'))}</div></td>"
-            f"<td>{esc(r['category'])}</td>"
+            f"<div class='sub'>{esc(short(r.get('one_liner'), 110))}</div></td>"
+            f"<td data-catcell='1'>{esc(r['category'])}</td>"
             f"<td>{esc(', '.join(r.get('auth_methods') or []))}</td>"
             f"<td>{esc(access_label(r.get('access_model','')))}</td>"
             f"<td>{esc(r.get('api_type'))} · {esc(r.get('api_breadth'))}</td>"
@@ -210,6 +228,15 @@ a{{color:#1d6fbf}}
 .nav{{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}}
 .nav a{{text-decoration:none;color:var(--ink);font-size:13px;font-weight:600;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff}}
 .nav a:hover,.nav a.on{{border-color:#b7ddd7;background:var(--teal2);color:var(--teal)}}
+.stickybar{{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);background:rgba(246,247,244,.9);border-bottom:1px solid var(--line);margin:0 -18px 8px;padding:10px 18px}}
+.plan{{display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:12px;margin-top:14px}}
+@media(max-width:900px){{.plan{{grid-template-columns:1fr}}}}
+.plan .box ul{{max-height:280px;overflow:auto}}
+.plan .box h3{{font-size:.95rem}}
+.callout{{background:linear-gradient(135deg,#eef8f5,#f7fafc);border:1px solid #cfe8e2;border-radius:14px;padding:16px 18px;margin-top:14px}}
+.callout strong{{display:block;margin-bottom:6px;font-family:Literata,Georgia,serif;font-size:1.05rem}}
+.links{{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}}
+.links a{{font-size:13px;font-weight:600;text-decoration:none;color:var(--teal);border-bottom:1px solid #9fd3cb}}
 .card{{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px 24px;margin:16px 0;box-shadow:0 10px 30px rgba(24,33,43,.04)}}
 .tldr{{background:linear-gradient(180deg,#fff,#f7fcfa);border-color:#cfe8e2}}
 .tldr ol{{margin:12px 0 0;padding-left:1.2rem}}
@@ -276,19 +303,28 @@ footer{{margin-top:18px;color:var(--muted);font-size:12px}}
     Before Composio builds a toolkit, ops researches auth, access gates, API surface, and MCP readiness.
     This case study does that for the 100-app set — with an agent pipeline, clear patterns, and verified accuracy.
   </p>
+  <div class="links">
+    <a href="https://github.com/UTSAVPANCHAL2006/productopsinternassign" target="_blank" rel="noopener">Public repo</a>
+    <a href="#plan">Week-1 ops plan</a>
+    <a href="#matrix">Filterable findings + CSV</a>
+    <a href="#verification">Accuracy journey</a>
+  </div>
   <div class="stats">
     <div class="stat"><b>{n}</b><span>apps researched</span></div>
     <div class="stat"><b>{build_c.get('ready_today',0)}</b><span>ready today</span></div>
     <div class="stat"><b>{len(outreach)}</b><span>outreach / gated</span></div>
     <div class="stat"><b>{auto_acc_s} → fixed</b><span>sample accuracy journey</span></div>
   </div>
-  <nav class="nav">
+  <div class="stickybar">
+  <nav class="nav" style="margin:0">
     <a href="#patterns" data-nav>1 Patterns</a>
-    <a href="#matrix" data-nav>2 Findings</a>
-    <a href="#agent" data-nav>3 Agent</a>
-    <a href="#proof" data-nav>4 Proof</a>
-    <a href="#verification" data-nav>5 Verification</a>
+    <a href="#plan" data-nav>2 Ops plan</a>
+    <a href="#matrix" data-nav>3 Findings</a>
+    <a href="#agent" data-nav>4 Agent</a>
+    <a href="#proof" data-nav>5 Proof</a>
+    <a href="#verification" data-nav>6 Verification</a>
   </nav>
+  </div>
 
   <section class="card tldr" id="patterns">
     <p class="eyebrow">01 · Patterns (read this first)</p>
@@ -297,6 +333,11 @@ footer{{margin-top:18px;color:var(--muted);font-size:12px}}
     <ol>
       {''.join(f'<li>{item}</li>' for item in headlines)}
     </ol>
+    <div class="callout">
+      <strong>If I joined ops tomorrow</strong>
+      Spend eng time on the self-serve REST majority. Put a human on partner/sales gates and thin-doc apps.
+      Automate the research loop we built here so the next 100 apps don’t start from a blank sheet.
+    </div>
     <div class="grid2" style="margin-top:16px">
       <div class="box wins">
         <h3>Easy wins — build toolkit now</h3>
@@ -315,8 +356,31 @@ footer{{margin-top:18px;color:var(--muted);font-size:12px}}
     </div>
   </section>
 
+  <section class="card" id="plan">
+    <p class="eyebrow">02 · Ops plan (JD-aligned)</p>
+    <h2>How Product Ops would use this map</h2>
+    <p class="muted">Same job as the JD: shepherd connectors, chase approvals, keep status obvious for eng/product/partners.</p>
+    <div class="plan">
+      <div class="box wins">
+        <h3>Week-1 build queue ({len(week1)})</h3>
+        <p class="muted" style="margin:0 0 8px;font-size:12px">ready_today · conf ≥ 0.85 · self-serve · showing top {min(12, len(week1))}</p>
+        <ul>{week1_li}</ul>
+      </div>
+      <div class="box queue">
+        <h3>Outreach queue ({len(outreach)})</h3>
+        <p class="muted" style="margin:0 0 8px;font-size:12px">partner / sales / needs_outreach</p>
+        <ul>{outreach_li}</ul>
+      </div>
+      <div class="box">
+        <h3>Honest defeats</h3>
+        <p class="muted" style="margin:0 0 8px;font-size:12px">thin docs / not viable — correct finding, not a failure</p>
+        <ul>{thin_li}</ul>
+      </div>
+    </div>
+  </section>
+
   <section class="card" id="matrix">
-    <p class="eyebrow">02 · Findings matrix</p>
+    <p class="eyebrow">03 · Findings matrix</p>
     <h2>All 100 apps — skimmable evidence table</h2>
     <p class="muted">Fields required by the brief: category, one-liner, auth, access, API, MCP, verdict, blocker, confidence, evidence.</p>
     <div class="chips" id="chips">
@@ -347,7 +411,9 @@ footer{{margin-top:18px;color:var(--muted);font-size:12px}}
         <option value="open_source_local">Open source</option>
         <option value="unclear">Unclear</option>
       </select>
+      <select id="cat"><option value="">All categories</option>{cat_opts}</select>
       <button type="button" class="btn" id="reset">Reset</button>
+      <button type="button" class="btn primary" id="csv">Download CSV</button>
       <span id="count"></span>
     </div>
     <div class="scroll">
@@ -366,7 +432,7 @@ footer{{margin-top:18px;color:var(--muted);font-size:12px}}
   </section>
 
   <section class="card" id="agent">
-    <p class="eyebrow">03 · The agent (not by hand)</p>
+    <p class="eyebrow">04 · The agent (not by hand)</p>
     <h2>Pipeline that researched the 100</h2>
     <p class="muted">Python agent: fetch public docs → structure with OpenAI → optional Composio toolkit catalog check → verify → correct.</p>
     <div class="steps">
@@ -385,7 +451,7 @@ footer{{margin-top:18px;color:var(--muted);font-size:12px}}
   </section>
 
   <section class="card" id="proof">
-    <p class="eyebrow">04 · Proof</p>
+    <p class="eyebrow">05 · Proof</p>
     <div class="proof-top">
       <div>
         <h2>Live page + runnable agent</h2>
@@ -407,7 +473,7 @@ python -m agent.build_case_study</pre>
   </section>
 
   <section class="card" id="verification">
-    <p class="eyebrow">05 · Verification (accuracy first)</p>
+    <p class="eyebrow">06 · Verification (accuracy first)</p>
     <h2>How trust improved across loops</h2>
     <p class="muted">Assignment ask: show agent + browser/docs + human checks, and how accuracy moved up.</p>
     <div class="journey">
@@ -446,6 +512,7 @@ python -m agent.build_case_study</pre>
   const q=document.getElementById('q');
   const build=document.getElementById('build');
   const access=document.getElementById('access');
+  const cat=document.getElementById('cat');
   const count=document.getElementById('count');
   const chips=[...document.querySelectorAll('#chips .chip')];
   const rows=[...document.querySelectorAll('#matrix-table tbody tr')];
@@ -469,30 +536,80 @@ python -m agent.build_case_study</pre>
       const okQ=!qq||tr.innerText.toLowerCase().includes(qq);
       const okB=!build.value||tr.dataset.build===build.value;
       const okA=!access.value||tr.dataset.access===access.value;
-      const show=okQ&&okB&&okA&&matchQuick(tr);
+      const okC=!cat.value||tr.dataset.cat===cat.value;
+      const show=okQ&&okB&&okA&&okC&&matchQuick(tr);
       tr.style.display=show?'':'none';
       if(show) shown++;
     }});
     count.textContent=shown+' / '+rows.length+' shown';
   }}
+  function csvEscape(v){{
+    const s=String(v??'');
+    return /[",\\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;
+  }}
+  function downloadCsv(){{
+    const headers=['id','app','category','auth','access','api','mcp','verdict','confidence','blocker'];
+    const lines=[headers.join(',')];
+    rows.forEach(tr=>{{
+      if(tr.style.display==='none') return;
+      const tds=[...tr.children];
+      const app=(tds[1].querySelector('.app')?.textContent||'').replace(/\\s+human\\s*$/i,'').trim();
+      const blocker=tds[7].querySelector('.sub')?.textContent||'';
+      const verdict=tds[7].querySelector('.pill')?.textContent||'';
+      lines.push([
+        tds[0].textContent.trim(),
+        app,
+        tds[2].textContent.trim(),
+        tds[3].textContent.trim(),
+        tds[4].textContent.trim(),
+        tds[5].textContent.trim(),
+        tds[6].textContent.trim(),
+        verdict,
+        tds[8].textContent.trim(),
+        blocker
+      ].map(csvEscape).join(','));
+    }});
+    const blob=new Blob([lines.join('\\n')],{{type:'text/csv;charset=utf-8'}});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='composio_100_apps_filtered.csv';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    tip('CSV downloaded');
+  }}
   chips.forEach(c=>c.addEventListener('click',()=>{{
     quick=c.dataset.q; chips.forEach(x=>x.classList.toggle('on',x===c));
-    build.value=''; access.value=''; apply();
+    build.value=''; access.value=''; cat.value=''; apply();
     document.getElementById('matrix').scrollIntoView({{behavior:'smooth'}});
   }}));
   q.addEventListener('input',apply);
-  build.addEventListener('change',()=>{{quick='all';chips.forEach(x=>x.classList.toggle('on',x.dataset.q==='all'));apply()}});
-  access.addEventListener('change',()=>{{quick='all';chips.forEach(x=>x.classList.toggle('on',x.dataset.q==='all'));apply()}});
+  function resetQuick(){{quick='all';chips.forEach(x=>x.classList.toggle('on',x.dataset.q==='all'));apply()}}
+  build.addEventListener('change',resetQuick);
+  access.addEventListener('change',resetQuick);
+  cat.addEventListener('change',resetQuick);
   document.getElementById('reset').addEventListener('click',()=>{{
-    q.value='';build.value='';access.value='';quick='all';
+    q.value='';build.value='';access.value='';cat.value='';quick='all';
     chips.forEach(x=>x.classList.toggle('on',x.dataset.q==='all')); apply(); tip('Filters reset');
   }});
+  document.getElementById('csv').addEventListener('click',downloadCsv);
   document.querySelectorAll('[data-nav]').forEach(a=>a.addEventListener('click',e=>{{
     e.preventDefault();
     const id=a.getAttribute('href').slice(1);
     document.getElementById(id)?.scrollIntoView({{behavior:'smooth'}});
     document.querySelectorAll('[data-nav]').forEach(n=>n.classList.toggle('on',n===a));
   }}));
+  const sections=['patterns','plan','matrix','agent','proof','verification'];
+  const navs=[...document.querySelectorAll('[data-nav]')];
+  const spy=()=>{{
+    let cur='patterns';
+    for(const id of sections){{
+      const el=document.getElementById(id);
+      if(el && el.getBoundingClientRect().top<=120) cur=id;
+    }}
+    navs.forEach(n=>n.classList.toggle('on',n.getAttribute('href')==='#'+cur));
+  }};
+  window.addEventListener('scroll',spy,{{passive:true}});
+  spy();
   document.getElementById('copy').addEventListener('click',async()=>{{
     const t=document.getElementById('cmds').innerText;
     try{{await navigator.clipboard.writeText(t)}}catch{{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}}
