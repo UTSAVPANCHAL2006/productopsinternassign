@@ -1,0 +1,2666 @@
+{
+  "meta": {
+    "pass": "final",
+    "source": "/Users/utsav/Desktop/ops intern assignment/output/results_verified.json",
+    "pass3_report": "/Users/utsav/Desktop/ops intern assignment/verification/pass3_corrections.json",
+    "finished_at": "2026-09-16T20:11:34",
+    "accuracy_story": {
+      "pass1": "LLM structure over fetched docs",
+      "pass2_verify": "stratified sample re-fetch field scoring",
+      "pass3": "deterministic MCP sanitizer + curated human corrections"
+    }
+  },
+  "results": [
+    {
+      "id": 1,
+      "name": "Salesforce",
+      "category": "CRM and Sales",
+      "one_liner": "Enterprise CRM platform with a broad REST and SOAP API surface for CRM objects and automation.",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Connected Apps / Dev Edition orgs are self-serve; production customer installs often need admin approval.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "OAuth Connected App + sandbox setup friction; many customers require admin install approval.",
+      "evidence_urls": [
+        "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm",
+        "https://developer.salesforce.com/docs"
+      ],
+      "confidence": 0.85,
+      "human_needed": true,
+      "human_reason": "Primary doc URL returned 403 to the fetcher; corrected from known Salesforce REST OAuth docs.",
+      "raw_notes": "Developer documentation URLs returned 403 errors; only marketing site content available describing product features but no technical API details. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 2,
+      "name": "HubSpot",
+      "category": "CRM and Sales",
+      "one_liner": "HubSpot provides a CRM and sales platform with APIs to manage contacts and other CRM objects.",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Developers need a HubSpot developer account and app; users must be Super Admin to install apps. OAuth 2.0 Authorization Code grant is used for authentication.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found about a Managed Control Plane (MCP) or similar platform.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.hubspot.com/docs/api-reference/latest/overview",
+        "https://developers.hubspot.com/docs/apps/legacy-apps/authentication/oauth-quickstart-guide"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "OAuth 2.0 is well documented; API is REST with versioning; no explicit mention of MCP or partner gating; access model appears self-serve with free developer accounts. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 3,
+      "name": "Pipedrive",
+      "category": "CRM and Sales",
+      "one_liner": "Pipedrive is a sales CRM and pipeline management software that helps businesses track leads, manage deals, automate sales processes, and gain real-time sales insights.",
+      "auth_methods": [
+        "API key",
+        "OAuth2"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Pipedrive offers a 14-day free trial with no credit card required; API tokens can be obtained manually from the Pipedrive app; sandbox accounts are available for testing.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "Pipedrive has a Marketplace with 500+ integrations including Facebook, Zapier, Xero, Trello, Zoom, and more. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.pipedrive.com/docs/api/v1",
+        "https://www.pipedrive.com/"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "API is RESTful with JSON output; supports OAuth2 and API token authentication; broad API coverage of CRM features; official client libraries available; marketplace with many integrations. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 4,
+      "name": "Attio",
+      "category": "CRM and Sales",
+      "one_liner": "Attio is a flexible, data-driven CRM with a modern REST API, App SDK, SQL, and MCP for AI tools.",
+      "auth_methods": [
+        "OAuth2",
+        "API key"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Developer workspace + OAuth apps are self-serve from Attio developer docs.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Attio documents an MCP surface to manage the workspace from Claude/ChatGPT/other AI tools.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.attio.com/docs/overview",
+        "https://docs.attio.com/"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Auth methods and access model details are not explicitly stated in the overview doc; assumed broad API support due to REST API, SDK, MCP, and SQL query capabilities. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 5,
+      "name": "Twenty",
+      "category": "CRM and Sales",
+      "one_liner": "Twenty is an open-source, customizable CRM platform that enables technical teams to build and adapt enterprise CRM solutions rapidly with AI-assisted tools and extensibility.",
+      "auth_methods": [
+        "OAuth2",
+        "None / CLI local"
+      ],
+      "access_model": "open_source_local",
+      "access_notes": "Twenty is open-source and can be self-hosted for full control, or used as a managed cloud service with a free trial and paid plans.",
+      "api_type": "SDK+MCP",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Every Cloud workspace ships with a native MCP server allowing AI assistants to read and write CRM data via OAuth.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://twenty.com"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "No direct API docs found (404), but extensive evidence from the main site and code snippets show SDK usage, MCP server, OAuth support, and open-source self-hosting. Some details on API protocols inferred from SDK and MCP mentions. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 6,
+      "name": "Podio",
+      "category": "CRM and Sales",
+      "one_liner": "Podio is a flexible work management platform that enables building customizable digital workspaces, automating workflows, and integrating with third-party tools via a comprehensive API.",
+      "auth_methods": [
+        "API key"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Users need a Podio account to generate API keys from their account settings; the platform offers no-code tools and pre-built templates with trial and paid plans.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a multi-channel platform (MCP) or marketplace for third-party apps within the provided documentation.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.podio.com/",
+        "https://podio.com"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "API is well documented with client libraries and webhook support; authentication is via API key; platform supports extensive customization and integration. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 7,
+      "name": "Zoho CRM",
+      "category": "CRM and Sales",
+      "one_liner": "Zoho CRM is a sales CRM software that provides AI-powered automation and flexible RESTful APIs to manage CRM data and workflows.",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Zoho CRM offers a flexible free trial and pay-as-you-go monthly or yearly plans with no contracts or commitments.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a marketplace partner program (MCP) or partner toolkit.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://www.zoho.com/crm/developer/docs/api/v6/",
+        "https://www.zoho.com/en-in/crm/"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication method inferred as OAuth2 based on typical Zoho API usage; no explicit mention in docs. No mention of MCP or partner toolkit. API is RESTful with broad capabilities including metadata, entity CRUD, bulk, notification, and query APIs. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 8,
+      "name": "Close",
+      "category": "CRM and Sales",
+      "one_liner": "Close is a sales CRM that automates calling, emailing, texting, pipeline management, and sales workflows with an AI sales agent named Chloe.",
+      "auth_methods": [
+        "OAuth2",
+        "API key"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Close offers a free trial with no credit card required; developers can create OAuth apps to build integrations.",
+      "api_type": "REST+MCP",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Close provides a Model Context Protocol (MCP) server for AI agents to access Close data directly with no code required.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developer.close.com/",
+        "https://close.com"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The Close developer platform supports REST API with OAuth2 and API keys, webhooks, and MCP server for AI agents. The product offers a free trial and has broad API coverage including CRM data push, sync, automation, and AI agent integration. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 9,
+      "name": "Copper",
+      "category": "CRM and Sales",
+      "one_liner": "Copper is a CRM software that integrates tightly with Google Workspace to manage customer relationships, sales pipelines, and projects.",
+      "auth_methods": [
+        "API key"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Copper offers a free 14-day trial with instant activation and no credit card required; API access is available via their developer API with documentation and Postman collections.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a marketplace or MCP for Copper.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developer.copper.com/",
+        "https://www.copper.com/"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "API is RESTful with JSON responses; authentication method is not explicitly stated but typical for REST APIs is API key; no explicit mention of OAuth2 or other methods; broad API coverage claimed; no MCP found. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 10,
+      "name": "DealCloud",
+      "category": "CRM and Sales",
+      "one_liner": "DealCloud provides a CRM and sales platform with a comprehensive API for managing data, users, files, reports, and more.",
+      "auth_methods": [
+        "API key",
+        "Authorization Token",
+        "Bearer token"
+      ],
+      "access_model": "paid_plan_required",
+      "access_notes": "The documentation references API keys and authorization tokens, implying controlled access likely tied to paid plans; no explicit mention of free or trial self-serve access.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "DealCloud MCP Server is announced with client preview starting July 2026, indicating an upcoming MCP platform. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://api.docs.dealcloud.com/",
+        "https://api.docs.dealcloud.com"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The API documentation is extensive and detailed, covering many endpoints and SDKs. Authentication is via API keys and tokens. MCP is upcoming but not yet released. Access model is inferred as paid due to API key usage and no mention of free tiers. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 11,
+      "name": "Zendesk",
+      "category": "Support and Helpdesk",
+      "one_liner": "Zendesk is an AI-first customer service platform that enables managing and resolving customer and employee requests across multiple channels with AI-powered automation and ticketing.",
+      "auth_methods": [
+        "OAuth2",
+        "API key",
+        "Bearer token"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Zendesk offers a 14-day free trial with no credit card required; pricing scales with usage and features.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a multi-channel platform (MCP) specifically branded or offered by Zendesk in the provided docs.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developer.zendesk.com/api-reference/",
+        "https://www.zendesk.com/in/#georedirect"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Zendesk APIs are REST-based and cover a broad range of support and helpdesk capabilities including ticketing, chat, voice, AI agents, and integrations. Authentication methods include OAuth2, API keys, and bearer tokens. The platform is self-serve with a free trial. No explicit mention of MCP or GraphQL APIs in the evidence. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 12,
+      "name": "Intercom",
+      "category": "Support and Helpdesk",
+      "one_liner": "Intercom provides a fully-featured AI-powered helpdesk and developer platform with SDKs and REST APIs to build apps that extend and integrate Intercom's customer support capabilities.",
+      "auth_methods": [
+        "OAuth2",
+        "PAT / token"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Developers can sign up for a free development workspace to build and test apps; public apps require OAuth setup and review; private apps can be built with Access Tokens without review; Intercom offers a 14-day free trial for the helpdesk product.",
+      "api_type": "REST+SDK+MCP",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Intercom supports the Model Context Protocol (MCP) as part of its developer platform, enabling advanced AI agent integrations.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.intercom.com/docs",
+        "https://www.intercom.com/"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Intercom provides OAuth and Access Tokens for authentication, a broad set of REST APIs and SDKs, and supports MCP. Public apps require review, private apps do not. Pricing and trial info is clear. No major blockers identified. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 13,
+      "name": "Freshdesk",
+      "category": "Support and Helpdesk",
+      "one_liner": "Freshdesk is a cloud-based customer support platform offering RESTful APIs to manage tickets, contacts, agents, and other helpdesk resources.",
+      "auth_methods": [
+        "Basic"
+      ],
+      "access_model": "paid_plan_required",
+      "access_notes": "API rate limits and access depend on the paid plan; trial users have limited API calls per minute. Additional API calls can be purchased.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "Freshdesk offers MCP (Multi-Channel Platform) to connect AI tools and apps with Freshdesk, enabling integration of customer data into workflows and automation at scale. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.freshdesk.com/api/",
+        "https://www.freshworks.com/freshdesk/"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication method is Basic Auth as per API docs; no explicit mention of OAuth2 or PAT. Access is gated by paid plans with rate limits. MCP is confirmed from marketing site. API is REST with broad coverage of helpdesk features. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 14,
+      "name": "Front",
+      "category": "Support and Helpdesk",
+      "one_liner": "Front is a customer service platform that unifies team conversations, AI assistance, and multi-channel communication to streamline complex customer operations.",
+      "auth_methods": [
+        "OAuth2",
+        "API key"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Developers can create a free developer account to access a developer environment for building and testing apps; publishing apps to the public App Store requires a developer account and following partnership guidelines.",
+      "api_type": "REST+MCP+SDK",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Front offers an MCP Server protocol allowing AI agents like Claude and ChatGPT to read and reply to conversations and other Front resources.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://dev.frontapp.com/docs/welcome",
+        "https://front.com"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication methods are inferred from typical API usage and developer docs mention developer accounts; exact auth schemes not explicitly detailed but OAuth2 and API key are common. API types include Core API (REST), MCP Server, Plugin SDK, Channels API, and Chat Widget. Access model is self-serve free developer accounts with optional partnership for public apps. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 15,
+      "name": "Pylon",
+      "category": "Support and Helpdesk",
+      "one_liner": "Pylon is a B2B support platform with AI agents and product/account context integrations.",
+      "auth_methods": [
+        "API key",
+        "OAuth2"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "The website encourages booking demos and registering for webinars, indicating a sales-gated or partner-gated access model rather than self-serve free or trial.",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "mcp_existing": true,
+      "mcp_notes": "Product docs reference Model Context Protocol for agent context.",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Docs surface still thin vs Zendesk/Intercom \u2014 confirm auth scopes before shipping toolkit.",
+      "evidence_urls": [
+        "https://docs.usepylon.com/",
+        "https://usepylon.com"
+      ],
+      "confidence": 0.7,
+      "human_needed": true,
+      "human_reason": "Authentication details and API specifics are not clearly documented; human review needed to confirm integration feasibility and auth methods.",
+      "raw_notes": "Pylon supports multiple channels and integrations, uses MCP for context sharing, but lacks explicit API auth method details and clear self-serve access options. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 16,
+      "name": "LiveAgent",
+      "category": "Support and Helpdesk",
+      "one_liner": "LiveAgent is an all-in-one customer service platform combining AI-powered help desk, live chat, ticketing, call center, and social media integrations to automate and streamline customer support.",
+      "auth_methods": [
+        "API key"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "LiveAgent offers a 30-day free trial with no setup fee and no credit card required; paid plans are available after trial.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a multi-channel platform (MCP) or agent toolkit specifically for Composio integration.",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "API documentation pages are partially missing or 404; some API details are available but incomplete, requiring further verification.",
+      "evidence_urls": [
+        "https://www.liveagent.com/",
+        "https://support.liveagent.com/"
+      ],
+      "confidence": 0.7,
+      "human_needed": true,
+      "human_reason": "API documentation is incomplete or partially missing (404 error on main API doc page), so full API capabilities and integration details are unclear.",
+      "raw_notes": "LiveAgent supports REST API with API keys; broad helpdesk features including AI chatbot and social media integrations; API docs partially missing or outdated; no explicit partner approval or SDK info found. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 17,
+      "name": "Plain",
+      "category": "Support and Helpdesk",
+      "one_liner": "Plain is an API-first B2B support platform with a GraphQL API for threads, customers, and AI agents.",
+      "auth_methods": [
+        "API key",
+        "Bearer token"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "API keys with permissions; workspace signup is self-serve for builders.",
+      "api_type": "GraphQL",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Plain docs recommend an MCP server path for agent access to the GraphQL API.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://www.plain.com/docs",
+        "https://www.plain.com/docs/graphql"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Access model is not explicitly stated; assumed broad API coverage since the app is API-first and everything the UI can do is available via GraphQL. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 18,
+      "name": "Help Scout",
+      "category": "Support and Helpdesk",
+      "one_liner": "Help Scout is a customer support platform that provides tools for managing support conversations, live chat, help docs, and customer portals with AI assistance and automation.",
+      "auth_methods": [
+        "OAuth2",
+        "API key"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Help Scout offers a free start and demo options, indicating self-serve trial access; developer docs are publicly available for API usage.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a multi-channel platform (MCP) or marketplace integration.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developer.helpscout.com/",
+        "https://www.helpscout.com/"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "API documentation is comprehensive with multiple APIs (Inbox, Chat, Docs, Webhooks). Auth methods are not explicitly stated but OAuth2 and API key are typical for such platforms. No explicit mention of MCP or marketplace. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 19,
+      "name": "Gorgias",
+      "category": "Support and Helpdesk",
+      "one_liner": "Gorgias is an ecommerce helpdesk with REST APIs; private apps use API keys, public apps require OAuth2.",
+      "auth_methods": [
+        "API key",
+        "OAuth2",
+        "Basic"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "API keys from Settings \u2192 REST API for private apps; public marketplace apps must use OAuth2.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a multi-channel platform (MCP) offering; the product is a helpdesk with AI and integrations but no explicit MCP.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.gorgias.com/reference/authentication",
+        "https://developers.gorgias.com/docs/access-tokens-api-keys"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "Authentication details and exact API access methods are not explicitly stated; confirmation needed on auth and build process.",
+      "raw_notes": "API documentation exists but auth methods are not specified; public app submission requires approval; private apps can be used without approval; platform tightly integrated with Shopify and AI; no explicit mention of MCP. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 20,
+      "name": "Gladly",
+      "category": "Support and Helpdesk",
+      "one_liner": "Gladly is a customer service / conversational commerce platform with a developer API.",
+      "auth_methods": [
+        "API key",
+        "OAuth2"
+      ],
+      "access_model": "partner_or_sales_gated",
+      "access_notes": "No explicit information on authentication methods or access model from the provided developer site or marketing site.",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "mcp_existing": false,
+      "mcp_notes": "No mention of a multi-channel platform (MCP) or similar in the evidence; focus is on REST APIs and Chat SDK.",
+      "buildability": "needs_outreach",
+      "main_blocker": "Developer access typically tied to Gladly customer/partner onboarding.",
+      "evidence_urls": [
+        "https://developer.gladly.com/"
+      ],
+      "confidence": 0.65,
+      "human_needed": true,
+      "human_reason": "Authentication details and access model are not clearly stated; need human to verify integration requirements and partner approval status.",
+      "raw_notes": "Gladly offers REST APIs and Chat SDK for integration, with broad capabilities for customer service and commerce. Authentication and access details are not specified in the docs or marketing site. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 21,
+      "name": "Slack",
+      "category": "Communications and Messaging",
+      "one_liner": "Slack provides a platform for team communication and collaboration through messaging, workflows, and integrations.",
+      "auth_methods": [
+        "OAuth2",
+        "PAT / token"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Developers can create Slack apps and authenticate via OAuth 2.0 to access workspace data; Slack CLI requires login to a workspace.",
+      "api_type": "REST+SDK+CLI",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found for a managed control plane (MCP) or partner program gating access.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.slack.dev/authentication/",
+        "https://docs.slack.dev/"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Slack supports OAuth 2.0 authentication with tokens and provides SDKs and CLI tools for app development. Access is self-serve with free tiers. No explicit mention of MCP or partner gating. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 22,
+      "name": "Twilio",
+      "category": "Communications and Messaging",
+      "one_liner": "Twilio provides a broad set of REST APIs and SDKs to build communication applications enabling messaging, voice calls, video, email, and customer engagement across multiple channels.",
+      "auth_methods": [
+        "Basic",
+        "API key",
+        "Bearer token"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Twilio offers self-serve access with free trial options and paid plans for expanded usage; no explicit mention of admin or partner gating in the docs.",
+      "api_type": "REST+SDK",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "Twilio Marketplace allows seamless integration of third-party partner technologies into Twilio applications. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://www.twilio.com/docs/usage/api",
+        "https://www.twilio.com/docs"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication methods are inferred from standard Twilio API usage (Basic Auth, API keys, Bearer tokens). Access model is based on typical Twilio self-serve trial and paid plans. MCP presence confirmed via Marketplace mention. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 23,
+      "name": "Zoho Cliq",
+      "category": "Communications and Messaging",
+      "one_liner": "Zoho Cliq is a team chat and communication software that streamlines business communication and collaboration through chats, channels, calls, meetings, and integrations.",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Zoho Cliq offers a 15-day free trial and self-serve signup; no explicit mention of partner or sales gating for API access.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a marketplace or MCP integration platform.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://www.zoho.com/cliq/help/restapi/v2/introduction/#overview",
+        "https://www.zoho.com/cliq/"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "API is RESTful with OAuth2 authentication; broad API coverage including users, chats, messages, channels, reminders, files, bots, events, and more. Access model is self-serve with free trial. No explicit mention of MCP or partner gating. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 24,
+      "name": "Lark (Larksuite)",
+      "category": "Communications and Messaging",
+      "one_liner": "Larksuite (Lark) is a collaboration suite with an open platform REST APIs for messaging, docs, and SSO.",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Create apps in Lark Open Platform; OAuth authorization code + access tokens.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of existing MCP integration or marketplace presence.",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Docs are region/app-console oriented; crawler often blocked \u2014 human verified open.larksuite.com OAuth docs.",
+      "evidence_urls": [
+        "https://open.larksuite.com/document/common-capabilities/sso/api/obtain-oauth-code",
+        "https://open.larksuite.com/document/"
+      ],
+      "confidence": 0.85,
+      "human_needed": true,
+      "human_reason": "No usable API documentation or partner info found; requires human research or outreach to confirm API capabilities and access.",
+      "raw_notes": "Attempted to access open.larksuite.com but no usable docs found; authentication, API type, and access model remain unknown. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 25,
+      "name": "Pumble",
+      "category": "Communications and Messaging",
+      "one_liner": "Pumble is a free business communication tool that enables team messaging, channels, video calls, and integrations with an API for sending messages and managing channels.",
+      "auth_methods": [
+        "API key"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Pumble offers a free forever plan with unlimited users and channels; API access requires installing an API addon and generating API keys within the workspace.",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "mcp_existing": true,
+      "mcp_notes": "Pumble provides an MCP server to optimize collaboration with AI agents, including summarizing conversations and automating updates.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/",
+        "https://pumble.com"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "API is REST-based with API keys; full Swagger docs available but not included here. MCP server exists for AI agent collaboration. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 26,
+      "name": "Discord",
+      "category": "Communications and Messaging",
+      "one_liner": "Discord is a communication platform that enables group chat, voice, and video interactions primarily for gaming and community building.",
+      "auth_methods": [
+        "OAuth2",
+        "Bearer token"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Developers can build bots and apps using Discord's developer platform with self-serve access; no explicit mention of paid plans or partner gating for API access.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No mention of a multi-channel platform (MCP) or similar aggregator platform in the documentation.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.discord.com/developers/intro",
+        "https://discord.com"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Discord developer docs mention building bots and apps with OAuth2 and bearer tokens; API type is REST-based. Access appears self-serve and free. No explicit mention of MCP or GraphQL. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 27,
+      "name": "Telegram",
+      "category": "Communications and Messaging",
+      "one_liner": "Telegram provides APIs for building bots, custom clients, and sending verification codes via Telegram messages.",
+      "auth_methods": [
+        "PAT / token"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Bot API uses unique authentication tokens given when a bot is created; APIs are free to use for developers.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence of a multi-channel platform (MCP) from the provided documents.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://core.telegram.org/bots/api",
+        "https://core.telegram.org"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The Bot API is a RESTful HTTPS interface using token-based authentication. Telegram also offers TDLib for custom clients and a Gateway API for sending verification codes. No mention of OAuth2 or other auth methods. Access is self-serve and free. No MCP or partner gating indicated. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 28,
+      "name": "WhatsApp Business",
+      "category": "Communications and Messaging",
+      "one_liner": "Meta WhatsApp Cloud API for business messaging, templates, and webhooks.",
+      "auth_methods": [
+        "OAuth2",
+        "Bearer token"
+      ],
+      "access_model": "admin_approval",
+      "access_notes": "Meta developer app is self-serve to start, but WhatsApp Business / Business Manager verification and phone-number onboarding add approval gates.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "The platform supports partner solutions and Tech Provider onboarding to scale WhatsApp Business Platform usage. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Business verification + WABA setup; not a one-click API key.",
+      "evidence_urls": [
+        "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started"
+      ],
+      "confidence": 0.85,
+      "human_needed": true,
+      "human_reason": "Hand check: pass1 called it self_serve_free; corrected to admin_approval / caveats.",
+      "raw_notes": "The documentation clearly describes the setup, authentication, API usage, and partner programs. Access is self-serve via Meta developer portal with no mention of mandatory paid plans. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 29,
+      "name": "Aircall",
+      "category": "Communications and Messaging",
+      "one_liner": "Aircall is an AI-powered customer communications platform that enables team-led, AI-assisted, and AI-led voice and messaging interactions integrated with business tools.",
+      "auth_methods": [
+        "API key",
+        "OAuth2",
+        "Bearer token"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Developers can start building with Aircall's developer platform and publish apps; a free trial is available for the main platform.",
+      "api_type": "REST+MCP+SDK",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "Aircall provides an MCP (Multi-Channel Platform) for AI Virtual Agents to handle calls, pull context, take actions mid-call, and escalate to humans. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developer.aircall.io/",
+        "https://aircall.io"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The developer site clearly documents REST API, MCP, webhooks, and Embed SDK. The main site confirms AI agents and assistants with integrations and developer guides. Auth methods are not explicitly listed but typical for such platforms include API key, OAuth2, and Bearer token. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 30,
+      "name": "Vonage",
+      "category": "Communications and Messaging",
+      "one_liner": "Vonage provides a suite of communication APIs enabling developers to send messages, make calls, and manage communications via virtual numbers and other channels.",
+      "auth_methods": [
+        "Basic",
+        "JWT"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Users sign up for an account to get API key and secret; free credits are provided initially and can be topped up for paid usage.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a multi-call provider (MCP) platform or marketplace.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developer.vonage.com/en/getting-started/overview"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication uses Basic or JWT; APIs are RESTful with OpenAPI specs; broad coverage of communication channels; no explicit mention of MCP. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 31,
+      "name": "Google Ads",
+      "category": "Marketing, Ads, Email and Social",
+      "one_liner": "The Google Ads API is a programmatic interface for managing large or complex Google Ads accounts and campaigns, enabling automated account management, custom reporting, ad management, and Smart Bidding strategy management.",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "The API is intended for developers comfortable with writing code and managing their own software infrastructure; no mention of paid plans or sales gating was found.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found that Google Ads API is part of a multi-channel platform (MCP).",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.google.com/google-ads/api/docs/get-started/introduction",
+        "https://developers.google.com/google-ads"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Auth method OAuth2 is inferred from typical Google API usage though not explicitly stated in the provided text; no explicit mention of API type but Google Ads API is known to be REST-based. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 32,
+      "name": "Meta Ads",
+      "category": "Marketing, Ads, Email and Social",
+      "one_liner": "The Meta Marketing API enables developers to create, manage, and optimize ad campaigns across Meta technologies including Facebook, Instagram, Messenger, and WhatsApp.",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Developers can get started by following documentation and using the API without explicit mention of paid plans or partner gating; typical for Meta developer APIs is OAuth2 authentication.",
+      "api_type": "Graph API",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No mention of a managed control plane (MCP) or similar management platform in the documentation.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.facebook.com/documentation/ads-commerce/marketing-api"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The documentation clearly describes the Marketing API as a set of Graph API endpoints for ad campaign management. Authentication is not explicitly stated but OAuth2 is standard for Meta APIs. No explicit mention of paid plans or partner gating, so self-serve free is assumed. MCP presence is not indicated. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 33,
+      "name": "LinkedIn Ads",
+      "category": "Marketing, Ads, Email and Social",
+      "one_liner": "LinkedIn Ads provides APIs to create and manage marketing campaigns, target audiences, track performance, manage leads, and gain audience insights on LinkedIn.",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access_model": "partner_or_sales_gated",
+      "access_notes": "API access requires application and approval through LinkedIn Marketing API Program; integration requirements are specified for various API segments.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No mention of a Managed Control Plane (MCP) or similar platform in the documentation.",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Access requires approval and adherence to integration requirements; not openly self-serve.",
+      "evidence_urls": [
+        "https://learn.microsoft.com/en-us/linkedin/marketing/?view=li-lms-2026-09"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The documentation clearly describes OAuth2 authentication and REST APIs for broad marketing functions. Access is gated and requires approval, so buildability is ready with caveats. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 34,
+      "name": "GoHighLevel",
+      "category": "Marketing, Ads, Email and Social",
+      "one_liner": "GoHighLevel is an all-in-one CRM / marketing automation platform for agencies with public REST integrations APIs.",
+      "auth_methods": [
+        "OAuth2",
+        "API key"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Developer app + OAuth documented on Stoplight; agency/sub-account credentials via GHL account.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Fetcher could not reliably scrape Stoplight JS docs; human opened highlevel.stoplight.io.",
+      "evidence_urls": [
+        "https://highlevel.stoplight.io/docs/integrations/",
+        "https://marketplace.gohighlevel.com/"
+      ],
+      "confidence": 0.75,
+      "human_needed": true,
+      "human_reason": "Pass1/2 fetch failed; browser/WebFetch confirmed Stoplight integration docs exist.",
+      "raw_notes": "Attempted to access highlevel.stoplight.io and related docs but no usable API info was found. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 35,
+      "name": "Mailchimp",
+      "category": "Marketing, Ads, Email and Social",
+      "one_liner": "Mailchimp provides APIs to manage marketing campaigns, audiences, transactional emails, and commerce integrations for businesses.",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Creating a Mailchimp account is the first step to accessing their APIs and developer tools; no mention of sales gating or partner approval required.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a Mailchimp MCP (Marketplace) or similar partner program for app distribution beyond integration partner program.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://mailchimp.com/developer/marketing/",
+        "https://mailchimp.com/developer/"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The API is well documented and supports OAuth2 authentication. The Marketing API is REST-based. There is no explicit mention of API keys or other auth methods in the provided text. The access model appears self-serve with free account creation. No direct mention of MCP or marketplace for apps, only an Integration Partner Program. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 36,
+      "name": "Klaviyo",
+      "category": "Marketing, Ads, Email and Social",
+      "one_liner": "Klaviyo provides APIs and SDKs to build personalized marketing experiences, custom integrations, and reporting tools for businesses.",
+      "auth_methods": [
+        "API key",
+        "Other"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Developers can get started for free, create test accounts, and use SDKs and Postman collections without apparent gating.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No mention of a marketplace or managed partner program in the provided docs.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.klaviyo.com/en"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication details are not explicitly stated but implied via standard API key or token methods; no explicit OAuth2 mention. API is REST-based with SDKs in multiple languages. No explicit MCP or partner gating found. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 37,
+      "name": "systeme.io",
+      "category": "Marketing, Ads, Email and Social",
+      "one_liner": "systeme.io is an all-in-one platform for building sales funnels, email marketing, online courses, and managing online businesses.",
+      "auth_methods": [
+        "API key"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Users can generate an API key from their profile settings in the systeme.io dashboard to access the public API; the platform offers a free account with no credit card required.",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a marketplace or MCP integration.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developer.systeme.io/reference/api",
+        "https://systeme.io"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "API is RESTful with authentication via API key header; documentation is comprehensive and publicly available; no mention of OAuth or other auth methods; no MCP found. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 38,
+      "name": "Pinterest",
+      "category": "Marketing, Ads, Email and Social",
+      "one_liner": "Pinterest API enables developers to integrate with Pinterest to plan content, manage ads, upload product feeds, and analyze data.",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Developers can get started directly via the Pinterest Developers site without explicit mention of paid plans or sales gating.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found for a multi-channel platform (MCP) offering.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.pinterest.com"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The documentation indicates a broad REST API with OAuth2 authentication and self-serve access; no explicit mention of MCP or paid gating. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 39,
+      "name": "Threads (Meta)",
+      "category": "Marketing, Ads, Email and Social",
+      "one_liner": "The Threads API enables developers to build integrations to manage Threads presence, create posts, retrieve media, moderate replies, and access insights for creators and brands.",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Developers can create and customize a Meta app with the Threads API use case in the App Dashboard, implying self-serve access without explicit mention of paid plans or sales gating.",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "mcp_existing": false,
+      "mcp_notes": "No mention of an MCP (multi-channel platform) integration or existing MCP support in the documentation.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.facebook.com/documentation/threads"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The documentation is comprehensive and detailed about API endpoints and use cases, but does not explicitly mention pricing or partner gating; inferred self-serve free access from app dashboard customization. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 40,
+      "name": "SendGrid",
+      "category": "Marketing, Ads, Email and Social",
+      "one_liner": "SendGrid provides a REST API to send email at scale, manage marketing campaigns, contacts, and monitor email statistics.",
+      "auth_methods": [
+        "API key"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Users can start for free and then upgrade to paid plans; documentation and pricing are publicly available.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a multi-channel platform (MCP) capability; focus is on email sending and marketing campaigns.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://www.twilio.com/docs/sendgrid/api-reference",
+        "https://www.twilio.com/en-us/sendgrid"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Auth method inferred as API key from typical SendGrid usage; no explicit mention of OAuth2 or other methods in provided docs. MCP status unclear but likely false as focus is email only. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 41,
+      "name": "Shopify",
+      "category": "Ecommerce",
+      "one_liner": "Shopify provides comprehensive APIs and tools to build, customize, and extend ecommerce stores and experiences across admin, storefront, checkout, and more.",
+      "auth_methods": [
+        "OAuth2",
+        "API key",
+        "Bearer token"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Developers can self-serve by creating developer accounts and apps using Shopify CLI and developer tools; no explicit mention of paid plans required for API access.",
+      "api_type": "REST+GraphQL+SDK+CLI",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "Shopify has a Partner API to manage apps, payouts, and organizations without the Partner Dashboard UI, indicating an existing MCP. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://shopify.dev/docs/api",
+        "https://shopify.dev/docs"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Shopify supports multiple API types including REST Admin API (legacy), GraphQL Admin API, SDKs in multiple languages, and CLI tools. Authentication methods include OAuth2 and API keys. Access is self-serve with extensive documentation and tooling. MCP exists via Partner API. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 42,
+      "name": "WooCommerce",
+      "category": "Ecommerce",
+      "one_liner": "WooCommerce provides a REST API that connects your store to external systems and services, allowing data retrieval and management via API keys.",
+      "auth_methods": [
+        "API key"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "API keys are generated by the merchant from the WooCommerce settings; the core WooCommerce plugin is free and self-serve.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No mention of a managed commerce platform (MCP) or marketplace for integrations in the evidence.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://woocommerce.com/document/woocommerce-rest-api/"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The documentation clearly describes REST API usage with API keys and permissions; no unclear points detected. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 43,
+      "name": "BigCommerce",
+      "category": "Ecommerce",
+      "one_liner": "BigCommerce provides a commerce platform with REST and GraphQL APIs to manage storefronts, products, orders, customers, and integrations.",
+      "auth_methods": [
+        "Bearer token",
+        "API key"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Users can sign up for a free trial sandbox store to test API calls and build integrations without affecting live data.",
+      "api_type": "REST+GraphQL",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "BigCommerce supports MCP (Marketplace Connector Protocol) for AI agent setup and integration with third-party AI tools like Cursor, Claude, or Codex. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.bigcommerce.com/developer/api-reference/rest/admin/catalog/brands",
+        "https://docs.bigcommerce.com/developer/docs/overview/quick-start"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication uses bearer tokens and API keys; APIs include REST and GraphQL with broad coverage; sandbox trial available; MCP integration supported. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 44,
+      "name": "Salesforce Commerce Cloud",
+      "category": "Ecommerce",
+      "one_liner": "Salesforce B2C Commerce (Commerce Cloud) exposes SCAPI / commerce APIs for storefront and admin commerce operations.",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access_model": "paid_plan_required",
+      "access_notes": "Requires a B2C Commerce instance / Account Manager credentials; not a free hobby sandbox.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No information on existing MCP integration found.",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Needs a Commerce Cloud tenant; docs are public but credentials are customer/partner gated.",
+      "evidence_urls": [
+        "https://developer.salesforce.com/docs/commerce/commerce-api/guide",
+        "https://developer.salesforce.com/docs/commerce"
+      ],
+      "confidence": 0.8,
+      "human_needed": true,
+      "human_reason": "Pass1 fetch failed on generic commerce URL; human verified SCAPI guide.",
+      "raw_notes": "No usable docs fetched; attempted developer.salesforce.com/docs/commerce but no API details available. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 45,
+      "name": "Magento (Adobe Commerce)",
+      "category": "Ecommerce",
+      "one_liner": "Adobe Commerce (Magento) provides a comprehensive ecommerce platform with REST, GraphQL, and SOAP APIs for integration and customization.",
+      "auth_methods": [
+        "OAuth 1.0a",
+        "PAT / token",
+        "login credentials"
+      ],
+      "access_model": "admin_approval",
+      "access_notes": "Access to APIs requires creating integrations and assigning resource permissions via the Admin panel; token-based authentication requires creating a web services user in Admin.",
+      "api_type": "REST+GraphQL",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a marketplace or MCP for third-party apps; focus is on API integrations and extensions.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developer.adobe.com/commerce/webapi/get-started/",
+        "https://developer.adobe.com/commerce/"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication methods are clearly documented; API types include REST, GraphQL, and SOAP; no mention of webhooks or MCP; access requires admin setup. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 46,
+      "name": "Squarespace",
+      "category": "Ecommerce",
+      "one_liner": "Squarespace provides Commerce APIs to manage customer contacts, orders, products, inventory, and transactions for ecommerce storefronts.",
+      "auth_methods": [
+        "OAuth2",
+        "API key",
+        "Bearer token"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "APIs require OAuth website scopes or API key scopes; documentation and developer platform are publicly accessible for self-serve integration.",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "mcp_existing": false,
+      "mcp_notes": "Squarespace has a marketplace to reach its global customer base and supports app creation and integration via its developer platform. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.squarespace.com/commerce-apis/contacts",
+        "https://developers.squarespace.com"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Comprehensive REST API documentation for contacts and commerce management; clear auth methods and developer platform presence. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 47,
+      "name": "Ecwid",
+      "category": "Ecommerce",
+      "one_liner": "Ecwid is an ecommerce platform with REST APIs; custom apps use Bearer secret tokens, public apps use OAuth2.",
+      "auth_methods": [
+        "Bearer token",
+        "OAuth2"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Store custom app secret/public tokens self-serve; public apps use OAuth install flow.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No mention of a marketplace or MCP in the provided documentation.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.ecwid.com/get-started/make-your-first-api-request",
+        "https://api-docs.ecwid.com/"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "Insufficient detail on authentication methods and access model; no explicit partner or marketplace info.",
+      "raw_notes": "The docs describe many API features including REST endpoints for orders, payments, shipping, discounts, and JS APIs for storefront customization. However, no explicit auth method or access model is detailed. MCP or marketplace presence is not mentioned. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 48,
+      "name": "Gumroad",
+      "category": "Ecommerce",
+      "one_liner": "Gumroad is a creator commerce platform with a REST OAuth API for products, sales, and licenses.",
+      "auth_methods": [
+        "OAuth2",
+        "Bearer token"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Register an OAuth application in Gumroad settings; personal access tokens can be generated for own-account use.",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence of existing MCP integration found.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://gumroad.com/api",
+        "https://gumroad.com/help/article/280-create-application-api"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "Pass1 fetch failed; human verified gumroad.com/api OAuth docs.",
+      "raw_notes": "Attempted to access gumroad.com/api but no usable docs found; only a hint URL available. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 49,
+      "name": "Amazon Selling Partner",
+      "category": "Ecommerce",
+      "one_liner": "Amazon Selling Partner API (SP-API) enables developers to create applications for sellers and vendors to manage their Amazon selling operations.",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access_model": "partner_or_sales_gated",
+      "access_notes": "The API is intended for developers creating applications for Amazon selling partners, which implies a registration and approval process; third-party provider registration is mentioned.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No explicit mention of MCP (Multi-Channel Platform) integration or support in the provided documentation.",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Requires Amazon Selling Partner / developer registration and approval \u2014 public docs exist, credentials are gated.",
+      "evidence_urls": [
+        "https://developer-docs.amazon.com/sp-api/docs"
+      ],
+      "confidence": 0.85,
+      "human_needed": true,
+      "human_reason": "Partner-gated access cannot be 'ready_today' without caveats.",
+      "raw_notes": "The documentation is comprehensive and publicly available, describing a broad set of REST APIs with OAuth2 authorization. Access requires registration and approval, typical for partner-gated APIs. No explicit MCP support was found in the evidence. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 50,
+      "name": "fanbasis",
+      "category": "Ecommerce",
+      "one_liner": "Fanbasis is a creator ecommerce / monetization platform (funnels, community, payments).",
+      "auth_methods": [
+        "API key"
+      ],
+      "access_model": "paid_plan_required",
+      "access_notes": "The platform offers enterprise features, APIs, and SDKs indicating paid plans are required; no explicit mention of free tier or trial found.",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "mcp_existing": false,
+      "mcp_notes": "MCP (Multi-Channel Platform) beta is available to run Commas from AI assistants, create checkout links, issue refunds, and pull numbers in plain English. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Public docs thin; product naming/docs surface needs human confirmation for full toolkit scope.",
+      "evidence_urls": [
+        "https://fanbasis.com/"
+      ],
+      "confidence": 0.55,
+      "human_needed": true,
+      "human_reason": "Agent hallucinated product name 'Commas'; corrected one-liner + confidence down.",
+      "raw_notes": "No direct mention of fanbasis.com or its integration; evidence is about Commas platform only. Auth methods inferred from API and SDK mentions but not explicitly detailed. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 51,
+      "name": "DataForSEO",
+      "category": "Data, SEO and Scraping",
+      "one_liner": "DataForSEO provides SEO/SERP data APIs (keyword, backlinks, on-page) over REST.",
+      "auth_methods": [
+        "Basic"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Free account signup; API login + generated API password via Basic Auth header.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No mention of a multi-channel platform (MCP) or marketplace integration found in the documentation.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.dataforseo.com/v3/auth/",
+        "https://docs.dataforseo.com/v3/"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "Authentication method is not clearly described; confirmation needed to ensure correct integration approach.",
+      "raw_notes": "The API is REST-based with broad SEO data coverage and client libraries in multiple languages. Access includes a free trial. Authentication details are unclear from the provided docs. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 52,
+      "name": "SE Ranking",
+      "category": "Data, SEO and Scraping",
+      "one_liner": "SE Ranking provides a comprehensive SEO and AEO data API for automating SEO workflows, including keyword research, backlink monitoring, domain analysis, site audits, and AI search visibility.",
+      "auth_methods": [
+        "API key"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "API access is included with every SE Ranking subscription plan and can be tested during a free trial; pay-as-you-go and add-ons are also available.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "SE Ranking offers an MCP server that connects its data directly to AI assistants like Claude, Codex, Gemini, Cursor, enabling conversational queries without code.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://seranking.com/api.html"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The API is well documented and accessible via API key included in subscriptions; MCP server is also available for AI assistant integration. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 53,
+      "name": "Ahrefs",
+      "category": "Data, SEO and Scraping",
+      "one_liner": "Ahrefs provides APIs to access marketing and search data for SEO analysis, backlink research, rank tracking, and brand monitoring.",
+      "auth_methods": [
+        "OAuth2",
+        "API key"
+      ],
+      "access_model": "paid_plan_required",
+      "access_notes": "API access requires an Enterprise plan for full usage; free test queries are available without Enterprise plan.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "Ahrefs offers MCP (Marketing Connect Platform) to connect their data to AI assistants and agents, including integrations with Claude and ChatGPT. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.ahrefs.com"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Documentation clearly states REST API with OAuth2 and API key authentication, paid plan required, and MCP integration available. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 54,
+      "name": "MrScraper",
+      "category": "Data, SEO and Scraping",
+      "one_liner": "MrScraper is an AI-powered web scraping platform that automates data extraction from websites using customizable agents and APIs.",
+      "auth_methods": [
+        "PAT / token"
+      ],
+      "access_model": "paid_plan_required",
+      "access_notes": "Users create API tokens for authentication and use subscription plans with token usage and billing cycles.",
+      "api_type": "REST+SDK+MCP+CLI",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "MrScraper supports the Model Context Protocol (MCP) server allowing AI agents to fetch and extract web data.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.mrscraper.com/docs/getting-started/overview"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Documentation clearly describes API tokens, multiple SDKs (Python, Node.js, LangChain), CLI, MCP server, and broad scraping features. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 55,
+      "name": "Apify",
+      "category": "Data, SEO and Scraping",
+      "one_liner": "Apify provides a RESTful API and SDKs to run, manage, and monitor web scraping and automation Actors on its platform.",
+      "auth_methods": [
+        "Bearer token",
+        "API key",
+        "Other"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "API token is required for private resources and recommended for authentication; public Actors can be accessed without a token. Agentic payments are supported for AI agents without an Apify account.",
+      "api_type": "REST+SDK",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Apify supports MCP (Model Context Protocol) for AI agents and LLMs via the Apify MCP server.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.apify.com/api/v2",
+        "https://docs.apify.com"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The API is well documented with REST endpoints and SDKs for multiple languages; authentication is via bearer token or API key; MCP support is explicitly mentioned. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 56,
+      "name": "Firecrawl",
+      "category": "Data, SEO and Scraping",
+      "one_liner": "Firecrawl is a web data API that enables AI agents and developers to search, scrape, and interact with live web content at scale, delivering clean, LLM-ready data.",
+      "auth_methods": [
+        "None / CLI local",
+        "API key",
+        "Bearer token"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Users can start scraping and searching without an API key but need to create a free account and add an API key for higher rate limits and full access.",
+      "api_type": "REST+SDK+CLI+MCP",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Firecrawl supports the Model Context Protocol (MCP) to connect with AI tools and agents, enabling seamless integration.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.firecrawl.dev/introduction",
+        "https://www.firecrawl.dev/"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Clear documentation and examples show multiple SDKs, CLI, REST API, and MCP support with a free tier and API key for higher limits. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 57,
+      "name": "Bright Data",
+      "category": "Data, SEO and Scraping",
+      "one_liner": "Bright Data provides a comprehensive web data infrastructure platform offering scraping APIs, proxy networks, datasets, and AI tools for real-time and historical web data extraction and access.",
+      "auth_methods": [
+        "API key",
+        "Bearer token"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Offers 5,000 free credits per month with no credit card required; users can start for free and upgrade to paid plans for more usage.",
+      "api_type": "REST+SDK+MCP+CLI",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Bright Data provides an MCP server for live web access for agents, with SDKs and CLI tools supporting integration.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.brightdata.com/introduction",
+        "https://brightdata.com"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication is via API keys and bearer tokens; multiple API types including REST, SDKs, MCP server, and CLI are documented; free tier available; MCP server explicitly supported. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 58,
+      "name": "Sherlock",
+      "category": "Data, SEO and Scraping",
+      "one_liner": "Sherlock is a CLI tool to find social media accounts by username across 400+ social networks.",
+      "auth_methods": [
+        "None / CLI local"
+      ],
+      "access_model": "open_source_local",
+      "access_notes": "Sherlock is an open source CLI tool installed and run locally; no authentication required.",
+      "api_type": "CLI",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No mention of a managed control plane or hosted API service; tool runs locally via CLI.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://github.com/sherlock-project/sherlock"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "All evidence from official GitHub repo; no API or hosted service, purely CLI tool. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 59,
+      "name": "Waterfall.io",
+      "category": "Data, SEO and Scraping",
+      "one_liner": "Waterfall.io provides a B2B data solution offering verified contact and company intelligence via a REST API for prospecting, enrichment, and job change detection.",
+      "auth_methods": [
+        "API key"
+      ],
+      "access_model": "paid_plan_required",
+      "access_notes": "API access requires an API key; pricing is usage-based with no monthly commitments; direct sales contact recommended for enterprise needs.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a marketplace connector platform (MCP) integration.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://www.waterfall.io/",
+        "https://docs.waterfall.io/v1/introduction"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "API is well documented with multiple endpoints for contact and company data; authentication via API key; pricing and access require paid plans. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 60,
+      "name": "Clay",
+      "category": "Data, SEO and Scraping",
+      "one_liner": "Clay provides a platform to build agentic workflows that integrate data from 200+ providers, automate GTM plays, and enrich CRM data for sales and marketing teams.",
+      "auth_methods": [
+        "API key",
+        "Other"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Users can start a free trial and build workflows; setup involves coding agents via API and CLI plugins.",
+      "api_type": "REST+CLI",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "Clay offers a Marketplaces for data from 200+ providers and includes MCP features for reps to track job changes and promotions. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://www.clay.com/",
+        "https://university.clay.com/"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Auth methods are inferred from mention of API and CLI plugins; exact auth schemes not explicitly detailed. API type includes REST and CLI. Access model is self-serve with trial. MCP is confirmed. Overall evidence is strong from official site and university docs. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 61,
+      "name": "GitHub",
+      "category": "Developer, Infra and Data platforms",
+      "one_liner": "GitHub REST API enables creating integrations, retrieving data, and automating workflows with GitHub.",
+      "auth_methods": [
+        "OAuth2",
+        "Bearer token",
+        "PAT / token",
+        "Basic"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "The API is publicly documented and accessible; authentication increases rate limits and endpoint access.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found for a managed control plane (MCP) or similar platform.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.github.com/en/rest",
+        "https://docs.github.com/en/rest/authentication"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication methods are well documented; no explicit mention of MCP or sales gating; access model inferred from public docs. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 62,
+      "name": "Vercel",
+      "category": "Developer, Infra and Data platforms",
+      "one_liner": "Vercel provides a REST API to programmatically interact with Vercel accounts, projects, deployments, and related infrastructure for frontend teams.",
+      "auth_methods": [
+        "Bearer token",
+        "OAuth2"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Personal access tokens from Vercel dashboard; team tokens for team scope.",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "mcp_existing": false,
+      "mcp_notes": "No mention of MCP (Managed Connector Platform) or similar in the evidence.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://vercel.com/docs/rest-api"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The API is clearly REST and broad in scope, covering many areas like deployments, access groups, networking, billing, etc. However, no explicit auth or pricing/access model details were found. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 63,
+      "name": "Netlify",
+      "category": "Developer, Infra and Data platforms",
+      "one_liner": "Netlify provides a REST API to manage site deployments, form submissions, DNS, and other site-related operations.",
+      "auth_methods": [
+        "OAuth2",
+        "PAT / token",
+        "Bearer token"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Users can generate personal access tokens (PAT) for API access; OAuth2 is required for public integrations. The API is accessible via HTTPS with rate limits.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found for a multi-call provider (MCP) or similar abstraction layer.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The API is well documented with examples, authentication methods, rate limits, and deployment workflows. No unclear points detected. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 64,
+      "name": "Cloudflare",
+      "category": "Developer, Infra and Data platforms",
+      "one_liner": "Cloudflare provides a comprehensive REST API for managing accounts, organizations, tokens, zones, load balancers, and more within its developer and infrastructure platform.",
+      "auth_methods": [
+        "API key",
+        "Bearer token",
+        "PAT / token"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "API documentation and libraries are publicly available; no indication of sales gating or admin approval required for API access.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a Managed Control Plane (MCP) interface or similar abstraction.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.cloudflare.com/api/"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Extensive REST API endpoints documented; multiple official SDKs available; no explicit mention of OAuth2 but tokens and API keys are used for authentication. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 65,
+      "name": "Supabase",
+      "category": "Developer, Infra and Data platforms",
+      "one_liner": "Supabase provides a complete backend platform including a Postgres database, authentication, storage, realtime capabilities, and serverless functions, accessible via REST APIs and client libraries.",
+      "auth_methods": [
+        "OAuth2",
+        "Bearer token",
+        "PAT / token"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Supabase offers self-serve access with free tiers and paid plans; API access requires authentication via personal access tokens or OAuth2 tokens.",
+      "api_type": "REST+GraphQL",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "Supabase provides a Management API for programmatic management of organizations and projects, with OAuth2 support for third-party apps. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://supabase.com/docs/reference/api/introduction",
+        "https://supabase.com/docs"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The documentation clearly describes authentication methods, API types, and management API capabilities. Access model is inferred from docs and pricing references. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 66,
+      "name": "Neo4j",
+      "category": "Developer, Infra and Data platforms",
+      "one_liner": "Neo4j is a graph database with HTTP/Bolt APIs for Cypher queries and Aura cloud management APIs.",
+      "auth_methods": [
+        "Basic",
+        "Bearer token"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Aura free tier / local Neo4j; HTTP auth typically basic or token depending on deployment.",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of MCP support or related protocols.",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "HTTP API is legacy vs drivers/Query API \u2014 prefer official drivers for production toolkits.",
+      "evidence_urls": [
+        "https://neo4j.com/docs/http-api/current/",
+        "https://neo4j.com/docs/"
+      ],
+      "confidence": 0.85,
+      "human_needed": false,
+      "human_reason": "Authentication details and current preferred API usage (Query API) are unclear; HTTP API is deprecated, so further confirmation needed.",
+      "raw_notes": "The HTTP API is deprecated and replaced by the Query API, but no direct documentation on the Query API was found. Authentication methods are not specified in the HTTP API docs. The access model is inferred from Aura cloud offering free and paid plans. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 67,
+      "name": "Snowflake",
+      "category": "Developer, Infra and Data platforms",
+      "one_liner": "Snowflake is a cloud data platform with a SQL REST API and drivers for warehouses and data apps.",
+      "auth_methods": [
+        "OAuth2",
+        "Key pair",
+        "PAT / token"
+      ],
+      "access_model": "paid_plan_required",
+      "access_notes": "Trial accounts exist but ongoing warehouse use is paid; auth via OAuth/keypair/programmatic access tokens.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found about a managed connector platform (MCP) integration.",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Needs a Snowflake account/warehouse (paid after trial) and careful auth setup.",
+      "evidence_urls": [
+        "https://docs.snowflake.com/en/developer-guide/sql-api/index"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication supports OAuth and Key Pair (likely a form of key-based auth). Access model details are not explicitly stated in the docs provided. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 68,
+      "name": "MongoDB Atlas",
+      "category": "Developer, Infra and Data platforms",
+      "one_liner": "MongoDB Atlas provides a comprehensive Administration API and related tools to programmatically manage Atlas clusters, projects, users, and deployments.",
+      "auth_methods": [
+        "API key",
+        "Other"
+      ],
+      "access_model": "paid_plan_required",
+      "access_notes": "Atlas Administration API requires authentication and is used to manage Atlas resources; data access requires database user credentials. The product is a paid cloud service.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No explicit mention of a multi-call pattern (MCP) or batch API; mostly REST endpoints for administrative tasks.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://www.mongodb.com/docs/atlas/api/atlas-admin-api/",
+        "https://www.mongodb.com/docs/atlas/api/"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication is described but exact auth schemes are not fully detailed; likely API key or similar token-based auth. The API is RESTful and broad in scope covering many administrative functions. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 69,
+      "name": "Datadog",
+      "category": "Developer, Infra and Data platforms",
+      "one_liner": "Datadog provides a comprehensive monitoring and analytics platform with APIs to integrate, collect, and manage infrastructure, application, and security data.",
+      "auth_methods": [
+        "OAuth2",
+        "API key"
+      ],
+      "access_model": "paid_plan_required",
+      "access_notes": "Datadog APIs require authentication via API keys or OAuth2 tokens; usage typically requires a paid account.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "Datadog has MCP tools and an internal developer portal referenced in the docs, indicating existing MCP support. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.datadoghq.com/api/latest/"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The documentation is extensive and clearly indicates REST APIs with OAuth2 and API key authentication. MCP tools are mentioned but details are limited. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 70,
+      "name": "Sentry",
+      "category": "Developer, Infra and Data platforms",
+      "one_liner": "Sentry provides a web API to programmatically access and manage account-level resources and data on the Sentry platform.",
+      "auth_methods": [
+        "PAT / token"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "API tokens can be created by users; no explicit mention of paid plan requirement for API access in the provided docs.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No mention of a multi-channel platform (MCP) or similar in the documentation.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.sentry.io/api/"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication is via tokens; API is REST-based and covers many resource types including organizations, teams, projects, events, releases, etc. No explicit mention of OAuth2 or other auth methods. Access model appears self-serve with token creation tutorials. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 71,
+      "name": "Notion",
+      "category": "Productivity and Project Management",
+      "one_liner": "Notion provides a RESTful API to access and manipulate pages, databases, and users within Notion workspaces.",
+      "auth_methods": [
+        "Bearer token",
+        "PAT / token",
+        "OAuth2"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "API access requires creating connections in the Developer portal; supports internal connections with installation tokens, personal access tokens (PATs), and public connections via OAuth2. Workspace admin or owner permissions are required to create connections and share pages.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "Notion has a public Marketplace where apps can be listed; connection listing details are managed separately through the Listings section in the Developer portal. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.notion.com/reference/intro",
+        "https://developers.notion.com/guides/get-started/authorization"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authorization supports internal connections, PATs, and OAuth2 public connections; API is RESTful with JSON; broad endpoint coverage including pages, databases, users, comments, views, and search. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 72,
+      "name": "Airtable",
+      "category": "Productivity and Project Management",
+      "one_liner": "Airtable provides a structured data platform with APIs and MCP server enabling AI agents to query, update, and build bases through natural language and programmatic interfaces.",
+      "auth_methods": [
+        "OAuth2",
+        "None / CLI local"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Users can connect Airtable to AI tools like Claude and ChatGPT via OAuth; CLI tools are installed locally via npm without explicit auth details in evidence.",
+      "api_type": "MCP+CLI",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Airtable MCP server exposes full base structure and allows agents to query, update, and build bases with context-aware decisions; supports skills plugins for enhanced workflows.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://airtable.com/developers/agents"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Evidence clearly describes MCP server, OAuth integration, CLI tool, and broad capabilities for AI agents. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 73,
+      "name": "Linear",
+      "category": "Productivity and Project Management",
+      "one_liner": "Linear is an issue tracking / project management tool with a GraphQL API for teams and agents.",
+      "auth_methods": [
+        "OAuth2",
+        "API key"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Personal API keys and OAuth apps available from Linear developer docs.",
+      "api_type": "GraphQL",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No mention of a multi-channel platform or marketplace for third-party apps.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.linear.app/docs"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The API supports GraphQL and a TypeScript SDK, with OAuth2 and API keys for authentication. Access model details are not specified in the evidence. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 74,
+      "name": "Jira",
+      "category": "Productivity and Project Management",
+      "one_liner": "Jira provides a comprehensive REST API to programmatically interact with Jira Cloud for building apps, integrations, and automations.",
+      "auth_methods": [
+        "OAuth2",
+        "Basic",
+        "JWT-based",
+        "REST API scopes"
+      ],
+      "access_model": "paid_plan_required",
+      "access_notes": "Jira Cloud REST API requires appropriate permissions and scopes; users typically need a paid Jira Cloud plan with API access enabled.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a Marketplace Connect Platform (MCP) integration or listing.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The Jira Cloud REST API v3 is well documented with multiple authentication methods and broad API coverage for Jira resources. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 75,
+      "name": "Asana",
+      "category": "Productivity and Project Management",
+      "one_liner": "Asana provides a developer platform to build apps that extend, integrate, and automate workflows within Asana using its REST API, webhooks, and app components.",
+      "auth_methods": [
+        "OAuth2",
+        "PAT / token"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Developers can create Personal Access Tokens (PAT) for testing or use OAuth2 for apps intended for broader distribution; a developer sandbox is available for testing premium features.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a managed control plane (MCP) or similar platform for app management beyond the developer console.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.asana.com/docs/overview",
+        "https://developers.asana.com"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The documentation clearly describes the REST API, OAuth and PAT authentication, app components, webhooks, and developer sandbox for testing. No mention of MCP or other API types. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 76,
+      "name": "Monday.com",
+      "category": "Productivity and Project Management",
+      "one_liner": "monday.com is a work OS that enables teams to create and customize workflows, collaborate, and manage projects with a flexible GraphQL API and agent integrations.",
+      "auth_methods": [
+        "OAuth2",
+        "API key",
+        "Other"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Admins and members have API tokens; guests use OAuth or shortLivedToken; viewers and some users cannot access API; free developer accounts available for testing.",
+      "api_type": "GraphQL",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "monday.com provides a Managed Connection Platform (MCP) for connecting agents and managing them programmatically, including hosted MCP URL and developer MCP for building and deploying apps. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developer.monday.com/api-reference/docs/basics",
+        "https://developer.monday.com"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication methods include API tokens and OAuth; API is GraphQL-based with broad coverage; MCP platform and developer tools are mature and documented. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 77,
+      "name": "ClickUp",
+      "category": "Productivity and Project Management",
+      "one_liner": "ClickUp provides a productivity and project management platform with a public API and MCP server to build integrations and connect AI assistants.",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "The API is public and documentation is openly available; users can get started with the API and MCP without indication of gating.",
+      "api_type": "REST+MCP",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "ClickUp offers an MCP server allowing AI assistants to use ClickUp directly, with setup instructions and tools provided.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developer.clickup.com"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The API is public with OAuth2 auth; MCP server is explicitly mentioned; documentation and spec are openly accessible. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 78,
+      "name": "Coda",
+      "category": "Productivity and Project Management",
+      "one_liner": "Coda is a docs-as-apps productivity platform with a REST API for docs, tables, and rows.",
+      "auth_methods": [
+        "Bearer token",
+        "API key"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "API usage is available free of charge to all users in both free and paid workspaces, subject to user role permissions in the workspace.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "There is a Superhuman Docs MCP server optimized for LLM usage patterns that exposes more granular methods for accessing and modifying data.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://coda.io/developers/apis/v1"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "Agent mislabeled product as Superhuman Docs; corrected.",
+      "raw_notes": "The API is well documented with extensive endpoints covering folders, docs, pages, tables, rows, permissions, publishing, analytics, and automations. Authentication is via Bearer token. The MCP server is mentioned as an advanced option for AI integrations. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 79,
+      "name": "Smartsheet",
+      "category": "Productivity and Project Management",
+      "one_liner": "Smartsheet is a work management platform with REST APIs and SDKs for sheets, rows, and automations.",
+      "auth_methods": [
+        "OAuth2",
+        "API key",
+        "Bearer token"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "No explicit information found about free trial or paid plan requirements; unclear if self-serve or gated.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "Smartsheet MCP Server and related tools are mentioned as part of the developer ecosystem.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://smartsheet.redoc.ly/",
+        "https://developers.smartsheet.com/"
+      ],
+      "confidence": 0.85,
+      "human_needed": false,
+      "human_reason": "MCP marketplace wording stripped; auth clarified from developer portal.",
+      "raw_notes": "Authentication is Basic HTTP per API docs; SDKs available for multiple languages; MCP server tools exist; access model not explicitly stated. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 80,
+      "name": "Harvest",
+      "category": "Productivity and Project Management",
+      "one_liner": "Harvest is a time tracking and invoicing software that helps teams track hours, bill clients, manage projects, and optimize team performance.",
+      "auth_methods": [
+        "Bearer token"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Harvest offers a free 30-day trial with no credit card required; paid plans are available after trial.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a multi-channel platform (MCP) integration or marketplace.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://help.getharvest.com/api-v2/",
+        "https://www.getharvest.com"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication is described as Bearer token in API docs; broad API coverage includes clients, projects, invoices, expenses, tasks, users, reports, and more. No mention of MCP or partner gating. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 81,
+      "name": "Stripe",
+      "category": "Finance and Fintech",
+      "one_liner": "Stripe provides a broad REST API for payment processing, billing, subscriptions, and financial services.",
+      "auth_methods": [
+        "API key",
+        "Basic",
+        "Bearer token"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Stripe offers sandbox (test) and live modes with separate API keys; users can create restricted API keys with fine-grained permissions; no explicit mention of admin approval or sales gating for API access.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a multi-channel platform (MCP) or marketplace platform integration.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.stripe.com/api",
+        "https://docs.stripe.com/keys"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Stripe API is well documented with REST endpoints, supports API key authentication including restricted keys and bearer tokens, and offers sandbox and live modes. No evidence of OAuth2 or other auth methods. No mention of MCP or partner gating. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 82,
+      "name": "Plaid",
+      "category": "Finance and Fintech",
+      "one_liner": "Plaid provides APIs to connect and retrieve financial data from users' bank accounts and other financial institutions for fintech applications.",
+      "auth_methods": [
+        "API key"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "API access requires creating an account on the Plaid Dashboard and obtaining client_id and secret; sandbox and production environments available with request for production access via dashboard.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Plaid MCP Server is mentioned as a research librarian tool for the API docs.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://plaid.com/docs/api/",
+        "https://plaid.com/docs/"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Plaid API is JSON over HTTP REST with broad financial data coverage including payments, identity, transactions, investments, liabilities, KYC, credit, income, and onboarding. Auth is via client_id and secret (API key style). MCP server exists for doc querying. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 83,
+      "name": "Binance",
+      "category": "Finance and Fintech",
+      "one_liner": "Binance spot/crypto exchange with extensive REST and WebSocket market + trading APIs.",
+      "auth_methods": [
+        "API key"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "API keys created in Binance account API Management; some endpoints need KYC / permissions.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of MCP integration.",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Account KYC + IP restrictions / trading permissions; docs moved to developers.binance.com (JS-walled for crawlers).",
+      "evidence_urls": [
+        "https://developers.binance.com/docs/binance-spot-api-docs",
+        "https://binance-docs.github.io/apidocs/spot/en/"
+      ],
+      "confidence": 0.8,
+      "human_needed": true,
+      "human_reason": "Old github.io docs redirect; crawler hit JS robot check; human confirmed public spot API docs.",
+      "raw_notes": "Attempted to fetch docs from binance-docs.github.io but no usable docs were retrieved. Binance is known for API key auth and REST APIs, but this is inferred, not confirmed here. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 84,
+      "name": "Paygent Connect",
+      "category": "Finance and Fintech",
+      "one_liner": "Paygent Connect is an NMI-powered payment gateway with REST/emulation APIs for card processing.",
+      "auth_methods": [
+        "API key",
+        "Security key"
+      ],
+      "access_model": "partner_or_sales_gated",
+      "access_notes": "Merchant/processor onboarding required; not a free public sandbox for arbitrary developers.",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "mcp_existing": false,
+      "mcp_notes": "Merchant Control Panel exists for creating API security keys and managing credentials. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "needs_outreach",
+      "main_blocker": "Needs merchant account / NMI partner relationship for credentials.",
+      "evidence_urls": [
+        "https://secure.nmi.com/merchants/resources/integration/integration_portal.php"
+      ],
+      "confidence": 0.75,
+      "human_needed": true,
+      "human_reason": "",
+      "raw_notes": "Integration supports multiple API methods including REST-like emulators for Authorize.Net AIM, SIM, and XML APIs; authentication uses API keys; access model details are not explicit but merchant control panel is available. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 85,
+      "name": "iPayX",
+      "category": "Finance and Fintech",
+      "one_liner": "Unclear what iPayX specifically does due to lack of accessible documentation.",
+      "auth_methods": [
+        "Unknown"
+      ],
+      "access_model": "unclear",
+      "access_notes": "No documentation or details found on access model or pricing.",
+      "api_type": "unknown",
+      "api_breadth": "unknown",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of MCP integration or support.",
+      "buildability": "not_viable_yet",
+      "main_blocker": "No accessible API documentation or technical details available.",
+      "evidence_urls": [
+        "https://www.ipayx.ai/docs",
+        "https://www.ipayx.ai/"
+      ],
+      "confidence": 0.1,
+      "human_needed": true,
+      "human_reason": "No usable documentation or evidence found; requires human research or outreach to clarify product capabilities and API details.",
+      "raw_notes": "Attempted to fetch docs from ipayx.ai/docs and homepage but no usable info found. No details on auth, API type, or access model. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 86,
+      "name": "QuickBooks",
+      "category": "Finance and Fintech",
+      "one_liner": "Intuit QuickBooks Online accounting platform with OAuth2 REST APIs for books, invoices, and payments.",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Intuit Developer account is self-serve; production apps go through Intuit app review.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of an MCP (Marketplace) integration or partner program details.",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "App review / production keys after sandbox development.",
+      "evidence_urls": [
+        "https://developer.intuit.com/app/developer/qbo/docs/get-started"
+      ],
+      "confidence": 0.85,
+      "human_needed": true,
+      "human_reason": "Docs fetch failed in pass1; corrected from Intuit developer get-started.",
+      "raw_notes": "Only URLs from developer.intuit.com were found but no usable docs retrieved; assumed OAuth2 and REST based on common QuickBooks API knowledge but not confirmed here. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 87,
+      "name": "Xero",
+      "category": "Finance and Fintech",
+      "one_liner": "Xero provides APIs and developer tools to build integrations and automations for small business accounting and finance.",
+      "auth_methods": [
+        "OAuth2",
+        "Client Credentials Grant"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Developers can sign up for a free account to build on the Xero platform; internal innovation is free for accountants and bookkeepers; certification and publishing require meeting certain criteria.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Xero offers an AI Toolkit including OpenAI Agents SDK, MCP Server, LangChain and prompt examples, indicating support for MCP.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developer.xero.com/documentation/getting-started-guide/",
+        "https://developer.xero.com"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication includes OAuth2 and client credentials grant; APIs are REST-based; MCP support is explicitly mentioned; access is self-serve with free developer accounts; certification needed for app store publishing. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 88,
+      "name": "Brex",
+      "category": "Finance and Fintech",
+      "one_liner": "Brex is a spend platform (cards, expenses, bill pay) with REST APIs for financial workflows.",
+      "auth_methods": [
+        "OAuth2",
+        "API key"
+      ],
+      "access_model": "partner_or_sales_gated",
+      "access_notes": "Developer docs are public; production access typically requires a Brex customer/partner relationship.",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "mcp_existing": false,
+      "mcp_notes": "Brex MCP is mentioned as part of the API offerings but no detailed description provided. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "needs_outreach",
+      "main_blocker": "Needs Brex business relationship for meaningful sandbox/production credentials.",
+      "evidence_urls": [
+        "https://developer.brex.com/"
+      ],
+      "confidence": 0.75,
+      "human_needed": true,
+      "human_reason": "",
+      "raw_notes": "Authentication method is not explicitly stated in the provided evidence. Access model details such as pricing or gating are unclear. MCP is mentioned but not detailed. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 89,
+      "name": "Ramp",
+      "category": "Finance and Fintech",
+      "one_liner": "Ramp corporate card and spend platform with developer APIs for transactions, bills, and users.",
+      "auth_methods": [
+        "OAuth2",
+        "API key"
+      ],
+      "access_model": "partner_or_sales_gated",
+      "access_notes": "Developer access typically requires a Ramp business account; some surfaces are partner-gated.",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found about an MCP or marketplace presence.",
+      "buildability": "needs_outreach",
+      "main_blocker": "Needs Ramp customer/partner relationship for meaningful sandbox credentials.",
+      "evidence_urls": [
+        "https://docs.ramp.com/"
+      ],
+      "confidence": 0.7,
+      "human_needed": true,
+      "human_reason": "Docs page is a JS shell for the crawler; human opened docs.ramp.com.",
+      "raw_notes": "Ramp docs page is a shell; no direct API details or auth methods found; unclear access model and API type. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 90,
+      "name": "PitchBook",
+      "category": "Finance and Fintech",
+      "one_liner": "PitchBook private-market data platform with a paid REST API for companies, deals, people, and funds.",
+      "auth_methods": [
+        "API key"
+      ],
+      "access_model": "partner_or_sales_gated",
+      "access_notes": "API is a separate paid contract from the PitchBook platform; keys/credits issued by PitchBook Direct Data / account manager \u2014 not self-serve free.",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of existing MCP integration.",
+      "buildability": "needs_outreach",
+      "main_blocker": "Standalone API contract + credits required; contact sales / account manager.",
+      "evidence_urls": [
+        "https://pitchbook.com/help/PitchBook-api",
+        "https://documenter.getpostman.com/view/5190535/TzCV1iRc",
+        "https://pitchbook.com/products/direct-access-data/api"
+      ],
+      "confidence": 0.9,
+      "human_needed": true,
+      "human_reason": "Agent fetch failed; human verified PitchBook help + Postman docs (PB-Token auth, contract-gated).",
+      "raw_notes": "Attempted to find API docs at pitchbook.com/products/data/platform-api and pitchbook.com but no usable docs were found. Only a hint that PitchBook offers a research API. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 91,
+      "name": "NotebookLM",
+      "category": "AI, Research and Media-native",
+      "one_liner": "Gemini Notebook Enterprise is an AI-powered research and knowledge assistant that helps summarize information, brainstorm ideas, and write with confidence, integrated within the Gemini Enterprise platform.",
+      "auth_methods": [
+        "OAuth2",
+        "API key"
+      ],
+      "access_model": "paid_plan_required",
+      "access_notes": "Gemini Enterprise and its editions require paid plans; documentation references multiple editions including Business, Standard, Plus, Pay-as-you-go, and Frontline editions.",
+      "api_type": "REST+RPC",
+      "api_breadth": "broad",
+      "mcp_existing": false,
+      "mcp_notes": "Gemini Enterprise Agent Platform is a fully-managed unified development platform allowing access, customization, tuning, and deployment of Gemini models at scale via API. | stripped: pass3 rejected weak/non-MCP wording",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.cloud.google.com/gemini/enterprise/docs",
+        "https://cloud.google.com/ai/gemini"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "No direct API docs for NotebookLM specifically, but Gemini Enterprise and Agent Platform provide APIs and SDKs for building with Gemini models; authentication methods inferred from Google Cloud standards. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 92,
+      "name": "Otter AI",
+      "category": "AI, Research and Media-native",
+      "one_liner": "Otter AI provides AI meeting transcription and notes; public REST docs are thin; MCP is marketed.",
+      "auth_methods": [
+        "Unknown"
+      ],
+      "access_model": "unclear",
+      "access_notes": "No documentation or API details found; unclear if API access is available or requires paid plan or approval.",
+      "api_type": "MCP",
+      "api_breadth": "unknown",
+      "mcp_existing": true,
+      "mcp_notes": "Assignment hint and Otter help reference an MCP server, but public auth/API docs remain thin.",
+      "buildability": "needs_outreach",
+      "main_blocker": "No clear self-serve developer API credentials page \u2014 outreach / partner path needed.",
+      "evidence_urls": [
+        "https://help.otter.ai/hc/en-us",
+        "https://otter.ai/"
+      ],
+      "confidence": 0.45,
+      "human_needed": true,
+      "human_reason": "No usable API documentation or authentication details found; requires human research or outreach to confirm API availability and access.",
+      "raw_notes": "Only a hint to MCP server at help.otter.ai; no API docs or auth info found; unclear if API is public or partner gated. | Composio SDK reachable; no definitive catalog hit for this app name. | mcp false-positive cleaned in pass3",
+      "pass_label": "corrected"
+    },
+    {
+      "id": 93,
+      "name": "Fathom",
+      "category": "AI, Research and Media-native",
+      "one_liner": "Fathom is an AI-powered meeting notetaker that automatically captures, summarizes, and generates actionable insights from meetings.",
+      "auth_methods": [
+        "OAuth2",
+        "API key"
+      ],
+      "access_model": "self_serve_free",
+      "access_notes": "Users can generate an API key and make calls quickly; also supports building public OAuth apps for other Fathom users to install. The product offers a free tier and paid plans.",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence found of a marketplace or multi-channel platform presence.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://developers.fathom.ai/",
+        "https://www.fathom.ai/"
+      ],
+      "confidence": 0.9,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "API docs mention OAuth and API keys; SDKs available in Typescript and Python; product is self-serve with free tier; no explicit mention of GraphQL or MCP; evidence supports REST API usage. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 94,
+      "name": "Consensus",
+      "category": "AI, Research and Media-native",
+      "one_liner": "Consensus is an AI-powered research tool that helps users find and filter research sources.",
+      "auth_methods": [
+        "Unknown"
+      ],
+      "access_model": "unclear",
+      "access_notes": "No clear information on API access or authentication methods from the provided evidence.",
+      "api_type": "unknown",
+      "api_breadth": "unknown",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence of a marketplace or partner program found.",
+      "buildability": "needs_outreach",
+      "main_blocker": "No API documentation or authentication details available publicly.",
+      "evidence_urls": [
+        "https://consensus.app/",
+        "https://consensus.app"
+      ],
+      "confidence": 0.3,
+      "human_needed": true,
+      "human_reason": "Insufficient public information on API availability, authentication, and access model; requires direct outreach or insider knowledge.",
+      "raw_notes": "Website shows product focus but no API or developer documentation; GitHub org 404; OAuth requested in hint but no confirmation in evidence. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 95,
+      "name": "Reducto",
+      "category": "AI, Research and Media-native",
+      "one_liner": "Reducto is an agentic document platform that provides production-grade document parsing, classification, extraction, editing, and workflow orchestration at enterprise scale.",
+      "auth_methods": [
+        "API key"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "API access is available immediately on the Standard tier pay-as-you-go plan; trials for Growth or Enterprise tiers require contact form submission and follow-up.",
+      "api_type": "REST+SDK+CLI+MCP",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Reducto integrates directly into AI agent workflows via the MCP server, CLI, and native SDKs; MCP server enables use in Claude Code, Codex, Cursor, and other MCP clients.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.reducto.ai/overview",
+        "https://reducto.ai"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Authentication method is inferred as API key from standard API usage; no explicit mention of OAuth2 or other methods. Access model is clear for Standard tier and trial tiers. API types include REST, SDKs (Python, Node.js, Go), CLI, and MCP server. MCP presence is explicitly confirmed. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 96,
+      "name": "Devin",
+      "category": "AI, Research and Media-native",
+      "one_liner": "Devin is an autonomous AI software engineer that can write, run, and test code, integrating with numerous external tools and data sources via the MCP protocol.",
+      "auth_methods": [
+        "OAuth2",
+        "API key",
+        "None / CLI local"
+      ],
+      "access_model": "paid_plan_required",
+      "access_notes": "Access requires signing up at app.devin.ai with Individual or Teams plans; some MCP integrations require organization admin permissions for setup.",
+      "api_type": "MCP",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Devin supports MCP (Model Context Protocol), an open protocol enabling integration with hundreds of external tools and data sources via three transport methods (STDIO, SSE, HTTP). MCP servers can be installed via plugins or added as custom MCP servers with various authentication methods including OAuth and API keys.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://docs.devin.ai/get-started/devin-intro",
+        "https://docs.devin.ai/work-with-devin/mcp"
+      ],
+      "confidence": 0.95,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Documentation clearly describes MCP integrations and auth methods; access requires paid plans but no unclear gating. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 97,
+      "name": "higgsfield",
+      "category": "AI, Research and Media-native",
+      "one_liner": "Higgsfield provides an AI-native creative suite enabling agents to generate high-quality images and videos using a CLI and MCP protocol integration.",
+      "auth_methods": [
+        "None / CLI local"
+      ],
+      "access_model": "paid_plan_required",
+      "access_notes": "Users authenticate via a browser login through the CLI; no API keys are required. Usage consumes credits from a paid Higgsfield plan.",
+      "api_type": "MCP+CLI",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Higgsfield uses the Model Context Protocol (MCP) to connect with multiple AI agents like Claude, OpenClaw, Hermes, and NemoClaw, enabling image and video generation and other creative tasks.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://higgsfield.ai/cli",
+        "https://higgsfield.ai"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Clear documentation on CLI installation, authentication, MCP integration, supported agents, models, and usage with a credit-based paid plan. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 98,
+      "name": "Mermaid CLI",
+      "category": "AI, Research and Media-native",
+      "one_liner": "Command line tool for the Mermaid library that converts Mermaid diagram definition files into SVG, PNG, or PDF files.",
+      "auth_methods": [
+        "None / CLI local"
+      ],
+      "access_model": "open_source_local",
+      "access_notes": "The tool is open source and installed locally via npm or Docker; no authentication is required.",
+      "api_type": "CLI",
+      "api_breadth": "narrow",
+      "mcp_existing": false,
+      "mcp_notes": "No evidence of a managed control plane or hosted API service; usage is local CLI or Docker container.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://github.com/mermaid-js/mermaid-cli"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "The product is a CLI tool for local use; no API or authentication is involved. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 99,
+      "name": "YouTube Transcript",
+      "category": "AI, Research and Media-native",
+      "one_liner": "TranscriptAPI provides a REST API and Model Context Protocol (MCP) integration to extract YouTube video transcripts, search videos, browse channels, and extract playlists at scale.",
+      "auth_methods": [
+        "Bearer token",
+        "API key"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Users create a TranscriptAPI account and get an API key on first use with 100 free credits; paid plans start at $5/month with included credits and top-ups.",
+      "api_type": "REST+MCP",
+      "api_breadth": "broad",
+      "mcp_existing": true,
+      "mcp_notes": "Supports Model Context Protocol integration for ChatGPT, Claude, Cursor, VS Code, and other AI clients, enabling seamless YouTube transcript and search access inside AI conversations.",
+      "buildability": "ready_today",
+      "main_blocker": "",
+      "evidence_urls": [
+        "https://transcriptapi.com/docs/",
+        "https://transcriptapi.com"
+      ],
+      "confidence": 1.0,
+      "human_needed": false,
+      "human_reason": "",
+      "raw_notes": "Clear documentation and examples show REST API and MCP support with straightforward auth and pricing. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "pass1"
+    },
+    {
+      "id": 100,
+      "name": "Grain",
+      "category": "AI, Research and Media-native",
+      "one_liner": "Grain is an AI meeting notetaker that records, transcribes, and shares meeting insights.",
+      "auth_methods": [
+        "OAuth2",
+        "API key"
+      ],
+      "access_model": "self_serve_trial",
+      "access_notes": "Grain offers a free forever plan with no credit card required and a 14-day free trial for paid seats; users can start recording in minutes.",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "mcp_existing": true,
+      "mcp_notes": "Grain documents MCP / AI assistant integrations on product help surfaces.",
+      "buildability": "ready_with_caveats",
+      "main_blocker": "Public API docs thinner than CRM/dev platforms; confirm scopes before toolkit build.",
+      "evidence_urls": [
+        "https://grain.com/",
+        "https://support.grain.com/"
+      ],
+      "confidence": 0.65,
+      "human_needed": true,
+      "human_reason": "",
+      "raw_notes": "Authentication methods are not explicitly detailed in the evidence; assumed standard but unclear. API type is MCP as explicitly mentioned. Access model is self-serve free with paid options. | Composio SDK reachable; no definitive catalog hit for this app name.",
+      "pass_label": "corrected"
+    }
+  ]
+}

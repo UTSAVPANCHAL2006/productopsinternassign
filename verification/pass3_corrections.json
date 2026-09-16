@@ -1,0 +1,799 @@
+{
+  "generated_at": "2026-09-16T20:11:34",
+  "mcp_existing_before": 44,
+  "mcp_existing_after": 23,
+  "mcp_false_positives_stripped": 21,
+  "mcp_stripped_ids": [
+    {
+      "id": 3,
+      "name": "Pipedrive",
+      "old_notes": "Pipedrive has a Marketplace with 500+ integrations including Facebook, Zapier, Xero, Trello, Zoom, and more."
+    },
+    {
+      "id": 4,
+      "name": "Attio",
+      "old_notes": "Attio offers an MCP (Manage via AI) allowing connection to AI tools like Claude and ChatGPT to manage the workspace."
+    },
+    {
+      "id": 10,
+      "name": "DealCloud",
+      "old_notes": "DealCloud MCP Server is announced with client preview starting July 2026, indicating an upcoming MCP platform."
+    },
+    {
+      "id": 13,
+      "name": "Freshdesk",
+      "old_notes": "Freshdesk offers MCP (Multi-Channel Platform) to connect AI tools and apps with Freshdesk, enabling integration of customer data into workflows and automation at scale."
+    },
+    {
+      "id": 22,
+      "name": "Twilio",
+      "old_notes": "Twilio Marketplace allows seamless integration of third-party partner technologies into Twilio applications."
+    },
+    {
+      "id": 28,
+      "name": "WhatsApp Business",
+      "old_notes": "The platform supports partner solutions and Tech Provider onboarding to scale WhatsApp Business Platform usage."
+    },
+    {
+      "id": 29,
+      "name": "Aircall",
+      "old_notes": "Aircall provides an MCP (Multi-Channel Platform) for AI Virtual Agents to handle calls, pull context, take actions mid-call, and escalate to humans."
+    },
+    {
+      "id": 41,
+      "name": "Shopify",
+      "old_notes": "Shopify has a Partner API to manage apps, payouts, and organizations without the Partner Dashboard UI, indicating an existing MCP."
+    },
+    {
+      "id": 43,
+      "name": "BigCommerce",
+      "old_notes": "BigCommerce supports MCP (Marketplace Connector Protocol) for AI agent setup and integration with third-party AI tools like Cursor, Claude, or Codex."
+    },
+    {
+      "id": 46,
+      "name": "Squarespace",
+      "old_notes": "Squarespace has a marketplace to reach its global customer base and supports app creation and integration via its developer platform."
+    },
+    {
+      "id": 50,
+      "name": "fanbasis",
+      "old_notes": "MCP (Multi-Channel Platform) beta is available to run Commas from AI assistants, create checkout links, issue refunds, and pull numbers in plain English."
+    },
+    {
+      "id": 53,
+      "name": "Ahrefs",
+      "old_notes": "Ahrefs offers MCP (Marketing Connect Platform) to connect their data to AI assistants and agents, including integrations with Claude and ChatGPT."
+    },
+    {
+      "id": 60,
+      "name": "Clay",
+      "old_notes": "Clay offers a Marketplaces for data from 200+ providers and includes MCP features for reps to track job changes and promotions."
+    },
+    {
+      "id": 65,
+      "name": "Supabase",
+      "old_notes": "Supabase provides a Management API for programmatic management of organizations and projects, with OAuth2 support for third-party apps."
+    },
+    {
+      "id": 69,
+      "name": "Datadog",
+      "old_notes": "Datadog has MCP tools and an internal developer portal referenced in the docs, indicating existing MCP support."
+    },
+    {
+      "id": 71,
+      "name": "Notion",
+      "old_notes": "Notion has a public Marketplace where apps can be listed; connection listing details are managed separately through the Listings section in the Developer portal."
+    },
+    {
+      "id": 76,
+      "name": "Monday.com",
+      "old_notes": "monday.com provides a Managed Connection Platform (MCP) for connecting agents and managing them programmatically, including hosted MCP URL and developer MCP for building and deploying apps."
+    },
+    {
+      "id": 84,
+      "name": "Paygent Connect",
+      "old_notes": "Merchant Control Panel exists for creating API security keys and managing credentials."
+    },
+    {
+      "id": 88,
+      "name": "Brex",
+      "old_notes": "Brex MCP is mentioned as part of the API offerings but no detailed description provided."
+    },
+    {
+      "id": 91,
+      "name": "NotebookLM",
+      "old_notes": "Gemini Enterprise Agent Platform is a fully-managed unified development platform allowing access, customization, tuning, and deployment of Gemini models at scale via API."
+    },
+    {
+      "id": 92,
+      "name": "Otter AI",
+      "old_notes": "Hint references help.otter.ai as MCP server, but no usable docs or API details found."
+    }
+  ],
+  "curated_human_corrections": [
+    {
+      "id": 1,
+      "name": "Salesforce",
+      "before": {
+        "one_liner": "Salesforce is a cloud-based AI-powered CRM platform that unifies sales, service, marketing, commerce, and IT to help businesses manage customer relationships and automate workflows.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "partner_or_sales_gated",
+        "access_notes": "Salesforce offers scalable CRM solutions with a free starter plan for small businesses but generally requires engagement with sales or partners for full platform access.",
+        "api_type": "unknown",
+        "api_breadth": "unknown",
+        "mcp_existing": false,
+        "mcp_notes": "No evidence found regarding a marketplace or MCP integration.",
+        "buildability": "needs_outreach",
+        "main_blocker": "No accessible developer or API documentation found; authentication and API details are unclear.",
+        "evidence_urls": [
+          "https://www.salesforce.com/in/?ir=1&bc=DB"
+        ],
+        "confidence": 0.3,
+        "human_needed": true,
+        "human_reason": "No accessible API or developer documentation; authentication methods and API details are not confirmed.",
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Attio",
+      "before": {
+        "one_liner": "Attio is a highly customizable, data-driven CRM platform that enables building powerful integrations, automations, and data pipelines.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "unclear",
+        "access_notes": "No explicit information on access model or pricing tiers found in the provided documentation overview.",
+        "api_type": "REST+SDK+MCP+SQL",
+        "api_breadth": "broad",
+        "mcp_existing": false,
+        "mcp_notes": "Attio offers an MCP (Manage via AI) allowing connection to AI tools like Claude and ChatGPT to manage the workspace. | stripped: pass3 rejected weak/non-MCP wording",
+        "buildability": "ready_today",
+        "main_blocker": "",
+        "evidence_urls": [
+          "https://docs.attio.com/docs/overview"
+        ],
+        "confidence": 0.8,
+        "human_needed": false,
+        "human_reason": "",
+        "pass_label": "corrected"
+      }
+    },
+    {
+      "id": 15,
+      "name": "Pylon",
+      "before": {
+        "one_liner": "Pylon is an agentic B2B support platform that automates and orchestrates customer support workflows across multiple channels using AI agents.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "partner_or_sales_gated",
+        "api_type": "MCP",
+        "api_breadth": "broad",
+        "mcp_existing": true,
+        "mcp_notes": "Pylon uses MCP (Model Context Protocol) to provide product and account intelligence to agents and teams, enabling integration with various data sources and tools.",
+        "buildability": "ready_with_caveats",
+        "main_blocker": "Authentication methods and detailed API documentation are unclear from the provided evidence.",
+        "evidence_urls": [
+          "https://docs.usepylon.com/pylon-docs",
+          "https://www.usepylon.com/"
+        ],
+        "confidence": 0.8,
+        "human_needed": true,
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 17,
+      "name": "Plain",
+      "before": {
+        "one_liner": "Plain is a B2B support platform that consolidates customer conversations from multiple channels into a single queue and provides a fully featured GraphQL API to automate workflows and build custom support solutions.",
+        "auth_methods": [
+          "Bearer token",
+          "API key"
+        ],
+        "access_model": "unclear",
+        "access_notes": "The documentation mentions API keys with specific permissions but does not clarify if the product or API access requires paid plans or is self-serve.",
+        "api_type": "GraphQL",
+        "api_breadth": "broad",
+        "mcp_existing": true,
+        "mcp_notes": "There is an MCP Server recommended for accessing the GraphQL API from an agent.",
+        "buildability": "ready_today",
+        "main_blocker": "",
+        "evidence_urls": [
+          "https://www.plain.com/docs/graphql/introduction",
+          "https://www.plain.com/docs/product/what-is-plain"
+        ],
+        "confidence": 0.9,
+        "human_needed": false,
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 19,
+      "name": "Gorgias",
+      "before": {
+        "one_liner": "Gorgias is a conversational AI platform and helpdesk for ecommerce that unifies AI and customer support with deep Shopify integration to automate and personalize customer interactions.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "partner_or_sales_gated",
+        "access_notes": "Public apps require joining the Developer Portal and approval before publishing in the App Store; private apps do not require approval. The platform is built for Shopify brands and involves a partnership process.",
+        "api_type": "REST",
+        "api_breadth": "broad",
+        "mcp_existing": false,
+        "buildability": "ready_with_caveats",
+        "main_blocker": "Authentication method and detailed API access requirements are unclear; developer portal signup and app approval process required for public apps.",
+        "evidence_urls": [
+          "https://developers.gorgias.com/",
+          "https://www.gorgias.com/"
+        ],
+        "confidence": 0.8,
+        "human_needed": true,
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 20,
+      "name": "Gladly",
+      "before": {
+        "one_liner": "Gladly is an agentic commerce platform that unifies customer service and sales through AI-powered chat and integrations, enabling personalized conversational commerce and support.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "unclear",
+        "api_type": "REST+SDK",
+        "api_breadth": "broad",
+        "mcp_existing": false,
+        "buildability": "ready_with_caveats",
+        "main_blocker": "Authentication methods and access model unclear; requires further investigation or outreach to confirm integration feasibility.",
+        "evidence_urls": [
+          "https://developer.gladly.com/",
+          "https://www.gladly.ai/"
+        ],
+        "confidence": 0.7,
+        "human_needed": true,
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 24,
+      "name": "Lark (Larksuite)",
+      "before": {
+        "one_liner": "Lark (Larksuite) is a communications and collaboration platform integrating messaging, video conferencing, calendar, and document collaboration.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "unclear",
+        "access_notes": "No accessible documentation found at open.larksuite.com to determine access model or authentication methods.",
+        "api_type": "unknown",
+        "api_breadth": "unknown",
+        "mcp_existing": false,
+        "buildability": "needs_outreach",
+        "main_blocker": "No accessible API documentation or details on authentication and access model.",
+        "evidence_urls": [
+          "https://open.larksuite.com"
+        ],
+        "confidence": 0.2,
+        "human_needed": true,
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 28,
+      "name": "WhatsApp Business",
+      "before": {
+        "one_liner": "WhatsApp Business Platform provides enterprise-grade APIs to send and receive WhatsApp messages, manage business accounts, and integrate messaging and calling features.",
+        "auth_methods": [
+          "Bearer token",
+          "PAT / token"
+        ],
+        "access_model": "self_serve_free",
+        "access_notes": "Developers create a Meta app with WhatsApp use case, connect a WhatsApp Business account, and generate access tokens (temporary and permanent) via system users in Business Settings; no explicit paid plan required to start.",
+        "api_type": "REST",
+        "api_breadth": "broad",
+        "mcp_existing": false,
+        "buildability": "ready_today",
+        "main_blocker": "",
+        "evidence_urls": [
+          "https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+          "https://developers.facebook.com/documentation/business-messaging/whatsapp/overview"
+        ],
+        "confidence": 1.0,
+        "human_needed": false,
+        "human_reason": "",
+        "pass_label": "corrected"
+      }
+    },
+    {
+      "id": 34,
+      "name": "GoHighLevel",
+      "before": {
+        "one_liner": "Unclear from available evidence; GoHighLevel is a marketing, ads, email, and social platform.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "unclear",
+        "access_notes": "No documentation or API details found at the provided hint URL or other sources.",
+        "api_type": "unknown",
+        "api_breadth": "unknown",
+        "mcp_existing": false,
+        "mcp_notes": "No evidence of existing MCP integration found.",
+        "buildability": "needs_outreach",
+        "main_blocker": "No accessible API documentation or integration details available.",
+        "evidence_urls": [],
+        "confidence": 0.1,
+        "human_needed": true,
+        "human_reason": "No usable API documentation or integration details found; requires human research or vendor contact.",
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 44,
+      "name": "Salesforce Commerce Cloud",
+      "before": {
+        "one_liner": "Unclear from available evidence; Salesforce Commerce Cloud is generally a cloud-based ecommerce platform for building online stores.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "unclear",
+        "access_notes": "No documentation or API details found at the provided developer.salesforce.com/docs/commerce URL or elsewhere in evidence.",
+        "api_type": "unknown",
+        "api_breadth": "unknown",
+        "mcp_existing": false,
+        "buildability": "needs_outreach",
+        "main_blocker": "Lack of accessible API documentation and integration details.",
+        "evidence_urls": [],
+        "confidence": 0.1,
+        "human_needed": true,
+        "human_reason": "No usable API or integration documentation found; human research needed to confirm capabilities and access model.",
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 47,
+      "name": "Ecwid",
+      "before": {
+        "one_liner": "Ecwid provides an ecommerce platform with APIs to customize stores, manage orders, payments, shipping, discounts, and storefront behavior.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "unclear",
+        "access_notes": "Documentation mentions app settings and public/private apps but does not specify access model or pricing clearly.",
+        "api_type": "REST",
+        "api_breadth": "broad",
+        "mcp_existing": false,
+        "buildability": "ready_with_caveats",
+        "main_blocker": "Authentication method and access model details are unclear from the provided docs.",
+        "evidence_urls": [
+          "https://docs.ecwid.com"
+        ],
+        "confidence": 0.6,
+        "human_needed": true,
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 48,
+      "name": "Gumroad",
+      "before": {
+        "one_liner": "Gumroad is an ecommerce platform that enables creators to sell products directly to customers.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "unclear",
+        "access_notes": "No accessible API documentation found; unclear if API access requires paid plan or other gating.",
+        "api_type": "unknown",
+        "api_breadth": "unknown",
+        "mcp_existing": false,
+        "buildability": "needs_outreach",
+        "main_blocker": "Lack of accessible API documentation and unclear authentication and access requirements.",
+        "evidence_urls": [
+          "https://gumroad.com/api"
+        ],
+        "confidence": 0.2,
+        "human_needed": true,
+        "human_reason": "No usable API documentation or details on authentication and access model; requires human research to confirm.",
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 49,
+      "name": "Amazon Selling Partner",
+      "before": {
+        "buildability": "ready_today",
+        "main_blocker": "",
+        "access_model": "partner_or_sales_gated",
+        "auth_methods": [
+          "OAuth2"
+        ],
+        "api_type": "REST",
+        "api_breadth": "broad",
+        "confidence": 0.9,
+        "human_needed": false,
+        "human_reason": "",
+        "pass_label": "pass1",
+        "evidence_urls": [
+          "https://developer-docs.amazon/sp-api/docs/welcome",
+          "https://developer-docs.amazon/sp-api"
+        ]
+      }
+    },
+    {
+      "id": 50,
+      "name": "fanbasis",
+      "before": {
+        "one_liner": "Commas is an all-in-one ecommerce platform that enables creators to build sales funnels, communities, courses, webinars, and accept payments including BNPL with embedded checkout and APIs.",
+        "auth_methods": [
+          "API key",
+          "Other"
+        ],
+        "access_model": "paid_plan_required",
+        "api_type": "REST",
+        "api_breadth": "broad",
+        "buildability": "ready_today",
+        "main_blocker": "",
+        "evidence_urls": [
+          "https://commas.com/"
+        ],
+        "confidence": 0.8,
+        "human_needed": false,
+        "human_reason": "",
+        "pass_label": "corrected"
+      }
+    },
+    {
+      "id": 51,
+      "name": "DataForSEO",
+      "before": {
+        "one_liner": "DataForSEO provides a REST API for accessing SEO data, enabling software, data analysis, and automation related to SEO.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "self_serve_trial",
+        "access_notes": "The documentation mentions a Free Unlimited Trial and Sandbox Best Practices, indicating self-serve trial access is available.",
+        "api_type": "REST",
+        "api_breadth": "broad",
+        "mcp_existing": false,
+        "buildability": "ready_with_caveats",
+        "main_blocker": "Authentication method details are not explicitly stated in the provided documentation.",
+        "evidence_urls": [
+          "https://docs.dataforseo.com/v3/"
+        ],
+        "confidence": 0.8,
+        "human_needed": true,
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 62,
+      "name": "Vercel",
+      "before": {
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "unclear",
+        "access_notes": "No explicit information found in the provided evidence about authentication methods or access model (free, paid, etc.).",
+        "api_type": "REST",
+        "api_breadth": "broad",
+        "buildability": "ready_with_caveats",
+        "main_blocker": "Authentication and access model details are unclear from the provided documentation.",
+        "evidence_urls": [
+          "https://vercel.com/docs/rest-api"
+        ],
+        "confidence": 0.7,
+        "human_needed": true,
+        "human_reason": "Authentication methods and access model are not clearly documented in the provided evidence; human review needed to confirm these details.",
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 66,
+      "name": "Neo4j",
+      "before": {
+        "one_liner": "Neo4j provides a graph database platform with an HTTP API to execute Cypher queries for managing and querying graph data.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "self_serve_free",
+        "access_notes": "Neo4j can be installed locally or accessed via Aura cloud instances which have free and paid plans.",
+        "api_type": "REST",
+        "api_breadth": "broad",
+        "mcp_existing": false,
+        "buildability": "ready_with_caveats",
+        "main_blocker": "Authentication methods and detailed API usage require further investigation; HTTP API is deprecated in favor of Query API.",
+        "evidence_urls": [
+          "https://neo4j.com/docs/http-api/current/"
+        ],
+        "confidence": 0.7,
+        "human_needed": true,
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 67,
+      "name": "Snowflake",
+      "before": {
+        "one_liner": "Snowflake SQL API is a REST API that allows access and management of Snowflake databases by executing SQL statements and managing deployments.",
+        "auth_methods": [
+          "OAuth2",
+          "Other"
+        ],
+        "access_model": "unclear",
+        "access_notes": "The documentation does not specify if the API access requires paid plans or is available on a trial or free tier.",
+        "api_type": "REST",
+        "api_breadth": "broad",
+        "mcp_existing": false,
+        "buildability": "ready_today",
+        "main_blocker": "",
+        "evidence_urls": [
+          "https://docs.snowflake.com/en/developer-guide/sql-api/index",
+          "https://docs.snowflake.com/en/"
+        ],
+        "confidence": 0.9,
+        "human_needed": false,
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 73,
+      "name": "Linear",
+      "before": {
+        "one_liner": "Linear provides a GraphQL API and SDK to query, mutate, and manage project and issue tracking data.",
+        "auth_methods": [
+          "OAuth2",
+          "API key"
+        ],
+        "access_model": "unclear",
+        "access_notes": "No explicit information on pricing or access tiers was found in the provided developer documentation.",
+        "api_type": "GraphQL+SDK",
+        "api_breadth": "broad",
+        "buildability": "ready_today",
+        "main_blocker": "",
+        "evidence_urls": [
+          "https://linear.app/developers"
+        ],
+        "confidence": 0.9,
+        "human_needed": false,
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 78,
+      "name": "Coda",
+      "before": {
+        "one_liner": "Superhuman Docs API (formerly Coda) is a RESTful API that lets you programmatically interact with documents, pages, tables, rows, and other elements in Superhuman Docs.",
+        "auth_methods": [
+          "Bearer token"
+        ],
+        "access_model": "self_serve_free",
+        "api_type": "REST",
+        "api_breadth": "broad",
+        "mcp_existing": true,
+        "buildability": "ready_today",
+        "main_blocker": "",
+        "evidence_urls": [
+          "https://docs.superhuman.com/developers/apis/v1"
+        ],
+        "confidence": 1.0,
+        "human_needed": false,
+        "human_reason": "",
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 79,
+      "name": "Smartsheet",
+      "before": {
+        "one_liner": "Smartsheet provides a platform for productivity and project management with APIs and SDKs to integrate and automate workflows.",
+        "auth_methods": [
+          "Basic"
+        ],
+        "access_model": "unclear",
+        "api_type": "REST+SDK",
+        "api_breadth": "broad",
+        "mcp_existing": true,
+        "buildability": "ready_today",
+        "main_blocker": "",
+        "evidence_urls": [
+          "https://smartsheet.redoc.ly/",
+          "https://developers.smartsheet.com/"
+        ],
+        "confidence": 0.8,
+        "human_needed": false,
+        "human_reason": "",
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 83,
+      "name": "Binance",
+      "before": {
+        "one_liner": "Binance provides a platform for cryptocurrency trading and financial services via APIs.",
+        "auth_methods": [
+          "API key"
+        ],
+        "access_model": "unclear",
+        "access_notes": "No direct evidence found; Binance APIs typically require API keys but exact access model unclear from provided evidence.",
+        "api_type": "REST",
+        "api_breadth": "broad",
+        "mcp_existing": false,
+        "buildability": "needs_outreach",
+        "main_blocker": "Lack of accessible official documentation and confirmation of API access model and auth methods.",
+        "evidence_urls": [],
+        "confidence": 0.3,
+        "human_needed": true,
+        "human_reason": "No usable documentation was fetched; key details about API access, auth, and integration are missing or unclear.",
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 84,
+      "name": "Paygent Connect",
+      "before": {
+        "one_liner": "Paygent Connect is a payment gateway solution powered by NMI that supports multiple integration methods including emulation of Authorize.Net APIs for transaction processing.",
+        "auth_methods": [
+          "API key"
+        ],
+        "access_model": "unclear",
+        "access_notes": "The evidence does not specify whether access requires paid plans or is self-serve; merchant control panel is mentioned for API key creation.",
+        "api_type": "REST",
+        "api_breadth": "broad",
+        "mcp_existing": false,
+        "buildability": "ready_today",
+        "main_blocker": "",
+        "evidence_urls": [
+          "https://secure.nmi.com/merchants/resources/integration/integration_portal.php"
+        ],
+        "confidence": 0.9,
+        "human_needed": false,
+        "pass_label": "corrected"
+      }
+    },
+    {
+      "id": 86,
+      "name": "QuickBooks",
+      "before": {
+        "one_liner": "QuickBooks provides accounting and financial management software for small and medium businesses.",
+        "auth_methods": [
+          "OAuth2"
+        ],
+        "access_model": "paid_plan_required",
+        "access_notes": "Typically requires a paid QuickBooks account and developer account to access APIs; no clear info on free or trial API access.",
+        "api_type": "REST",
+        "api_breadth": "broad",
+        "mcp_existing": false,
+        "buildability": "needs_outreach",
+        "main_blocker": "Lack of accessible official API documentation and unclear access requirements from available evidence.",
+        "evidence_urls": [
+          "https://developer.intuit.com/app/developer/qbo/docs/get-started",
+          "https://developer.intuit.com/app/developer/homepage"
+        ],
+        "confidence": 0.3,
+        "human_needed": true,
+        "human_reason": "No usable documentation was fetched; details on API access, auth, and partner programs are unclear and require human verification.",
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 88,
+      "name": "Brex",
+      "before": {
+        "one_liner": "Brex is a unified spend platform offering global corporate cards, expense management, reimbursements, travel, and bill pay with APIs to power internal tools and custom workflows.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "unclear",
+        "access_notes": "No explicit information on access model or pricing; documentation is publicly accessible but no mention of free tier or paid plans.",
+        "api_type": "REST",
+        "api_breadth": "broad",
+        "buildability": "ready_today",
+        "main_blocker": "",
+        "evidence_urls": [
+          "https://developer.brex.com/",
+          "https://developer.brex.com"
+        ],
+        "confidence": 0.9,
+        "human_needed": false,
+        "pass_label": "corrected"
+      }
+    },
+    {
+      "id": 89,
+      "name": "Ramp",
+      "before": {
+        "one_liner": "Ramp provides an API for finance and fintech services, likely focused on expense management and corporate card operations.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "unclear",
+        "access_notes": "Documentation landing page is a JavaScript shell and instructs to fetch other specific files for API details; no direct info on access model found.",
+        "api_type": "unknown",
+        "api_breadth": "unknown",
+        "buildability": "needs_outreach",
+        "main_blocker": "No detailed API documentation or authentication method available from provided URLs; requires fetching additional docs or human outreach.",
+        "evidence_urls": [
+          "https://docs.ramp.com/",
+          "https://docs.ramp.com"
+        ],
+        "confidence": 0.3,
+        "human_needed": true,
+        "human_reason": "The provided URLs only contain a JavaScript shell and instructions to fetch other files for API details; no concrete API or auth info is present.",
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 90,
+      "name": "PitchBook",
+      "before": {
+        "one_liner": "PitchBook provides financial data and research APIs for accessing private and public company information.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "unclear",
+        "access_notes": "No documentation or details on access model or pricing found from attempted URLs.",
+        "api_type": "unknown",
+        "api_breadth": "unknown",
+        "mcp_existing": false,
+        "buildability": "needs_outreach",
+        "main_blocker": "Lack of publicly available API documentation and unclear access requirements.",
+        "evidence_urls": [],
+        "confidence": 0.2,
+        "human_needed": true,
+        "human_reason": "No usable documentation or API details found; requires human outreach to PitchBook for confirmation.",
+        "pass_label": "pass1"
+      }
+    },
+    {
+      "id": 92,
+      "name": "Otter AI",
+      "before": {
+        "one_liner": "Otter AI provides AI-powered transcription and note-taking services for meetings and conversations.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "unclear",
+        "api_type": "MCP",
+        "api_breadth": "unknown",
+        "mcp_existing": false,
+        "mcp_notes": "Hint references help.otter.ai as MCP server, but no usable docs or API details found. | stripped: pass3 rejected weak/non-MCP wording",
+        "buildability": "needs_outreach",
+        "main_blocker": "No accessible API documentation or details on authentication and access model.",
+        "evidence_urls": [
+          "https://otter.ai/mcp",
+          "https://help.otter.ai/hc/en-us"
+        ],
+        "confidence": 0.3,
+        "human_needed": true,
+        "pass_label": "corrected"
+      }
+    },
+    {
+      "id": 100,
+      "name": "Grain",
+      "before": {
+        "one_liner": "Grain is an AI-powered meeting notetaker that captures, transcribes, enriches, and shares meeting content, integrating with AI tools like Claude and ChatGPT and CRMs like HubSpot and Salesforce.",
+        "auth_methods": [
+          "Unknown"
+        ],
+        "access_model": "self_serve_free",
+        "api_type": "MCP",
+        "api_breadth": "broad",
+        "mcp_existing": true,
+        "mcp_notes": "Grain provides an MCP Server & API allowing AI agents to query transcripts, search meetings, and access full meeting history.",
+        "buildability": "ready_today",
+        "main_blocker": "",
+        "evidence_urls": [
+          "https://grain.com/",
+          "https://support.grain.com/en/"
+        ],
+        "confidence": 0.9,
+        "human_needed": false,
+        "pass_label": "pass1"
+      }
+    }
+  ],
+  "note": "Pass3 improves trust: LLM marketplace\u2260MCP confusion removed; fetch-failed flagships corrected with real doc URLs."
+}

@@ -1,0 +1,347 @@
+{
+  "meta": {
+    "sample_size": 20,
+    "sample_ids": [
+      2,
+      11,
+      25,
+      34,
+      44,
+      53,
+      62,
+      79,
+      82,
+      100,
+      61,
+      6,
+      5,
+      14,
+      31,
+      33,
+      72,
+      87,
+      97,
+      80
+    ],
+    "pass1_field_accuracy_estimate": 0.89,
+    "after_correction_note": "Mismatched sample rows replaced when pass2 confidence >= 0.55",
+    "generated_at": "2026-09-16T19:14:56",
+    "fields_scored": [
+      "auth_methods",
+      "access_model",
+      "api_type",
+      "mcp_existing",
+      "buildability"
+    ]
+  },
+  "audits": [
+    {
+      "id": 2,
+      "name": "HubSpot",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 0.9,
+      "pass2_confidence": 0.9
+    },
+    {
+      "id": 11,
+      "name": "Zendesk",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 0.95,
+      "pass2_confidence": 0.95
+    },
+    {
+      "id": 25,
+      "name": "Pumble",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 0.95,
+      "pass2_confidence": 0.95
+    },
+    {
+      "id": 34,
+      "name": "GoHighLevel",
+      "hit_rate": 0.0,
+      "hits": [],
+      "misses": [
+        {
+          "field": "_fetch",
+          "pass1": "had_data",
+          "pass2": "fetch_failed"
+        }
+      ],
+      "note": "verification fetch failed"
+    },
+    {
+      "id": 44,
+      "name": "Salesforce Commerce Cloud",
+      "hit_rate": 0.0,
+      "hits": [],
+      "misses": [
+        {
+          "field": "_fetch",
+          "pass1": "had_data",
+          "pass2": "fetch_failed"
+        }
+      ],
+      "note": "verification fetch failed"
+    },
+    {
+      "id": 53,
+      "name": "Ahrefs",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 1.0,
+      "pass2_confidence": 1.0
+    },
+    {
+      "id": 62,
+      "name": "Vercel",
+      "hit_rate": 0.8,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing"
+      ],
+      "misses": [
+        {
+          "field": "buildability",
+          "pass1": "ready_with_caveats",
+          "pass2": "ready_today"
+        }
+      ],
+      "pass1_confidence": 0.7,
+      "pass2_confidence": 0.8
+    },
+    {
+      "id": 79,
+      "name": "Smartsheet",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 0.8,
+      "pass2_confidence": 0.8
+    },
+    {
+      "id": 82,
+      "name": "Plaid",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 1.0,
+      "pass2_confidence": 1.0
+    },
+    {
+      "id": 100,
+      "name": "Grain",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 0.9,
+      "pass2_confidence": 0.9
+    },
+    {
+      "id": 61,
+      "name": "GitHub",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 0.95,
+      "pass2_confidence": 1.0
+    },
+    {
+      "id": 6,
+      "name": "Podio",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 0.9,
+      "pass2_confidence": 0.9
+    },
+    {
+      "id": 5,
+      "name": "Twenty",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 0.9,
+      "pass2_confidence": 0.9
+    },
+    {
+      "id": 14,
+      "name": "Front",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 0.95,
+      "pass2_confidence": 0.95
+    },
+    {
+      "id": 31,
+      "name": "Google Ads",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 0.9,
+      "pass2_confidence": 0.9
+    },
+    {
+      "id": 33,
+      "name": "LinkedIn Ads",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 0.9,
+      "pass2_confidence": 0.9
+    },
+    {
+      "id": 72,
+      "name": "Airtable",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 1.0,
+      "pass2_confidence": 1.0
+    },
+    {
+      "id": 87,
+      "name": "Xero",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 0.95,
+      "pass2_confidence": 0.9
+    },
+    {
+      "id": 97,
+      "name": "higgsfield",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 1.0,
+      "pass2_confidence": 1.0
+    },
+    {
+      "id": 80,
+      "name": "Harvest",
+      "hit_rate": 1.0,
+      "hits": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "mcp_existing",
+        "buildability"
+      ],
+      "misses": [],
+      "pass1_confidence": 0.95,
+      "pass2_confidence": 0.95
+    }
+  ],
+  "summary": {
+    "perfect_rows": 17,
+    "weak_rows": 2,
+    "avg_field_hit_rate": 0.89
+  }
+}

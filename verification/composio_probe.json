@@ -1,0 +1,33 @@
+{
+  "enabled": true,
+  "ok": true,
+  "error": null,
+  "sample_hits": [
+    {
+      "name": "GitHub",
+      "mentioned": true
+    },
+    {
+      "name": "Slack",
+      "mentioned": true
+    },
+    {
+      "name": "Notion",
+      "mentioned": true
+    },
+    {
+      "name": "Gmail",
+      "mentioned": true
+    },
+    {
+      "name": "HubSpot",
+      "mentioned": true
+    },
+    {
+      "name": "Stripe",
+      "mentioned": true
+    }
+  ],
+  "note": "Composio SDK reachable. Catalog used as a cross-check signal only \u2014 assignment research still comes from each app's public docs.",
+  "raw_preview": "ToolkitListResponse(current_page=1.0, items=[Item(deprecated=ItemDeprecated(toolkit_id='a90e7d79-4f7a-4ff2-bd7d-19c78640b8f8', toolkitId='a90e7d79-4f7a-4ff2-bd7d-19c78640b8f8'), is_local_toolkit=False, meta=ItemMeta(categories=[ItemMetaCategory(id='email', name='email')], created_at='2024-05-03T11:44:32.061Z', description='Gmail is Google\u2019s email service, featuring spam protection, search functions, and seamless integration with other G Suite apps for productivity', logo='https://logos.composio.dev/api/gmail', tools_count=60.0, triggers_count=2.0, updated_at='2026-09-16T05:55:26.295Z', version='20260915_00', app_url='https://mail.google.com'), name='Gmail', slug='gmail', type='native', auth_guide_url=None, auth_schemes=['OAUTH2'], composio_managed_auth_schemes=['OAUTH2'], no_auth=False), Item(deprecated=ItemDeprecated(toolkit_id='784908aa-9ff2-4d6b-995c-fc63787e2dbd', toolkitId='784908aa-9ff2-4d6b-995c-fc63787e2dbd'), is_local_toolkit=False, meta=ItemMeta(categories=[ItemMetaCategory(id='ai-agents', name='ai agents'), ItemMetaCategory(id='developer-tools', name='developer tools')], created_at='2024-05-14T08:48:17.389Z', description='Composio enables AI Agents and LLMs to authenticate and integrate with various tools via function calling.', logo='https://logos.composio.dev/api/composio', tools_count=18.0, triggers_count=0.0, updated_at='2025-07-31T10:41:44.410Z', version='20260813_00', app_url='https://composio.dev'), name='Composio', slug='composio', type='native', auth_guide"
+}

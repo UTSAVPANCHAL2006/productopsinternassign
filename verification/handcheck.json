@@ -1,0 +1,142 @@
+{
+  "generated_at": "2026-09-16T19:39:52",
+  "sample_size": 10,
+  "pass_count": 6,
+  "corrected_count": 4,
+  "hand_accuracy_before_corrections": 0.6,
+  "note": "Before curated/human fixes, only fully-correct hand rows count as pass. After applying pass3 curated corrections for the 'corrected' rows, those fields match docs.",
+  "checks": [
+    {
+      "id": 2,
+      "name": "HubSpot",
+      "method": "browser + docs.developers.hubspot.com",
+      "verdict": "pass",
+      "notes": "OAuth2 + self-serve developer apps confirmed. Agent correct.",
+      "fields_ok": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "buildability"
+      ],
+      "fields_wrong": []
+    },
+    {
+      "id": 61,
+      "name": "GitHub",
+      "method": "browser + docs.github.com/rest",
+      "verdict": "pass",
+      "notes": "PAT / OAuth / GitHub Apps all real. Agent correct on auth breadth.",
+      "fields_ok": [
+        "auth_methods",
+        "access_model",
+        "api_type",
+        "buildability"
+      ],
+      "fields_wrong": []
+    },
+    {
+      "id": 81,
+      "name": "Stripe",
+      "method": "browser + docs.stripe.com",
+      "verdict": "pass",
+      "notes": "Secret/publishable API keys self-serve. Agent correct.",
+      "fields_ok": [
+        "auth_methods",
+        "access_model",
+        "buildability"
+      ],
+      "fields_wrong": []
+    },
+    {
+      "id": 71,
+      "name": "Notion",
+      "method": "browser + developers.notion.com",
+      "verdict": "pass",
+      "notes": "Internal integration token + OAuth public integrations. Agent correct.",
+      "fields_ok": [
+        "auth_methods",
+        "access_model",
+        "buildability"
+      ],
+      "fields_wrong": []
+    },
+    {
+      "id": 41,
+      "name": "Shopify",
+      "method": "browser + shopify.dev",
+      "verdict": "pass",
+      "notes": "OAuth partner apps + Admin API. Agent correct on ready_today.",
+      "fields_ok": [
+        "auth_methods",
+        "access_model",
+        "buildability"
+      ],
+      "fields_wrong": []
+    },
+    {
+      "id": 28,
+      "name": "WhatsApp Business",
+      "method": "browser + developers.facebook.com/docs/whatsapp",
+      "verdict": "corrected",
+      "notes": "Pass1 said self_serve_free \u2014 too optimistic. Business verification / WABA is an approval gate. Corrected in pass3 curated.",
+      "fields_ok": [
+        "api_type"
+      ],
+      "fields_wrong": [
+        "access_model"
+      ]
+    },
+    {
+      "id": 53,
+      "name": "Ahrefs",
+      "method": "browser + ahrefs.com/api",
+      "verdict": "pass",
+      "notes": "Paid API access; agent marked paid_plan_required. Correct finding.",
+      "fields_ok": [
+        "access_model",
+        "auth_methods"
+      ],
+      "fields_wrong": []
+    },
+    {
+      "id": 90,
+      "name": "PitchBook",
+      "method": "WebSearch + pitchbook.com/help/PitchBook-api + Postman docs",
+      "verdict": "corrected",
+      "notes": "Pass1 had no evidence / unclear. Human confirmed contract-gated REST API with PB-Token. Corrected.",
+      "fields_ok": [],
+      "fields_wrong": [
+        "access_model",
+        "auth_methods",
+        "buildability",
+        "evidence_urls"
+      ]
+    },
+    {
+      "id": 34,
+      "name": "GoHighLevel",
+      "method": "WebFetch highlevel.stoplight.io (crawler had failed)",
+      "verdict": "corrected",
+      "notes": "Public Stoplight integration docs exist; agent fetch failed. Corrected with evidence URLs.",
+      "fields_ok": [],
+      "fields_wrong": [
+        "evidence_urls",
+        "auth_methods",
+        "access_model"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Salesforce",
+      "method": "browser attempt (403) + known REST OAuth docs URL",
+      "verdict": "corrected",
+      "notes": "Fetcher hit marketing/403; human restored Connected Apps OAuth evidence. Ready with caveats.",
+      "fields_ok": [],
+      "fields_wrong": [
+        "auth_methods",
+        "api_type",
+        "buildability"
+      ]
+    }
+  ]
+}

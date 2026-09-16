@@ -1,0 +1,22 @@
+# secrets & local env
+.env
+.env.local
+
+# python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# tooling / deploy caches
+.netlify/
+.vercel/
+case_study/.vercel/
+node_modules/
+
+# logs & OS
+*.log
+.DS_Store
+output/cache/
