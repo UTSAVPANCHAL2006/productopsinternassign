@@ -233,8 +233,6 @@ a{{color:#1d6fbf}}
 @media(max-width:900px){{.plan{{grid-template-columns:1fr}}}}
 .plan .box ul{{max-height:280px;overflow:auto}}
 .plan .box h3{{font-size:.95rem}}
-.callout{{background:linear-gradient(135deg,#eef8f5,#f7fafc);border:1px solid #cfe8e2;border-radius:14px;padding:16px 18px;margin-top:14px}}
-.callout strong{{display:block;margin-bottom:6px;font-family:Literata,Georgia,serif;font-size:1.05rem}}
 .links{{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}}
 .links a{{font-size:13px;font-weight:600;text-decoration:none;color:var(--teal);border-bottom:1px solid #9fd3cb}}
 .card{{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px 24px;margin:16px 0;box-shadow:0 10px 30px rgba(24,33,43,.04)}}
@@ -333,11 +331,6 @@ footer{{margin-top:18px;color:var(--muted);font-size:12px}}
     <ol>
       {''.join(f'<li>{item}</li>' for item in headlines)}
     </ol>
-    <div class="callout">
-      <strong>If I joined ops tomorrow</strong>
-      Spend eng time on the self-serve REST majority. Put a human on partner/sales gates and thin-doc apps.
-      Automate the research loop we built here so the next 100 apps don’t start from a blank sheet.
-    </div>
     <div class="grid2" style="margin-top:16px">
       <div class="box wins">
         <h3>Easy wins — build toolkit now</h3>
